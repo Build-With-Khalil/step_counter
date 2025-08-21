@@ -1,16 +1,31 @@
-# step_counter
+# 🏃‍♂️ Pedometer App – Step Tracker by NSB Solutions
 
-A new Flutter project.
+A beautifully crafted Flutter app that tracks your daily steps, celebrates progress with achievement badges, and motivates users with personalized notifications. Built with modular architecture, pixel-perfect UI, and privacy-first principles.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 📊 **Live Step Tracking** – Real-time pedometer with distance, kcal, and time stats
+- 🏅 **Achievement Badges** – Unlockable tiers with animated celebration dialogs
+- 🔔 **Motivational Notifications** – Quotes, goal reminders, and welcome messages
+- 🎨 **Pixel-Perfect UI** – Custom icons, shield-shaped badges, and smooth animations
+- 🔒 **Privacy-First Design** – No unnecessary data collection or third-party tracking
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Flutter SDK (latest stable)
+- Android Studio or VS Code
+- Device/emulator with step sensor (for live tracking)
+
+### Clone the Repo
+
+```bash
+git clone https://github.com/BalochSahhb/pedometer.git
+cd pedometer
+
+- Just for NSB Solutions Pvt Ltd
