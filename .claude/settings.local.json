@@ -5,7 +5,8 @@
       "Bash(dart run:*)",
       "Bash(xargs rm:*)",
       "Bash(rm:*)",
-      "Bash(flutter analyze:*)"
+      "Bash(flutter analyze:*)",
+      "Bash(C:/src/flutter/bin/flutter --version 2>&1 | head -5)"
     ]
   }
 }
