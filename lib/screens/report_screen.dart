@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:step_counter/screens/achievments_screen.dart';
-import 'package:step_counter/widgets/achievment_badge.dart';
+import 'package:step_counter/utils/ad_helper.dart';
 import '../controllers/report_controller.dart';
 import 'daily_steps_show.dart';
 
-class ReportPage extends StatefulWidget {
-  @override
-  State<ReportPage> createState() => _ReportPageState();
-}
+class ReportPage extends StatelessWidget {
+  final ReportController controller = Get.find<ReportController>();
 
-class _ReportPageState extends State<ReportPage> {
-  final ReportController controller = Get.put(ReportController());
+  ReportPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +20,34 @@ class _ReportPageState extends State<ReportPage> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04, vertical: screenHeight * 0.015),
+          padding: EdgeInsets.symmetric(
+            horizontal: screenWidth * 0.04,
+            vertical: screenHeight * 0.015,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildToggleButton("Achievements", isDark, 'assets/icons/ach.png', screenHeight),
+                  _buildToggleButton(
+                    "Achievements",
+                    isDark,
+                    'assets/icons/ach.png',
+                    screenHeight,
+                  ),
                 ],
               ),
               SizedBox(height: screenHeight * 0.02),
 
               Obx(() {
                 final steps = controller.totalSteps.value;
-                final distance = controller.totalDistance.value.toStringAsFixed(2);
-                final calories = controller.totalCalories.value.toStringAsFixed(1);
+                final distance = controller.totalDistance.value.toStringAsFixed(
+                  2,
+                );
+                final calories = controller.totalCalories.value.toStringAsFixed(
+                  1,
+                );
                 final minutes = controller.totalMinutes.value;
 
                 return Container(
@@ -51,13 +61,22 @@ class _ReportPageState extends State<ReportPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("This Month", style: TextStyle(fontSize: screenWidth * 0.05, fontWeight: FontWeight.bold)),
+                      Text(
+                        "This Month",
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.05,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                       SizedBox(height: screenHeight * 0.015),
                       Row(
                         children: [
-                          Text("$steps", style: TextStyle(fontSize: screenWidth * 0.1)),
+                          Text(
+                            "$steps",
+                            style: TextStyle(fontSize: screenWidth * 0.1),
+                          ),
                           SizedBox(width: screenWidth * 0.025),
-                          Text('Total Steps')
+                          Text('Total Steps'),
                         ],
                       ),
                       Expanded(
@@ -66,9 +85,24 @@ class _ReportPageState extends State<ReportPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Expanded(child: Text("$distance \nMile", textAlign: TextAlign.center)),
-                              Expanded(child: Text("$calories \nKcal", textAlign: TextAlign.center)),
-                              Expanded(child: Text("${minutes ~/ 60}h ${minutes % 60}m \nTime", textAlign: TextAlign.center)),
+                              Expanded(
+                                child: Text(
+                                  "$distance \nMile",
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "$calories \nKcal",
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "${minutes ~/ 60}h ${minutes % 60}m \nTime",
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -77,22 +111,44 @@ class _ReportPageState extends State<ReportPage> {
                   ),
                 );
               }),
-
               SizedBox(height: screenHeight * 0.02),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("Monthly Progress",
-                      style: TextStyle(fontSize: screenWidth * 0.045, fontWeight: FontWeight.bold)),
-                  Image.asset('assets/icons/calendar.png', width: screenWidth * 0.075),
+                  Text(
+                    "Monthly Progress",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.045,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/icons/calendar.png',
+                    width: screenWidth * 0.075,
+                  ),
                 ],
               ),
               SizedBox(height: screenHeight * 0.01),
 
               Obx(() {
+                if (controller.isLoading.value) {
+                  return Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(screenHeight * 0.05),
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+
                 final currentMonth = controller.currentMonth.value;
-                final daysInMonth = DateUtils.getDaysInMonth(currentMonth.year, currentMonth.month);
+                final daysInMonth = DateUtils.getDaysInMonth(
+                  currentMonth.year,
+                  currentMonth.month,
+                );
+                final selectedDay = controller.selectedDate.value.day;
+                final selectedMonth = controller.selectedDate.value.month;
+                final selectedYear = controller.selectedDate.value.year;
 
                 return Container(
                   padding: EdgeInsets.all(screenWidth * 0.03),
@@ -106,15 +162,24 @@ class _ReportPageState extends State<ReportPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           IconButton(
-                            icon: Icon(Icons.chevron_left, size: screenWidth * 0.06),
+                            icon: Icon(
+                              Icons.chevron_left,
+                              size: screenWidth * 0.06,
+                            ),
                             onPressed: controller.goToPreviousMonth,
                           ),
                           Text(
                             "${currentMonth.day} ${_monthName(currentMonth.month)} ${currentMonth.year}",
-                            style: TextStyle(fontSize: screenWidth * 0.045, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                              fontSize: screenWidth * 0.045,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           IconButton(
-                            icon: Icon(Icons.chevron_right, size: screenWidth * 0.06),
+                            icon: Icon(
+                              Icons.chevron_right,
+                              size: screenWidth * 0.06,
+                            ),
                             onPressed: controller.goToNextMonth,
                           ),
                         ],
@@ -133,40 +198,57 @@ class _ReportPageState extends State<ReportPage> {
                         ),
                         itemBuilder: (_, index) {
                           final day = index + 1;
-                          final date = DateTime(currentMonth.year, currentMonth.month, day);
+                          final date = DateTime(
+                            currentMonth.year,
+                            currentMonth.month,
+                            day,
+                          );
+                          final isSelected =
+                              selectedDay == day &&
+                              selectedMonth == currentMonth.month &&
+                              selectedYear == currentMonth.year;
+                          final steps =
+                              controller.dailySteps[controller.formatDate(
+                                date,
+                              )] ??
+                              0;
 
-                          return Obx(() {
-                            final isSelected = controller.selectedDate.value.day == day &&
-                                controller.selectedDate.value.month == currentMonth.month &&
-                                controller.selectedDate.value.year == currentMonth.year;
-
-                            final steps = controller.dailySteps[controller.formatDate(date)] ?? 0;
-
-                            return GestureDetector(
-                              onTap: () {
-                                controller.selectDate(date);
-                                Get.to(() => DailyStepShow());
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: isSelected
-                                      ? Theme.of(context).primaryColor
-                                      : isDark
-                                      ? Colors.grey.shade800
-                                      : Colors.grey.shade300,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                alignment: Alignment.center,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("$day", style: TextStyle(fontWeight: FontWeight.bold, fontSize: screenWidth * 0.04)),
-                                    Text("$steps", style: TextStyle(fontSize: screenWidth * 0.03)),
-                                  ],
-                                ),
+                          return GestureDetector(
+                            onTap: () {
+                              controller.selectDate(date);
+                              AdManager.onNavigationAction();
+                              Get.to(() => DailyStepShow());
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: isSelected
+                                    ? Theme.of(context).primaryColor
+                                    : isDark
+                                    ? Colors.grey.shade800
+                                    : Colors.grey.shade300,
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            );
-                          });
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "$day",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: screenWidth * 0.04,
+                                    ),
+                                  ),
+                                  Text(
+                                    "$steps",
+                                    style: TextStyle(
+                                      fontSize: screenWidth * 0.03,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
                         },
                       ),
                     ],
@@ -180,17 +262,22 @@ class _ReportPageState extends State<ReportPage> {
     );
   }
 
-  Widget _buildToggleButton(String label, bool isDark, String iconPath, double screenHeight) {
+  Widget _buildToggleButton(
+    String label,
+    bool isDark,
+    String iconPath,
+    double screenHeight,
+  ) {
     return Expanded(
       child: GestureDetector(
-        onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AchievementsPage()));
-        },
+        onTap: () { AdManager.onNavigationAction(); Get.to(() => AchievementsPage()); },
         child: Container(
           height: screenHeight * 0.15,
           margin: EdgeInsets.symmetric(horizontal: screenHeight * 0.005),
-          padding: EdgeInsets.symmetric(vertical: screenHeight * 0.015, horizontal: screenHeight * 0.01),
+          padding: EdgeInsets.symmetric(
+            vertical: screenHeight * 0.015,
+            horizontal: screenHeight * 0.01,
+          ),
           decoration: BoxDecoration(
             color: isDark ? Colors.grey.shade900 : Colors.grey.shade200,
             borderRadius: BorderRadius.circular(30),
@@ -201,7 +288,10 @@ class _ReportPageState extends State<ReportPage> {
               SizedBox(width: screenHeight * 0.01),
               Text(
                 label,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: screenHeight * 0.025),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: screenHeight * 0.025,
+                ),
               ),
               Image.asset(
                 iconPath,
@@ -218,8 +308,18 @@ class _ReportPageState extends State<ReportPage> {
 
   String _monthName(int month) {
     const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     return months[month - 1];
   }

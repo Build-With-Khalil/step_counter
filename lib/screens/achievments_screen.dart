@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:confetti/confetti.dart';
+import 'package:step_counter/screens/trophies_collected.dart';
 import '../controllers/achievements_controller.dart';
+import '../utils/ad_helper.dart';
+import '../widgets/NativeAdWidget.dart';
 import '../widgets/achievment_badge.dart';
 
 class AchievementsPage extends StatefulWidget {
@@ -12,7 +15,7 @@ class AchievementsPage extends StatefulWidget {
 }
 
 class _AchievementsPageState extends State<AchievementsPage> {
-  final AchievementsController controller = Get.put(AchievementsController());
+  final AchievementsController controller = Get.find<AchievementsController>();
   final ConfettiController confettiController = ConfettiController(duration: const Duration(seconds: 3));
 
   @override
@@ -85,6 +88,15 @@ class _AchievementsPageState extends State<AchievementsPage> {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+            AdManager.onNavigationAction();
+            Get.to(TrophiesPage());
+          },
+              icon: Image.asset('assets/icons/ach.png'),
+          )
+
+        ],
         centerTitle: true,
         backgroundColor: Colors.transparent,
         title: Text('Achievements', style: TextStyle(fontSize: screenWidth * 0.05)),
@@ -123,6 +135,8 @@ class _AchievementsPageState extends State<AchievementsPage> {
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
                   ),
+                  SizedBox(height: screenHeight * 0.03),
+                  NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
                 ],
               ),
             );

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/abs_icon_widget.dart';
 import '../widgets/abs_moves_model.dart';
+import '../utils/ad_helper.dart';
+import '../widgets/NativeAdWidget.dart';
 
 class LoseWeightBeginnerScreen extends StatelessWidget {
   final List<AbsMoveModel> moves = [
@@ -130,6 +132,12 @@ class LoseWeightBeginnerScreen extends StatelessWidget {
                   );
                 },
                 childCount: moves.length,
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
               ),
             ),
           ],

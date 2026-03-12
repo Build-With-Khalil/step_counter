@@ -1,6 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../controllers/onboarding_controller.dart';
+import '../screens/homepage.dart';
 import '../screens/onboarding_screen.dart';
+import '../widgets/app_open_ad_widget.dart';
 
 class SplashController extends GetxController with GetTickerProviderStateMixin {
   late AnimationController animationController;
@@ -9,14 +14,29 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
   void onInit() {
     super.onInit();
 
+    // Preload onboarding ads immediately so they're ready before splash ends
+    if (!Get.isRegistered<OnboardingController>()) {
+      Get.put(OnboardingController());
+    }
+
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 8),
+      duration: const Duration(seconds: 4),
     )..forward();
 
-
-    Future.delayed(const Duration(seconds: 8), () {
-      Get.off(() => const OnBoardingScreen());
+    Future.delayed(const Duration(seconds: 4), () async {
+      if (!kIsWeb) {
+        await AppOpenAdWidget.loadAndShowAppOpenAd().catchError((e) {
+          debugPrint('App Open Ad error: $e');
+        });
+      }
+      final prefs = await SharedPreferences.getInstance();
+      final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
+      if (isFirstLaunch) {
+        Get.off(() => const OnBoardingScreen());
+      } else {
+        Get.off(() => const HomePage());
+      }
     });
   }
 
@@ -24,10 +44,12 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
   void onReady() {
     super.onReady();
 
+    // NEW (matches your file name)
     precacheImage(
-      const AssetImage('assets/images/splash.jpg'),
+      const AssetImage('assets/images/splashh.jpg'), // <-- Fixed
       Get.context!,
     );
+
   }
 
   @override

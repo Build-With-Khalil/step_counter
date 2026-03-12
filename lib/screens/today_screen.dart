@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 import 'package:confetti/confetti.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:step_counter/utils/ad_helper.dart';
 import '../controllers/goal_controller.dart';
 import '../controllers/todayscreen_controllr.dart';
 import '../services/celebration_service.dart';
+import '../widgets/NativeAdWidget.dart';
 
 class TodayPage extends StatelessWidget {
   TodayPage({super.key});
@@ -209,7 +212,7 @@ class TodayPage extends StatelessWidget {
                                     "$streak",
                                     style: theme.textTheme.bodyMedium
                                         ?.copyWith(
-                                        fontSize: screenWidth * 0.13,
+                                        fontSize: screenWidth * 0.10,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -217,7 +220,7 @@ class TodayPage extends StatelessWidget {
                                   "Days Streak",
                                   style: theme.textTheme.titleMedium
                                       ?.copyWith(
-                                    fontSize: screenWidth * 0.022,
+                                    fontSize: screenWidth * 0.025,
                                     color: theme.brightness ==
                                         Brightness.dark
                                         ? Colors.white
@@ -232,6 +235,10 @@ class TodayPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
+                  NativeAdWidget(
+                    adUnitId: AdHelper.nativeAdUnitId,
+                  ),
+                  SizedBox(height: screenHeight * 0.01),
 
                   Obx(() {
                     final goal = goalController.dailyStepGoal.value ?? 3000;
@@ -253,6 +260,8 @@ class TodayPage extends StatelessWidget {
                     final chartMaxY = (maxSteps > goal ? maxSteps : goal.toDouble()) > 10000
                         ? maxSteps
                         : 10000.0;
+
+                    final today = DateTime.now().weekday - 1; // ✅ Dynamic current day (0=Mon, 6=Sun)
 
                     return Container(
                       decoration: BoxDecoration(
@@ -304,10 +313,20 @@ class TodayPage extends StatelessWidget {
                                 sideTitles: SideTitles(
                                   showTitles: true,
                                   getTitlesWidget: (value, _) {
-                                    return Text(
-                                      days[value.toInt()],
-                                      style: TextStyle(
-                                          fontSize: screenWidth * 0.035),
+                                    final dayIndex = value.toInt();
+                                    return Padding(
+                                      padding: EdgeInsets.only(top: screenHeight * 0.01),
+                                      child: Text(
+                                        days[dayIndex],
+                                        style: TextStyle(
+                                          fontSize: screenWidth * 0.035,
+                                          color: dayIndex == today // ✅ Dynamic highlight
+                                              ? Colors.green
+                                              : theme.brightness == Brightness.dark
+                                              ? Colors.white
+                                              : Colors.black,
+                                        ),
+                                      ),
                                     );
                                   },
                                   reservedSize: screenHeight * 0.04,
@@ -317,23 +336,22 @@ class TodayPage extends StatelessWidget {
                             borderData: FlBorderData(show: false),
                             barGroups: List.generate(7, (index) {
                               final day = days[index];
-                              final value =
-                                  controller.weeklySteps[day] ?? 0;
+                              final value = controller.weeklySteps[day] ?? 0;
 
                               return BarChartGroupData(
                                 x: index,
                                 barRods: [
                                   BarChartRodData(
                                     toY: value.toDouble(),
-                                    color: Colors.blue,
+                                    color: index == today // ✅ Dynamic highlight
+                                        ? Colors.green
+                                        : Colors.blue,
                                     width: screenWidth * 0.1,
                                     borderRadius: BorderRadius.circular(4),
-                                    backDrawRodData:
-                                    BackgroundBarChartRodData(
+                                    backDrawRodData: BackgroundBarChartRodData(
                                       show: true,
                                       toY: chartMaxY,
-                                      color: theme.brightness ==
-                                          Brightness.dark
+                                      color: theme.brightness == Brightness.dark
                                           ? Colors.grey[800]
                                           : Colors.grey[200],
                                     ),
@@ -405,7 +423,7 @@ class AnimatedIconWidget extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Obx(() {
-      return SizedBox( // fixed size
+      return SizedBox(
         width: screenWidth * 0.18,
         height: screenWidth * 0.18,
         child: Center(

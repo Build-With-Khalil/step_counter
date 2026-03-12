@@ -5,22 +5,27 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import '../widgets/achievment_badge.dart';
 import '../services/storage_services.dart';
+import '../controllers/todayscreen_controllr.dart'; // For real-time steps
 
 class AchievementsController extends GetxController {
   final RxInt currentLevel = 1.obs;
   final RxList<AchievementBadge> badges = <AchievementBadge>[].obs;
+  final RxList<DateTime> trophyDates = <DateTime>[].obs; // List of dates when 10k was achieved
   final RxBool showCelebration = false.obs;
   final Rx<AchievementBadge?> unlockedBadge = Rx<AchievementBadge?>(null);
   final AudioPlayer _audioPlayer = AudioPlayer();
   static final FlutterLocalNotificationsPlugin _notificationsPlugin =
   FlutterLocalNotificationsPlugin();
+  DateTime? _lastAchievementDate; // To track daily resets
 
   @override
   void onInit() {
     super.onInit();
     _initNotifications();
     loadBadges();
+    _loadTrophies();
     loadProgress();
+    ever(Get.find<TodayScreenController>().totalSteps, (steps) => updateAchievements(steps as int)); // Real-time update
   }
 
   Future<void> _initNotifications() async {
@@ -60,6 +65,24 @@ class AchievementsController extends GetxController {
       1,
       'Badge Unlocked! 🥳',
       'You unlocked: $badgeTitle',
+      details,
+    );
+  }
+
+  Future<void> _showTrophyUnlockNotification() async {
+    const androidDetails = AndroidNotificationDetails(
+      'trophy_channel',
+      'Trophy Unlocks',
+      importance: Importance.high,
+      priority: Priority.high,
+      icon: '@mipmap/ic_launcher',
+    );
+    const iosDetails = DarwinNotificationDetails();
+    const details = NotificationDetails(android: androidDetails, iOS: iosDetails);
+    await _notificationsPlugin.show(
+      2,
+      'Trophy Collected! 🏆',
+      'You reached 10K steps today! A new trophy has been added.',
       details,
     );
   }
@@ -152,6 +175,7 @@ class AchievementsController extends GetxController {
 
   Future<void> updateAchievements(int todaySteps) async {
     bool unlockedSomething = false;
+    bool awardedTrophy = false;
 
     for (var badge in badges) {
       badge.progress.value = todaySteps.clamp(0, badge.goal);
@@ -162,12 +186,20 @@ class AchievementsController extends GetxController {
         unlockedBadge.value = badge;
         unlockedSomething = true;
         await _playSuccessSound();
-        await _showBadgeUnlockNotification(badge.title); // Show notification for badge unlock
+        await _showBadgeUnlockNotification(badge.title);
         print('Unlocked badge: ${badge.title} (${badge.goal} steps)');
       }
     }
 
-    // Update currentLevel if all badges in the current level are unlocked
+    // Trophy logic: Award if 10k reached and not awarded today
+    if (todaySteps >= 10000 && !trophyDates.any((date) => _isSameDay(date, DateTime.now()))) {
+      trophyDates.add(DateTime.now());
+      awardedTrophy = true;
+      await _playSuccessSound();
+      await _showTrophyUnlockNotification();
+      print('Awarded trophy for 10K steps on ${DateTime.now()}');
+    }
+
     while (_isLevelComplete(currentLevel.value) && currentLevel.value < 3) {
       currentLevel.value++;
       print('Advanced to level: ${currentLevel.value}');
@@ -175,7 +207,7 @@ class AchievementsController extends GetxController {
 
     await saveProgress();
 
-    if (unlockedSomething) {
+    if (unlockedSomething || awardedTrophy) {
       showCelebration.value = true;
       Future.delayed(const Duration(seconds: 3), () {
         showCelebration.value = false;
@@ -201,24 +233,55 @@ class AchievementsController extends GetxController {
   Future<void> saveProgress() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setInt('currentLevel', currentLevel.value);
+    final todayKey = StorageService.formatDate(DateTime.now()); // Use public method
     final unlockedIds = badges.where((b) => b.unlocked.value).map((b) => b.id).toList();
-    await prefs.setStringList('unlockedBadges', unlockedIds);
-    print('Saved progress: currentLevel=${currentLevel.value}, unlockedBadges=$unlockedIds');
+    await prefs.setStringList('unlockedBadges_$todayKey', unlockedIds);
+    // Save trophies
+    final trophyStrings = trophyDates.map((date) => date.toIso8601String()).toList();
+    await prefs.setStringList('trophyDates', trophyStrings);
+    print('Saved progress: currentLevel=${currentLevel.value}, unlockedBadges=$unlockedIds for $todayKey, trophies=${trophyStrings.length}');
   }
 
   Future<void> loadProgress() async {
     final prefs = await SharedPreferences.getInstance();
     currentLevel.value = prefs.getInt('currentLevel') ?? 1;
-    final unlockedIds = prefs.getStringList('unlockedBadges') ?? [];
+    final todayKey = StorageService.formatDate(DateTime.now()); // Use public method
+    final unlockedIds = prefs.getStringList('unlockedBadges_$todayKey') ?? [];
     final todaySteps = await StorageService.getDailySteps() ?? 0;
 
-    for (var badge in badges) {
-      badge.unlocked.value = unlockedIds.contains(badge.id);
-      badge.progress.value = todaySteps.clamp(0, badge.goal);
+    // Daily reset check
+    final lastAchievementDateStr = prefs.getString('lastAchievementDate');
+    _lastAchievementDate = lastAchievementDateStr != null ? DateTime.parse(lastAchievementDateStr) : null;
+    if (_lastAchievementDate == null || !_isSameDay(_lastAchievementDate!, DateTime.now())) {
+      // Reset badges for new day
+      for (var badge in badges) {
+        badge.unlocked.value = false;
+        badge.timesAchieved.value = 0;
+      }
+      await prefs.remove('unlockedBadges_${StorageService.formatDate(_lastAchievementDate ?? DateTime.now())}');
+      await prefs.setString('lastAchievementDate', DateTime.now().toIso8601String());
+      _lastAchievementDate = DateTime.now();
+      print('Reset badges for new day: $todayKey');
+    } else {
+      for (var badge in badges) {
+        badge.unlocked.value = unlockedIds.contains(badge.id);
+        badge.progress.value = todaySteps.clamp(0, badge.goal);
+      }
     }
 
     await updateAchievements(todaySteps);
     print('Loaded progress: currentLevel=${currentLevel.value}, todaySteps=$todaySteps');
+  }
+
+  Future<void> _loadTrophies() async {
+    final prefs = await SharedPreferences.getInstance();
+    final trophyStrings = prefs.getStringList('trophyDates') ?? [];
+    trophyDates.value = trophyStrings.map((str) => DateTime.parse(str)).toList();
+    print('Loaded trophies: ${trophyDates.length}');
+  }
+
+  bool _isSameDay(DateTime a, DateTime b) {
+    return a.year == b.year && a.month == b.month && a.day == b.day;
   }
 
   @override

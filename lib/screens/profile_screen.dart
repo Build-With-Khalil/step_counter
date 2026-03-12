@@ -1,28 +1,34 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
-import '../controllers/report_controller.dart';
-import '../controllers/todayscreen_controllr.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:step_counter/screens/privacy_policy.dart';
+import 'package:step_counter/utils/ad_helper.dart';
+import '../controllers/profile_controller.dart';
+import '../widgets/NativeAdWidget.dart';
 import '../controllers/theme_controller.dart';
 import '../services/storage_services.dart';
 import '../widgets/setting_tile.dart';
+import 'faqs.dart';
 import 'instruction_screen.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   Future<String> _loadPersonalInfo() async {
-    final gender = await StorageService.getGender() ?? 'Not set';
-    final height = await StorageService.getHeight();
-    final weight = await StorageService.getWeight();
+    try {
+      final gender = await StorageService.getGender() ?? 'Not set';
+      final height = await StorageService.getHeight();
+      final weight = await StorageService.getWeight();
 
-    final heightStr = height != null ? "${height.toStringAsFixed(1)} cm" : "Height not set";
-    final weightStr = weight != null ? "${weight.toStringAsFixed(1)} kg" : "Weight not set";
+      final heightStr = height != null ? "${height.toStringAsFixed(1)} cm" : "Not set";
+      final weightStr = weight != null ? "${weight.toStringAsFixed(1)} kg" : "Not set";
 
-    return "$gender • $heightStr • $weightStr";
+      return "$gender • $heightStr • $weightStr";
+    } catch (e) {
+      return "Loading...";
+    }
   }
 
   @override
@@ -30,7 +36,7 @@ class ProfilePage extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final themeController = Get.find<ThemeController>();
-    final profileController = Get.put(ProfileController());
+    final profileController = Get.find<ProfileController>();
 
     return SafeArea(
       child: Scaffold(
@@ -45,15 +51,18 @@ class ProfilePage extends StatelessWidget {
                   child: Obx(() {
                     return Column(
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundColor: Colors.blue,
-                          foregroundImage: profileController.profilePicture.value.isNotEmpty
-                              ? FileImage(File(profileController.profilePicture.value))
-                              : null,
-                          child: profileController.profilePicture.value.isEmpty
-                              ? const Icon(Icons.person, size: 60, color: Colors.white)
-                              : null,
+                        GestureDetector(
+                          onTap: () => _checkAndShowEditProfileDialog(context, profileController),
+                          child: Stack(
+                            children: [
+                              CircleAvatar(
+                                radius: 50,
+                                backgroundColor: Colors.blue,
+                                child: Icon(Icons.person, size: 60, color: Colors.white),
+
+                              )
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 10),
                         Text(
@@ -100,13 +109,14 @@ class ProfilePage extends StatelessWidget {
                   }),
                 ),
                 const SizedBox(height: 20),
+
                 // Settings Section
                 _sectionContainer(
                   isDark,
                   child: Column(
                     children: [
-                      ListTile(
-                        leading: Icon(Icons.dark_mode, color: theme.colorScheme.primary),
+                      Obx(() => ListTile(
+                        leading: Image.asset('assets/icons/light.png', width: 30),
                         title: const Text('Theme'),
                         trailing: IconButton(
                           icon: Icon(
@@ -115,18 +125,41 @@ class ProfilePage extends StatelessWidget {
                           ),
                           onPressed: () => themeController.toggleTheme(),
                         ),
+                      )),
+                      const Divider(),
+                      SettingsTile(
+                        imagePath: 'assets/icons/guidance.png',
+                        title: 'Instruction',
+                        subtitle: 'Guidance for using app',
+                        onTap: () => Get.to(() => InstructionScreen()),
                       ),
                       const Divider(),
                       SettingsTile(
-                        icon: Icons.help_outline,
-                        title: 'Instruction',
-                        subtitle: 'Guidance for using app',
-                        onTap: () {
-                          Get.to(InstructionScreen());
-                        },
+                        imagePath: 'assets/icons/share.png',
+                        title: 'Share App',
+                        subtitle: 'Share Our App With Friends',
+                        onTap: () => _shareApp(context),
+                      ),
+                      const Divider(),
+                      SettingsTile(
+                        imagePath: 'assets/icons/faq.png',
+                        title: 'FAQs',
+                        subtitle: 'Frequently Asked Questions',
+                        onTap: () { AdManager.onNavigationAction(); Get.to(() => FaqsScreen()); },
+                      ),
+                      const Divider(),
+                      SettingsTile(
+                        imagePath: 'assets/icons/privacy_policy.png',
+                        title: 'Privacy Policy',
+                        subtitle: "App's Privacy Policy",
+                        onTap: () { AdManager.onNavigationAction(); Get.to(() => PrivacyScreen()); },
                       ),
                     ],
                   ),
+                ),
+                const SizedBox(height: 16),
+                NativeAdWidget(
+                  adUnitId: AdHelper.native2AdUnitId,
                 ),
                 const SizedBox(height: 20),
               ],
@@ -149,45 +182,31 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Future<void> _checkAndShowEditProfileDialog(BuildContext context, ProfileController controller) async {
-    // Use Permission.photos for Android 13+ (API 33+), fallback to Permission.storage for older versions
-    final permission = Platform.isAndroid ? Permission.photos : Permission.storage;
+  Future<void> _shareApp(BuildContext context) async {
+    const message = '''
+Check out Pedometer – Walk & Track by NSB Solutions Pvt Ltd! 🚶‍♂️✨
 
-    final permissionStatus = await permission.status;
-    if (!permissionStatus.isGranted) {
-      if (permissionStatus.isPermanentlyDenied) {
-        Get.snackbar(
-          'Permission Denied',
-          'Photo access permission is permanently denied. Please enable it in app settings.',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red.shade400,
-          colorText: Colors.white,
-          margin: const EdgeInsets.all(16),
-          borderRadius: 12,
-          duration: const Duration(seconds: 3),
-          mainButton: TextButton(
-            onPressed: () => openAppSettings(),
-            child: const Text('Open Settings', style: TextStyle(color: Colors.white)),
-          ),
-        );
-        return;
-      }
+🔗 Download now:
+https://play.google.com/store/apps/details?id=com.nsb.pedometer
+''';
 
-      final newStatus = await permission.request();
-      if (!newStatus.isGranted) {
-        Get.snackbar(
-          'Permission Denied',
-          'Photo access permission is required to select a profile picture.',
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.red.shade400,
-          colorText: Colors.white,
-          margin: const EdgeInsets.all(16),
-          borderRadius: 12,
-          duration: const Duration(seconds: 3),
+    try {
+      await Share.share(
+        message,
+        subject: "Pedometer – Walk & Track",
+      );
+    } catch (e) {
+      await Clipboard.setData(const ClipboardData(text: message));
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('App link copied to clipboard')),
         );
-        return;
       }
     }
+  }
+
+  // === No permission gate needed; just show the dialog ===
+  Future<void> _checkAndShowEditProfileDialog(BuildContext context, ProfileController controller) async {
     await _showEditProfileDialog(context, controller);
   }
 
@@ -195,155 +214,88 @@ class ProfilePage extends StatelessWidget {
     final theme = Theme.of(context);
     final nameController = TextEditingController(text: controller.name.value);
     final ageController = TextEditingController(text: controller.age.value.toString());
-    String? selectedImagePath = controller.profilePicture.value;
 
     showDialog(
       context: context,
-      builder: (context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          backgroundColor: theme.brightness == Brightness.dark ? Colors.grey[900] : Colors.white,
-          title: const Text('Edit Profile'),
-          content: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  controller: nameController,
-                  decoration: InputDecoration(
-                    labelText: 'Name',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+      builder: (dialogContext) {
+        return StatefulBuilder(
+          builder: (statefulContext, setState) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              backgroundColor: theme.brightness == Brightness.dark ? Colors.grey[900] : Colors.white,
+              title: const Text('Edit Profile'),
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                        labelText: 'Name',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: ageController,
-                  decoration: InputDecoration(
-                    labelText: 'Age',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
+                    const SizedBox(height: 10),
+                    TextField(
+                      controller: ageController,
+                      decoration: InputDecoration(
+                        labelText: 'Age',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      keyboardType: TextInputType.number,
                     ),
-                  ),
-                  keyboardType: TextInputType.number,
+                  ],
                 ),
-                const SizedBox(height: 10),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(dialogContext).pop(),
+                  child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
+                ),
                 ElevatedButton(
                   onPressed: () async {
-                    FilePickerResult? result = await FilePicker.platform.pickFiles(
-                      type: FileType.image,
-                      allowMultiple: false,
-                    );
-                    if (result != null && result.files.single.path != null) {
-                      selectedImagePath = result.files.single.path!;
+                    final name = nameController.text.trim();
+                    final age = int.tryParse(ageController.text) ?? 0;
+                    if (name.isNotEmpty && age > 0) {
+                      await controller.saveProfile(name, age);
+                      if (dialogContext.mounted) {
+                        Navigator.of(dialogContext).pop();
+                      }
                       Get.snackbar(
-                        'Image Selected',
-                        'Profile picture updated.',
+                        'Profile Updated',
+                        'Your profile has been saved successfully.',
                         snackPosition: SnackPosition.BOTTOM,
-                        backgroundColor: Colors.blue.shade400,
+                        backgroundColor: Colors.green.shade400,
                         colorText: Colors.white,
                         margin: const EdgeInsets.all(16),
                         borderRadius: 12,
-                        duration: const Duration(seconds: 2),
+                        duration: const Duration(seconds: 3),
+                        icon: const Icon(Icons.check, color: Colors.white),
+                      );
+                    } else {
+                      Get.snackbar(
+                        'Invalid Input',
+                        'Please enter a valid name and age.',
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: Colors.red.shade400,
+                        colorText: Colors.white,
+                        margin: const EdgeInsets.all(16),
+                        borderRadius: 12,
+                        duration: const Duration(seconds: 3),
                       );
                     }
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: const Text('Pick Profile Picture'),
+                  child: const Text('Save'),
                 ),
-                if (selectedImagePath!.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.file(
-                        File(selectedImagePath!),
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
               ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text('Cancel', style: TextStyle(color: Colors.grey)),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                final name = nameController.text.trim();
-                final age = int.tryParse(ageController.text) ?? 0;
-                if (name.isNotEmpty && age > 0) {
-                  await controller.saveProfile(name, age, selectedImagePath ?? '');
-                  Navigator.of(context).pop();
-                  Get.snackbar(
-                    'Profile Updated',
-                    'Your profile has been saved successfully.',
-                    snackPosition: SnackPosition.BOTTOM,
-                    backgroundColor: Colors.blue.shade400,
-                    colorText: Colors.white,
-                    margin: const EdgeInsets.all(16),
-                    borderRadius: 12,
-                    duration: const Duration(seconds: 3),
-                    icon: const Icon(Icons.check, color: Colors.white),
-                  );
-                } else {
-                  Get.snackbar(
-                    'Invalid Input',
-                    'Please enter a valid name and age.',
-                    snackPosition: SnackPosition.BOTTOM,
-                    backgroundColor: Colors.red.shade400,
-                    colorText: Colors.white,
-                    margin: const EdgeInsets.all(16),
-                    borderRadius: 12,
-                    duration: const Duration(seconds: 3),
-                  );
-                }
-              },
-              child: const Text('Save'),
-            ),
-          ],
+            );
+          },
         );
       },
     );
-  }
-}
-
-class ProfileController extends GetxController {
-  final RxString name = 'User'.obs;
-  final RxInt age = 30.obs;
-  final RxString profilePicture = ''.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    loadProfile();
-  }
-
-  Future<void> loadProfile() async {
-    final prefs = await SharedPreferences.getInstance();
-    name.value = prefs.getString('profile_name') ?? 'User';
-    age.value = prefs.getInt('profile_age') ?? 30;
-    profilePicture.value = prefs.getString('profile_picture') ?? '';
-  }
-
-  Future<void> saveProfile(String newName, int newAge, String newPicture) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('profile_name', newName);
-    await prefs.setInt('profile_age', newAge);
-    await prefs.setString('profile_picture', newPicture);
-    name.value = newName;
-    age.value = newAge;
-    profilePicture.value = newPicture;
   }
 }

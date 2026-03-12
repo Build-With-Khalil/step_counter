@@ -44,13 +44,13 @@ class StorageService {
 
   static Future<void> saveDailySteps(int steps) async {
     final prefs = await SharedPreferences.getInstance();
-    final key = _formatDate(DateTime.now());
+    final key = formatDate(DateTime.now());
     await prefs.setInt('steps_$key', steps);
   }
 
   static Future<int?> getDailySteps() async {
     final prefs = await SharedPreferences.getInstance();
-    final key = _formatDate(DateTime.now());
+    final key = formatDate(DateTime.now());
     return prefs.getInt('steps_$key') ?? 0;
   }
 
@@ -114,7 +114,7 @@ class StorageService {
     required int duration,
   }) async {
     final prefs = await SharedPreferences.getInstance();
-    final key = _formatDate(DateTime.now());
+    final key = formatDate(DateTime.now());
     await prefs.setDouble('stats_distance_$key', distance);
     await prefs.setDouble('stats_calories_$key', calories);
     await prefs.setInt('stats_duration_$key', duration);
@@ -122,7 +122,7 @@ class StorageService {
 
   static Future<Map<String, dynamic>> getDailyStats() async {
     final prefs = await SharedPreferences.getInstance();
-    final key = _formatDate(DateTime.now());
+    final key = formatDate(DateTime.now());
     return {
       'distance': prefs.getDouble('stats_distance_$key') ?? 0.0,
       'calories': prefs.getDouble('stats_calories_$key') ?? 0.0,
@@ -264,7 +264,7 @@ class StorageService {
     }
   }
 
-  static String _formatDate(DateTime date) {
+  static String formatDate(DateTime date) { // Made public
     return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
   }
 }

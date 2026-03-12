@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../controllers/height_weight_controller.dart';
+import '../utils/ad_helper.dart';
+import '../widgets/NativeAdWidget.dart';
 import 'homepage.dart';
 
 class HeightWeightScreen extends StatelessWidget {
@@ -13,179 +15,266 @@ class HeightWeightScreen extends StatelessWidget {
     final theme = Theme.of(context);
     final String? selectedGender = Get.arguments as String?;
     final controller = Get.put(HeightWeightController());
-
     controller.initialize(selectedGender);
-
-    void _showHeightPicker() {
-      showModalBottomSheet(
-        context: context,
-        builder: (_) {
-          return Container(
-            height: 250,
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                const Text("Select Height (cm)", style: TextStyle(fontWeight: FontWeight.bold)),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 61, // 140 to 200 cm
-                    itemBuilder: (_, index) {
-                      double value = 140.0 + index;
-                      return ListTile(
-                        title: Text("${value.toStringAsFixed(0)} cm"),
-                        onTap: () {
-                          controller.updateHeight(value);
-                          Navigator.pop(context);
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      );
-    }
-
-    void _showWeightPicker() {
-      showModalBottomSheet(
-        context: context,
-        builder: (_) {
-          return Container(
-            height: 250,
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                const Text("Select Weight (kg)", style: TextStyle(fontWeight: FontWeight.bold)),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 61, // 40 to 100 kg
-                    itemBuilder: (_, index) {
-                      double value = 40.0 + index;
-                      return ListTile(
-                        title: Text("${value.toStringAsFixed(0)} kg"),
-                        onTap: () {
-                          controller.updateWeight(value);
-                          Navigator.pop(context);
-                        },
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-      );
-    }
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 10),
-              RichText(
-                text: TextSpan(
-                  style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
-                  children: [
-                    TextSpan(text: "More\n", style: TextStyle(color: theme.primaryColor)),
-                    const TextSpan(text: "About You"),
-                  ],
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final h = constraints.maxHeight;
+            final w = constraints.maxWidth;
+
+            void showHeightPicker() {
+              showModalBottomSheet(
+                context: context,
+                builder: (_) => SizedBox(
+                  height: h * 0.35,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(w * 0.04),
+                        child: Text(
+                          "Select Height (cm)",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: w * 0.04,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: 61,
+                          itemBuilder: (_, index) {
+                            final value = 140.0 + index;
+                            return ListTile(
+                              title: Text("${value.toStringAsFixed(0)} cm"),
+                              onTap: () {
+                                controller.updateHeight(value);
+                                Navigator.pop(context);
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                decoration: BoxDecoration(
-                  color: theme.brightness == Brightness.dark ? Colors.grey[900] : Colors.grey[300],
-                  borderRadius: BorderRadius.circular(12),
+              );
+            }
+
+            void showWeightPicker() {
+              showModalBottomSheet(
+                context: context,
+                builder: (_) => SizedBox(
+                  height: h * 0.35,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(w * 0.04),
+                        child: Text(
+                          "Select Weight (kg)",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: w * 0.04,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: 61,
+                          itemBuilder: (_, index) {
+                            final value = 40.0 + index;
+                            return ListTile(
+                              title: Text("${value.toStringAsFixed(0)} kg"),
+                              onTap: () {
+                                controller.updateWeight(value);
+                                Navigator.pop(context);
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                padding: const EdgeInsets.all(12),
-                child: Row(
-                  children: [
-                    const Icon(Icons.lightbulb, color: Colors.yellow, size: 20),
-                    const SizedBox(width: 8),
-                    Expanded(
+              );
+            }
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // ── Header ──
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      w * 0.05, h * 0.025, w * 0.05, 0),
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                        fontSize: w * 0.07,
+                        fontWeight: FontWeight.bold,
+                        color: theme.textTheme.headlineMedium?.color,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "More\n",
+                          style: TextStyle(color: theme.primaryColor),
+                        ),
+                        const TextSpan(text: "About You"),
+                      ],
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: h * 0.02),
+
+                // ── Hint box ──
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: w * 0.05),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: theme.brightness == Brightness.dark
+                          ? Colors.grey[900]
+                          : Colors.grey[300],
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: EdgeInsets.all(w * 0.03),
+                    child: Row(
+                      children: [
+                        Icon(Icons.lightbulb,
+                            color: Colors.yellow, size: w * 0.05),
+                        SizedBox(width: w * 0.02),
+                        Expanded(
+                          child: Text(
+                            "To ensure accuracy, please input your correct height and weight. We never share this data.",
+                            style: TextStyle(
+                              fontSize: w * 0.035,
+                              color: theme.brightness == Brightness.dark
+                                  ? Colors.white70
+                                  : Colors.black87,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: h * 0.025),
+
+                // ── Height picker ──
+                Center(
+                  child: Text(
+                    "Height",
+                    style: TextStyle(
+                      fontSize: w * 0.04,
+                      color: theme.textTheme.bodyMedium?.color,
+                    ),
+                  ),
+                ),
+                SizedBox(height: h * 0.012),
+                GestureDetector(
+                  onTap: showHeightPicker,
+                  child: Center(
+                    child: Container(
+                      width: w * 0.65,
+                      height: h * 0.075,
+                      decoration: BoxDecoration(
+                        color: theme.brightness == Brightness.dark
+                            ? Colors.grey[900]
+                            : Colors.grey[300],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      alignment: Alignment.center,
+                      child: Obx(() => Text(
+                            "${controller.heightCm.value.toStringAsFixed(0)} cm",
+                            style: TextStyle(
+                              fontSize: w * 0.045,
+                              color: theme.textTheme.bodyMedium?.color,
+                            ),
+                          )),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: h * 0.025),
+
+                // ── Weight picker ──
+                Center(
+                  child: Text(
+                    "Weight",
+                    style: TextStyle(
+                      fontSize: w * 0.04,
+                      color: theme.textTheme.bodyMedium?.color,
+                    ),
+                  ),
+                ),
+                SizedBox(height: h * 0.012),
+                GestureDetector(
+                  onTap: showWeightPicker,
+                  child: Center(
+                    child: Container(
+                      width: w * 0.65,
+                      height: h * 0.075,
+                      decoration: BoxDecoration(
+                        color: theme.brightness == Brightness.dark
+                            ? Colors.grey[900]
+                            : Colors.grey[300],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      alignment: Alignment.center,
+                      child: Obx(() => Text(
+                            "${controller.weightKg.value.toStringAsFixed(0)} kg",
+                            style: TextStyle(
+                              fontSize: w * 0.045,
+                              color: theme.textTheme.bodyMedium?.color,
+                            ),
+                          )),
+                    ),
+                  ),
+                ),
+
+                // ── Native Ad fills remaining space ──
+                Expanded(
+                  child: NativeAdWidget(
+                    adUnitId: AdHelper.nativeAdUnitId,
+
+                  ),
+                ),
+
+                // ── START button ──
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      w * 0.05, h * 0.01, w * 0.05, h * 0.025),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: h * 0.065,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: theme.primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      onPressed: () => controller.onStartPressed(() async {
+                        Get.offAll(HomePage());
+                        final prefs = await SharedPreferences.getInstance();
+                        await prefs.setBool('isFirstLaunch', false);
+                      }),
                       child: Text(
-                        "To ensure accuracy, please input your correct height and weight. We never share this data.",
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.brightness == Brightness.dark ? Colors.white70 : Colors.black87,
+                        "START",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: w * 0.045,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 80),
-              Center(child: Text("Height", style: theme.textTheme.bodyMedium)),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: _showHeightPicker,
-                child: Center(
-                  child: Container(
-                    width: 250,
-                    height: 70,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    decoration: BoxDecoration(
-                      color: theme.brightness == Brightness.dark ? Colors.grey[900] : Colors.grey[300],
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Center(
-                      child: Obx(() => Text(
-                        "${controller.heightCm.value.toStringAsFixed(0)} cm",
-                        style: theme.textTheme.bodyMedium,
-                      )),
-                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              Center(child: Text("Weight", style: theme.textTheme.bodyMedium)),
-              const SizedBox(height: 10),
-              GestureDetector(
-                onTap: _showWeightPicker,
-                child: Center(
-                  child: Container(
-                    width: 250,
-                    height: 70,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                    decoration: BoxDecoration(
-                      color: theme.brightness == Brightness.dark ? Colors.grey[900] : Colors.grey[300],
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Center(
-                      child: Obx(() => Text(
-                        "${controller.weightKg.value.toStringAsFixed(0)} kg",
-                        style: theme.textTheme.bodyMedium,
-                      )),
-                    ),
-                  ),
-                ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    backgroundColor: theme.primaryColor,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                  ),
-                  onPressed: () async {
-                    Get.offAll(HomePage());
-                    final prefs = await SharedPreferences.getInstance();
-                    await prefs.setBool('isFirstLaunch', false);
-                  },
-                  child: const Text("START", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                ),
-              ),
-              const SizedBox(height: 12),
-            ],
-          ),
+              ],
+            );
+          },
         ),
       ),
     );

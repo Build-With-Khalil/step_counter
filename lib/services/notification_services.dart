@@ -14,7 +14,6 @@ class NotificationService {
     const settings = InitializationSettings(android: androidSettings, iOS: iosSettings);
     await _notificationsPlugin.initialize(settings);
 
-    // Request notification permissions
     final androidPlugin = _notificationsPlugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     final iosPlugin = _notificationsPlugin.resolvePlatformSpecificImplementation<
@@ -72,6 +71,13 @@ class NotificationService {
       priority: Priority.high,
       icon: '@mipmap/ic_launcher',
     );
-
+    const iosDetails = DarwinNotificationDetails();
+    const details = NotificationDetails(android: androidDetails, iOS: iosDetails);
+    await _notificationsPlugin.show(
+      4,
+      'Goal Reached! 🎉',
+      'You hit your daily step goal! Great job!',
+      details,
+    );
   }
 }

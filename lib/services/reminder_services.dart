@@ -44,7 +44,6 @@ class ReminderService {
     const settings = InitializationSettings(android: androidSettings, iOS: iosSettings);
     await _notificationsPlugin.initialize(settings);
 
-    // Request notification permissions
     final androidPlugin = _notificationsPlugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     final iosPlugin = _notificationsPlugin.resolvePlatformSpecificImplementation<

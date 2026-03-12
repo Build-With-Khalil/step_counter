@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../controllers/goal_controller.dart';
 import '../controllers/todayscreen_controllr.dart';
 import '../services/notification_services.dart';
+import '../services/storage_services.dart';
 
 class NotificationController extends GetxController {
   static Timer? _progressTimer;
@@ -36,37 +37,45 @@ class NotificationController extends GetxController {
   void onInit() {
     super.onInit();
     _startProgressNotifications();
+    ever(Get.find<TodayScreenController>().totalSteps, (_) => _checkProgress()); // Real-time check
   }
 
   void _startProgressNotifications() {
     _progressTimer?.cancel();
 
     _progressTimer = Timer.periodic(const Duration(minutes: 1), (_) {
-      final controller = Get.find<TodayScreenController>();
-      final steps = controller.totalSteps.value;
-      final goal = Get.find<GoalController>().dailyStepGoal.value;
-      final now = DateTime.now();
-
-      // Reset triggered states for new day
-      if (now.day != DateTime.now().day) {
-        _halfGoalTriggered = false;
-        _goalTriggered = false;
-      }
-
-      // 50% Goal Notification
-      if (!_halfGoalTriggered && steps >= goal * 0.5 && steps < goal) {
-        final random = Random();
-        final quote = _motivationalQuotes[random.nextInt(_motivationalQuotes.length)];
-        NotificationService.showHalfGoalNotification(quote);
-        _halfGoalTriggered = true;
-      }
-
-      // Goal Reached Notification
-      if (!_goalTriggered && steps >= goal) {
-        NotificationService.showGoalReachedNotification();
-        _goalTriggered = true;
-      }
+      _checkProgress(); // Will now handle async internally
     });
+  }
+
+  Future<void> _checkProgress() async {
+    final controller = Get.find<TodayScreenController>();
+    final steps = controller.totalSteps.value;
+    final goal = Get.find<GoalController>().dailyStepGoal.value ?? 3000; // Default to 3000 if null
+    final now = DateTime.now();
+    final lastSavedDate = await StorageService.getLastSavedDate() ?? DateTime.now(); // Await the future
+
+    // Reset triggers if a new day has started
+    if (!_isSameDay(now, lastSavedDate)) {
+      _halfGoalTriggered = false;
+      _goalTriggered = false;
+    }
+
+    if (!_halfGoalTriggered && steps >= goal * 0.5 && steps < goal) {
+      final random = Random();
+      final quote = _motivationalQuotes[random.nextInt(_motivationalQuotes.length)];
+      NotificationService.showHalfGoalNotification(quote);
+      _halfGoalTriggered = true;
+    }
+
+    if (!_goalTriggered && steps >= goal) {
+      NotificationService.showGoalReachedNotification();
+      _goalTriggered = true;
+    }
+  }
+
+  bool _isSameDay(DateTime a, DateTime b) {
+    return a.year == b.year && a.month == b.month && a.day == b.day;
   }
 
   @override

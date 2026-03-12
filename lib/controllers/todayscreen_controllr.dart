@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pedometer/pedometer.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../services/storage_services.dart';
+import '../utils/step_calculator.dart';
 import 'package:flutter/material.dart';
 
 class TodayScreenController extends GetxController {
@@ -30,7 +31,6 @@ class TodayScreenController extends GetxController {
     streak.value = await StorageService.getStreak() ?? 1;
     await _checkPermission();
     await _lockInitialStepsIfNeeded();
-    await _loadDailyStats();
     await _loadDailySteps();
     await _loadWeeklySteps();
     await _updateStreak();
@@ -84,27 +84,26 @@ class TodayScreenController extends GetxController {
     await StorageService.saveLastStepCount(event.steps);
 
     if (!_isSameDay(now, _lastSavedDate)) {
-      print('New day detected, resetting steps');
       await resetTodaysSteps();
       return;
     }
 
     if (_initialSteps == null || _initialStepsDate == null || !_isSameDay(now, _initialStepsDate!)) {
-      _initialSteps = event.steps;
+      final todayKey = StorageService.formatDate(now);
+      final savedTodaySteps = await StorageService.getStepsForDate(todayKey) ?? 0;
+      _initialSteps = event.steps - savedTodaySteps;
       _initialStepsDate = now;
       await StorageService.saveInitialSteps(_initialSteps!);
       await StorageService.saveInitialStepsDate(_initialStepsDate!);
-      print('Initialized steps: $_initialSteps at $_initialStepsDate');
     }
 
-    int sessionSteps = event.steps - _initialSteps!;
+    int sessionSteps = event.steps - (_initialSteps ?? 0);
     if (sessionSteps < 0) sessionSteps = 0;
 
     int stepDelta = sessionSteps - _lastValidSteps;
     Duration timeDelta = now.difference(_lastStepTime);
 
     if (stepDelta > 100 && timeDelta.inSeconds < 5) {
-      print('Ignoring spike: $stepDelta steps in ${timeDelta.inSeconds} seconds');
       return;
     }
 
@@ -113,12 +112,11 @@ class TodayScreenController extends GetxController {
     totalSteps.value = sessionSteps;
     await StorageService.saveLastValidSteps(_lastValidSteps);
     updateLiveStats(sessionSteps);
-    final key = _formatDate(now);
+    final key = StorageService.formatDate(now);
     await StorageService.saveStepsForDate(key, sessionSteps);
     await StorageService.saveDailySteps(sessionSteps);
     await StorageService.saveTodayToWeekly(sessionSteps);
-    weeklySteps[_getWeekdayLabel(now.weekday)] = sessionSteps;
-    print('Updated steps: $sessionSteps for $key');
+    await _updateWeeklySteps(now);
   }
 
   void _onStepError(error) {
@@ -157,7 +155,6 @@ class TodayScreenController extends GetxController {
     streak.value = currentStreak;
     await StorageService.saveStreak(currentStreak);
     await StorageService.saveLastOpenedDate(now);
-    print('Updated streak: $currentStreak');
   }
 
   Future<void> _lockInitialStepsIfNeeded() async {
@@ -174,18 +171,18 @@ class TodayScreenController extends GetxController {
       await StorageService.saveInitialSteps(_initialSteps!);
       await StorageService.saveInitialStepsDate(_initialStepsDate!);
       await StorageService.saveDailySteps(0);
-      await StorageService.saveStepsForDate(_formatDate(now), 0);
+      await StorageService.saveStepsForDate(StorageService.formatDate(now), 0);
       await StorageService.saveLastValidSteps(0);
       totalSteps.value = 0;
       updateLiveStats(0);
-      print('Locked initial steps: $_initialSteps at $_initialStepsDate');
     } else {
       _initialSteps = savedInitial;
       _initialStepsDate = savedDate;
       _lastValidSteps = savedLastValidSteps;
-      totalSteps.value = (await StorageService.getDailySteps()) ?? savedLastValidSteps;
+      final todayKey = StorageService.formatDate(now);
+      final savedTodaySteps = await StorageService.getStepsForDate(todayKey) ?? savedLastValidSteps;
+      totalSteps.value = savedTodaySteps;
       updateLiveStats(totalSteps.value);
-      print('Loaded initial steps: $_initialSteps at $_initialStepsDate, last valid steps: $_lastValidSteps');
     }
   }
 
@@ -195,7 +192,6 @@ class TodayScreenController extends GetxController {
     if (!isTracking.value) {
       await _stepSubscription?.cancel();
       await StorageService.saveLastValidSteps(_lastValidSteps);
-      print('Paused tracking, saved last valid steps: $_lastValidSteps');
     } else {
       final now = DateTime.now();
       final savedDate = await StorageService.getInitialStepsDate();
@@ -210,18 +206,18 @@ class TodayScreenController extends GetxController {
         await StorageService.saveInitialSteps(_initialSteps!);
         await StorageService.saveInitialStepsDate(_initialStepsDate!);
         await StorageService.saveDailySteps(0);
-        await StorageService.saveStepsForDate(_formatDate(now), 0);
+        await StorageService.saveStepsForDate(StorageService.formatDate(now), 0);
         await StorageService.saveLastValidSteps(0);
         totalSteps.value = 0;
         updateLiveStats(0);
-        print('Resumed tracking with new initial steps: $_initialSteps');
       } else {
         _initialSteps = savedInitial;
         _initialStepsDate = savedDate;
         _lastValidSteps = savedLastValidSteps;
-        totalSteps.value = savedLastValidSteps;
+        final todayKey = StorageService.formatDate(now);
+        final savedTodaySteps = await StorageService.getStepsForDate(todayKey) ?? savedLastValidSteps;
+        totalSteps.value = savedTodaySteps;
         updateLiveStats(totalSteps.value);
-        print('Resumed tracking with saved initial steps: $_initialSteps, last valid steps: $_lastValidSteps');
       }
       _initPedometer();
     }
@@ -229,22 +225,21 @@ class TodayScreenController extends GetxController {
 
   void updateLiveStats(int steps) {
     totalSteps.value = steps;
-    distance.value = (steps * 0.762) / 1609.34; // meters to miles
-    calories.value = steps * 0.04;
-    durationMinutes.value = (steps / 100).round();
+    distance.value = StepCalculator.toMiles(steps);
+    calories.value = StepCalculator.toCalories(steps);
+    durationMinutes.value = StepCalculator.toDuration(steps);
     StorageService.saveDailyStats(
       distance: distance.value,
       calories: calories.value,
       duration: durationMinutes.value,
     );
-    print('Updated stats: steps=$steps, distance=${distance.value}, calories=${calories.value}, duration=${durationMinutes.value}');
   }
 
   Future<void> _updateStats() async {
     final steps = totalSteps.value;
-    distance.value = (steps * 0.762) / 1609.34;
-    calories.value = steps * 0.04;
-    durationMinutes.value = (steps / 100).round();
+    distance.value = StepCalculator.toMiles(steps);
+    calories.value = StepCalculator.toCalories(steps);
+    durationMinutes.value = StepCalculator.toDuration(steps);
     await StorageService.saveDailyStats(
       distance: distance.value,
       calories: calories.value,
@@ -266,13 +261,10 @@ class TodayScreenController extends GetxController {
       _initialSteps = savedInitial;
       lastStepCount = savedLast;
       _lastValidSteps = savedLastValidSteps;
-      final sessionSteps = lastStepCount! - _initialSteps!;
-      totalSteps.value = sessionSteps >= 0 ? sessionSteps : savedLastValidSteps;
-      final key = _formatDate(DateTime.now());
-      await StorageService.saveStepsForDate(key, totalSteps.value);
-      await StorageService.saveDailySteps(totalSteps.value);
+      final todayKey = StorageService.formatDate(DateTime.now());
+      final savedTodaySteps = await StorageService.getStepsForDate(todayKey) ?? savedLastValidSteps;
+      totalSteps.value = savedTodaySteps;
       updateLiveStats(totalSteps.value);
-      print('Loaded daily steps: $sessionSteps for $key, last valid steps: $_lastValidSteps');
     } else {
       lastStepCount = savedLast ?? 0;
       _initialSteps = lastStepCount;
@@ -283,33 +275,53 @@ class TodayScreenController extends GetxController {
       await StorageService.saveInitialStepsDate(_initialStepsDate!);
       await StorageService.saveLastSavedDate(_lastSavedDate);
       await StorageService.saveDailySteps(0);
-      await StorageService.saveStepsForDate(_formatDate(DateTime.now()), 0);
+      await StorageService.saveStepsForDate(StorageService.formatDate(DateTime.now()), 0);
       await StorageService.saveLastValidSteps(0);
       totalSteps.value = 0;
       updateLiveStats(0);
-      print('Reset daily steps on load');
     }
-  }
-
-  Future<void> _loadDailyStats() async {
-    final stats = await StorageService.getDailyStats();
-    distance.value = stats['distance'];
-    calories.value = stats['calories'];
-    durationMinutes.value = stats['duration'];
-    print('Loaded daily stats: distance=${distance.value}, calories=${calories.value}, duration=${durationMinutes.value}');
   }
 
   Future<void> _loadWeeklySteps() async {
     final data = await StorageService.getWeeklySteps();
     weeklySteps.value = data;
-    print('Loaded weekly steps: $data');
+    await _adjustWeeklyStepsForCurrentWeek();
+  }
+
+  Future<void> _updateWeeklySteps(DateTime now) async {
+    await _adjustWeeklyStepsForCurrentWeek();
+    final dayLabel = StorageService.getWeekdayLabel(now.weekday);
+    weeklySteps[dayLabel] = totalSteps.value;
+    await StorageService.saveWeeklySteps(weeklySteps);
+  }
+
+  Future<void> _adjustWeeklyStepsForCurrentWeek() async {
+    final now = DateTime.now();
+    final currentWeekStart = _getWeekStartDate(now);
+    final lastSavedDate = await StorageService.getLastSavedDate() ?? DateTime.now();
+    final lastWeekStart = _getWeekStartDate(lastSavedDate);
+
+    if (lastWeekStart.isBefore(currentWeekStart)) {
+      weeklySteps.clear();
+      for (int i = 0; i < 7; i++) {
+        final day = currentWeekStart.add(Duration(days: i));
+        final dayLabel = StorageService.getWeekdayLabel(day.weekday);
+        final dayKey = StorageService.formatDate(day);
+        final savedSteps = await StorageService.getStepsForDate(dayKey) ?? 0;
+        weeklySteps[dayLabel] = savedSteps;
+      }
+      await StorageService.saveWeeklySteps(weeklySteps);
+    }
+  }
+
+  DateTime _getWeekStartDate(DateTime date) {
+    return date.subtract(Duration(days: date.weekday - 1));
   }
 
   Future<void> resetTodaysSteps() async {
-    print('Resetting today\'s steps');
     final now = DateTime.now();
     final previousDay = now.subtract(Duration(days: 1));
-    final previousKey = _formatDate(previousDay);
+    final previousKey = StorageService.formatDate(previousDay);
     await StorageService.saveStepsForDate(previousKey, _lastValidSteps);
 
     final currentSteps = lastStepCount ?? await StorageService.getLastStepCount() ?? 0;
@@ -322,7 +334,7 @@ class TodayScreenController extends GetxController {
     calories.value = 0.0;
     durationMinutes.value = 0;
 
-    final key = _formatDate(now);
+    final key = StorageService.formatDate(now);
     await StorageService.saveInitialSteps(_initialSteps!);
     await StorageService.saveInitialStepsDate(_initialStepsDate!);
     await StorageService.saveLastSavedDate(_lastSavedDate);
@@ -331,7 +343,7 @@ class TodayScreenController extends GetxController {
     await StorageService.saveLastValidSteps(0);
     await StorageService.saveDailyStats(distance: 0.0, calories: 0.0, duration: 0);
     await StorageService.saveTodayToWeekly(0);
-    weeklySteps[_getWeekdayLabel(now.weekday)] = 0;
+    await _updateWeeklySteps(now);
 
     Get.snackbar(
       "Steps Reset",
@@ -341,11 +353,9 @@ class TodayScreenController extends GetxController {
       colorText: Colors.white,
       duration: const Duration(seconds: 3),
     );
-    print('Today\'s steps reset completed');
   }
 
   Future<void> resetAllData() async {
-    print('Resetting all data');
     _initialSteps = null;
     _initialStepsDate = null;
     _lastValidSteps = 0;
@@ -373,7 +383,6 @@ class TodayScreenController extends GetxController {
       colorText: Colors.white,
       duration: const Duration(seconds: 3),
     );
-    print('All data reset completed');
   }
 
   bool _isSameDay(DateTime a, DateTime b) {
@@ -383,7 +392,6 @@ class TodayScreenController extends GetxController {
   void checkForNewDay() async {
     final now = DateTime.now();
     if (!_isSameDay(now, _lastSavedDate)) {
-      print('New day detected in timer, resetting steps');
       await resetTodaysSteps();
     }
   }
@@ -392,30 +400,5 @@ class TodayScreenController extends GetxController {
     _dayCheckTimer = Timer.periodic(Duration(minutes: 5), (_) {
       checkForNewDay();
     });
-  }
-
-  String _getWeekdayLabel(int weekday) {
-    switch (weekday) {
-      case DateTime.monday:
-        return 'Mon';
-      case DateTime.tuesday:
-        return 'Tue';
-      case DateTime.wednesday:
-        return 'Wed';
-      case DateTime.thursday:
-        return 'Thu';
-      case DateTime.friday:
-        return 'Fri';
-      case DateTime.saturday:
-        return 'Sat';
-      case DateTime.sunday:
-        return 'Sun';
-      default:
-        return '';
-    }
-  }
-
-  String _formatDate(DateTime date) {
-    return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
   }
 }
