@@ -9,7 +9,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SplashController controller = Get.put(SplashController());
-
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,

@@ -1,4 +1,4 @@
-package com.nsb.pedometer
+package com.aqib.pedometer
 
 import io.flutter.embedding.android.FlutterActivity
 

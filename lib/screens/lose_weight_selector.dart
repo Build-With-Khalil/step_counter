@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:step_counter/screens/abs_intermediate_screen.dart';
 import 'package:step_counter/screens/lose_weight_beginner.dart';
+import '../utils/ad_helper.dart';
+import '../widgets/NativeAdWidget.dart';
 import '../widgets/select_container.dart';
 import 'abs_advance_screen.dart';
 import 'abs_beginner_screen.dart';
@@ -31,6 +34,7 @@ class LoseWeightSelector extends StatelessWidget {
               title: "Beginner",
               duration: "15 mins",
               onTap: () {
+                AdManager.onNavigationAction();
                 Get.to(LoseWeightBeginnerScreen());
               },
             ),
@@ -40,6 +44,7 @@ class LoseWeightSelector extends StatelessWidget {
               title: "Intermediate",
               duration: "30 mins",
               onTap: () {
+                AdManager.onNavigationAction();
                 Get.to(LoseWeightIntermediateScreen());
               },
             ),
@@ -49,11 +54,14 @@ class LoseWeightSelector extends StatelessWidget {
               title: "Advanced",
               duration: "40+ mins",
               onTap: () {
+                AdManager.onNavigationAction();
                 Get.to(LoseWeightAdvancedScreen());
               },
             ),
           ),
-
+          NativeAdWidget(
+            adUnitId: AdHelper.nativeAdUnitId,
+          ),
         ],
       ),
     );

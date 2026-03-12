@@ -1,134 +1,144 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:step_counter/services/notification_services.dart';
 import 'package:step_counter/services/reminder_services.dart';
 import 'package:step_counter/utils/lifecycle_handler.dart';
 import 'controllers/achievements_controller.dart';
 import 'controllers/goal_controller.dart';
+import 'controllers/profile_controller.dart';
 import 'controllers/report_controller.dart';
 import 'controllers/theme_controller.dart';
 import 'controllers/todayscreen_controllr.dart';
 import 'controllers/reminder_controller.dart';
 import 'screens/splash_screen.dart';
-import 'screens/homepage.dart';
-
 import 'widgets/motivation_service.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'utils/ad_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  if (!kIsWeb) {
+    await MobileAds.instance.initialize();
+debugPrint('Main: MobileAds initialized');
+    AdManager.loadOtherAds();
+  } else {
+    debugPrint('Main: Running on Web - Skipping MobileAds initialization');
+  }
+  FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
+  FirebaseAnalytics.instance.logAppOpen();
   await NotificationService.init();
   await ReminderService.init();
 
+  // Register all controllers once here
+  Get.put(ThemeController());
   Get.put(TodayScreenController(), permanent: true);
   Get.put(ReportController(), permanent: true);
   Get.put(GoalController());
   Get.put(AchievementsController(), permanent: true);
   Get.put(ReminderController(), permanent: true);
+  Get.put(ProfileController());
+  Get.put(PermissionController());
 
   WidgetsBinding.instance.addObserver(
     LifecycleEventHandler(
       resumeCallBack: () async {
         Get.find<ReportController>().refreshFromStorage();
+        AdManager.resumeAds();
+      },
+      pauseCallBack: () async {
+        AdManager.pauseAds();
       },
     ),
   );
 
-  final prefs = await SharedPreferences.getInstance();
-  final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
-
-  runApp(MyApp(isFirstLaunch: isFirstLaunch));
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  final bool isFirstLaunch;
-
-  const MyApp({super.key, required this.isFirstLaunch});
-
+// Handles permission requests via GetX — no BuildContext needed
+class PermissionController extends GetxController {
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final ThemeController themeController = Get.put(ThemeController());
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkPermissions(context);
-    });
+  void onReady() {
+    super.onReady();
+    _checkPermissions();
   }
 
-  Future<void> _checkPermissions(BuildContext context) async {
+  Future<void> _checkPermissions() async {
     final activityStatus = await Permission.activityRecognition.status;
     final notificationStatus = await Permission.notification.status;
 
-    bool showDialogNeeded = false;
+    bool needsDialog = false;
 
     if (!activityStatus.isGranted) {
       final result = await Permission.activityRecognition.request();
-      if (!result.isGranted) showDialogNeeded = true;
+      if (!result.isGranted) needsDialog = true;
     }
 
     if (!notificationStatus.isGranted) {
       final result = await Permission.notification.request();
-      if (!result.isGranted) showDialogNeeded = true;
+      if (!result.isGranted) needsDialog = true;
     }
 
-    if (showDialogNeeded) {
-      showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (_) => _PermissionDialog(),
-      );
+    if (needsDialog) {
+      Get.dialog(const _PermissionDialog(), barrierDismissible: false);
     } else {
       final quote = MotivationService.getWelcomeQuote();
       await NotificationService.showWelcomeNotification(quote);
     }
   }
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: Brightness.light,
-          scaffoldBackgroundColor: Colors.white,
-          primaryColor: Colors.blue,
-          textTheme: const TextTheme(
-            bodyMedium: TextStyle(color: Colors.black, fontFamily: 'Nata'),
+    final themeController = Get.find<ThemeController>();
+    return Obx(() => GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            brightness: Brightness.light,
+            scaffoldBackgroundColor: Colors.white,
+            primaryColor: Colors.blue,
+            textTheme: const TextTheme(
+              bodyMedium: TextStyle(color: Colors.black, fontFamily: 'Nata'),
+            ),
           ),
-        ),
-        darkTheme: ThemeData(
-          brightness: Brightness.dark,
-          scaffoldBackgroundColor: Colors.black,
-          primaryColor: Colors.blue,
-          textTheme: const TextTheme(
-            bodyMedium: TextStyle(color: Colors.white, fontFamily: 'Nata'),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: Colors.black,
+            primaryColor: Colors.blue,
+            textTheme: const TextTheme(
+              bodyMedium: TextStyle(color: Colors.white, fontFamily: 'Nata'),
+            ),
           ),
-        ),
-        themeMode: themeController.themeMode,
-        home: widget.isFirstLaunch ? SplashScreen() : const HomePage(),
-      );
-    });
+          themeMode: themeController.themeMode,
+          navigatorObservers: [],
+          home: SplashScreen(),
+        ));
   }
 }
 
 class _PermissionDialog extends StatelessWidget {
+  const _PermissionDialog();
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      backgroundColor:
-      theme.brightness == Brightness.dark ? Colors.grey[900] : Colors.white,
+      backgroundColor: theme.brightness == Brightness.dark
+          ? Colors.grey[900]
+          : Colors.white,
       title: Row(
         children: [
-          Icon(Icons.notifications_active, color: Colors.blue),
+          const Icon(Icons.notifications_active, color: Colors.blue),
           const SizedBox(width: 8),
           Text("Permissions Required", style: theme.textTheme.titleMedium),
         ],
@@ -139,27 +149,26 @@ class _PermissionDialog extends StatelessWidget {
       ),
       actions: [
         TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: Text("Not Now", style: TextStyle(color: Colors.grey)),
+          onPressed: () => Get.back(),
+          child: const Text("Not Now", style: TextStyle(color: Colors.grey)),
         ),
         ElevatedButton(
           onPressed: () async {
-            Navigator.of(context).pop();
+            Get.back();
             final activity = await Permission.activityRecognition.request();
             final notify = await Permission.notification.request();
-
             if (!activity.isGranted || !notify.isGranted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                    content: Text(
-                        "Permissions not granted. Some features may not work.")),
+              Get.snackbar(
+                'Permissions',
+                'Permissions not granted. Some features may not work.',
+                snackPosition: SnackPosition.BOTTOM,
               );
             } else {
               final quote = MotivationService.getWelcomeQuote();
               await NotificationService.showWelcomeNotification(quote);
             }
           },
-          child: Text("Allow"),
+          child: const Text("Allow"),
         ),
       ],
     );

@@ -9,7 +9,6 @@ class GoalController extends GetxController {
   RxDouble weightKg = 0.0.obs;
 
   RxDouble bmi = 0.0.obs;
-
   RxInt totalSteps = 0.obs;
 
   RxInt weeklyAverageSteps = 0.obs;
@@ -17,26 +16,33 @@ class GoalController extends GetxController {
   RxInt weeklyCalories = 0.obs;
 
   RxBool isDataLoaded = false.obs;
+  RxBool hasError = false.obs;
 
   @override
   void onInit() {
     super.onInit();
     _loadUserData();
-    // Bind heightCm and weightKg changes to recalculate BMI
     everAll([heightCm, weightKg], (_) => calculateBMI());
   }
 
   @override
   void onReady() {
     super.onReady();
-    final todayController = Get.find<TodayScreenController>();
-    ever(todayController.totalSteps, (value) {
-      totalSteps.value = value;
-    });
+    try {
+      final todayController = Get.find<TodayScreenController>();
+      ever(todayController.totalSteps, (value) {
+        totalSteps.value = value;
+      });
+    } catch (e) {
+      // TodayScreenController not initialized yet
+    }
   }
 
   Future<void> _loadUserData() async {
     try {
+      isDataLoaded.value = false;
+      hasError.value = false;
+
       final savedGoal = await StorageService.getDailyGoal();
       dailyStepGoal.value = savedGoal ?? 3000;
 
@@ -53,16 +59,30 @@ class GoalController extends GetxController {
 
       calculateBMI();
       isDataLoaded.value = true;
-      print('Loaded user data: gender=${gender.value}, height=${heightCm.value}, weight=${weightKg.value}, bmi=${bmi.value}');
     } catch (e) {
-      print('Error loading user data: $e');
-      isDataLoaded.value = true; // Set to true to avoid infinite loading
+      hasError.value = true;
+      isDataLoaded.value = true;
+      Get.snackbar(
+        "Error",
+        "Failed to load health data. Please restart the app.",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 3),
+      );
     }
   }
 
   Future<void> setDailyStepGoal(int goal) async {
-    dailyStepGoal.value = goal;
-    await StorageService.saveDailyGoal(goal);
+    try {
+      dailyStepGoal.value = goal;
+      await StorageService.saveDailyGoal(goal);
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        "Failed to save step goal",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+      );
+    }
   }
 
   Future<void> updateUserData({
@@ -80,9 +100,20 @@ class GoalController extends GetxController {
       weightKg.value = newWeightKg;
 
       calculateBMI();
-      print('Updated user data: gender=$newGender, height=$newHeightCm, weight=$newWeightKg, bmi=${bmi.value}');
+
+      Get.snackbar(
+        "Success",
+        "Health data updated successfully",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+      );
     } catch (e) {
-      print('Error updating user data: $e');
+      Get.snackbar(
+        "Error",
+        "Failed to update health data",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+      );
     }
   }
 
@@ -94,13 +125,6 @@ class GoalController extends GetxController {
     } else {
       bmi.value = 0.0;
     }
-    print('Calculated BMI: ${bmi.value}');
-  }
-
-  Future<void> _loadWeeklyStats() async {
-    weeklyAverageSteps.value = 0;
-    bestDaySteps.value = 0;
-    weeklyCalories.value = 0;
   }
 
   Future<void> updateWeeklyStats({
@@ -109,16 +133,29 @@ class GoalController extends GetxController {
     required int calories,
     required int total,
   }) async {
-    final prefs = await StorageService.getSharedPrefs();
+    try {
+      final prefs = await StorageService.getSharedPrefs();
 
-    await prefs.setInt('weeklyAverageSteps', averageSteps);
-    await prefs.setInt('bestDaySteps', bestSteps);
-    await prefs.setInt('weeklyCalories', calories);
-    await prefs.setInt('totalSteps', total);
+      await prefs.setInt('weeklyAverageSteps', averageSteps);
+      await prefs.setInt('bestDaySteps', bestSteps);
+      await prefs.setInt('weeklyCalories', calories);
+      await prefs.setInt('totalSteps', total);
 
-    weeklyAverageSteps.value = averageSteps;
-    bestDaySteps.value = bestSteps;
-    weeklyCalories.value = calories;
-    totalSteps.value = total;
+      weeklyAverageSteps.value = averageSteps;
+      bestDaySteps.value = bestSteps;
+      weeklyCalories.value = calories;
+      totalSteps.value = total;
+    } catch (e) {
+      Get.snackbar(
+        "Error",
+        "Failed to update weekly stats",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+      );
+    }
+  }
+
+  Future<void> refreshData() async {
+    await _loadUserData();
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:step_counter/screens/abs_intermediate_screen.dart';
+import '../utils/ad_helper.dart';
+import '../widgets/NativeAdWidget.dart';
 import '../widgets/select_container.dart';
 import 'abs_advance_screen.dart';
 import 'abs_beginner_screen.dart';
@@ -10,7 +13,7 @@ class AbsSelectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context); // get current theme
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -28,7 +31,8 @@ class AbsSelectScreen extends StatelessWidget {
               title: "Beginner",
               duration: "15 mins",
               onTap: () {
-              Get.to(AbsBeginnerScreen());
+                AdManager.onNavigationAction();
+                Get.to(AbsBeginnerScreen());
               },
             ),
           ),
@@ -37,7 +41,8 @@ class AbsSelectScreen extends StatelessWidget {
               title: "Intermediate",
               duration: "30 mins",
               onTap: () {
-           Get.to(AbsIntermediateScreen());
+                AdManager.onNavigationAction();
+                Get.to(AbsIntermediateScreen());
               },
             ),
           ),
@@ -46,11 +51,14 @@ class AbsSelectScreen extends StatelessWidget {
               title: "Advanced",
               duration: "40+ mins",
               onTap: () {
-               Get.to(AbsAdvanceScreen());
+                AdManager.onNavigationAction();
+                Get.to(AbsAdvanceScreen());
               },
             ),
           ),
-
+          NativeAdWidget(
+            adUnitId: AdHelper.nativeAdUnitId,
+          ),
         ],
       ),
     );

@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 import '../services/storage_services.dart';
 import '../controllers/todayscreen_controllr.dart';
+import '../utils/step_calculator.dart';
 
 class ReportController extends GetxController {
   Rx<DateTime> selectedDate = DateTime.now().obs;
   Rx<DateTime> currentMonth = DateTime.now().obs;
+  RxBool isLoading = false.obs;
 
   RxMap<String, int> dailySteps = <String, int>{}.obs;
 
@@ -47,11 +49,19 @@ class ReportController extends GetxController {
   }
 
   Future<void> loadDailyStepsFromStorage() async {
-    final year = currentMonth.value.year;
-    final month = currentMonth.value.month;
-    final monthlySteps = await StorageService.getMonthlySteps(year, month);
-    dailySteps.value = monthlySteps;
-    _calculateMonthlyStats();
+    try {
+      isLoading.value = true;
+      final year = currentMonth.value.year;
+      final month = currentMonth.value.month;
+      final monthlySteps = await StorageService.getMonthlySteps(year, month);
+      dailySteps.value = monthlySteps;
+      _calculateMonthlyStats();
+    } catch (e) {
+      Get.snackbar("Error", "Failed to load monthly data");
+      dailySteps.value = {};
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   void _calculateMonthlyStats() {
@@ -61,9 +71,9 @@ class ReportController extends GetxController {
 
     final steps = filtered.values.fold(0, (sum, value) => sum + value);
     totalSteps.value = steps;
-    totalDistance.value = (steps * 0.762) / 1609.34;
-    totalCalories.value = steps * 0.04;
-    totalMinutes.value = (steps / 100).round();
+    totalDistance.value = StepCalculator.toMiles(steps);
+    totalCalories.value = StepCalculator.toCalories(steps);
+    totalMinutes.value = StepCalculator.toDuration(steps);
   }
 
   void selectDate(DateTime date) {
@@ -101,8 +111,4 @@ class ReportController extends GetxController {
   Future<void> saveDailyStepsToStorage() async {
     await StorageService.saveAllSteps(dailySteps);
   }
-
-  Future<void> syncToCloud() async {}
-
-  Future<void> restoreFromCloud() async {}
 }

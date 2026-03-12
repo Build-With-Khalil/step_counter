@@ -33,7 +33,7 @@ class SwitchTile extends StatelessWidget {
 }
 
 class SettingsTile extends StatelessWidget {
-  final IconData icon;
+  final String imagePath;
   final String title;
   final String? subtitle;
   final Widget? trailing;
@@ -41,7 +41,7 @@ class SettingsTile extends StatelessWidget {
 
   const SettingsTile({
     super.key,
-    required this.icon,
+    required this.imagePath,
     required this.title,
     this.subtitle,
     this.trailing,
@@ -53,7 +53,7 @@ class SettingsTile extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ListTile(
-      leading: Icon(icon, color: theme.colorScheme.primary),
+      leading: Image.asset(imagePath, width: 30),
       title: Text(title, style: theme.textTheme.titleMedium),
       subtitle: subtitle != null ? Text(subtitle!) : null,
       trailing: trailing,
