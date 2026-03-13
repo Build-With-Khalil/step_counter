@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdHelper {
-  // Publisher ID: ca-app-pub-8523132132584450~2246404559
 
+  //Native AD Unit ID
   static String get nativeAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
@@ -15,15 +15,15 @@ class AdHelper {
     throw UnsupportedError('Unsupported platform');
   }
 
-  static String get native2AdUnitId {
+  static String get native2AdUnitId{
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
-      return 'ca-app-pub-8523132132584450/4352310252';
+      return 'ca-app-pub-8523132132584450/9987520551';
     }
     throw UnsupportedError('Unsupported platform');
   }
 
-
+//Interstitial Ad Unit ID
   static String get interstitialAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
@@ -32,6 +32,7 @@ class AdHelper {
     throw UnsupportedError('Unsupported platform');
   }
 
+  //Reward Ad Unit ID
   static String get rewardedAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
@@ -40,6 +41,8 @@ class AdHelper {
     throw UnsupportedError('Unsupported platform');
   }
 
+
+//APP Open Ad Uni ID
   static String get appOpenAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
@@ -47,7 +50,6 @@ class AdHelper {
     }
     throw UnsupportedError('Unsupported platform');
   }
-
 }
 
 class AdManager {
@@ -60,11 +62,11 @@ class AdManager {
   static bool _isAppOpenAdLoading = false;
 
   // Periodic Ad Timer
-  static Timer? _periodicAdTimer;
+  //static Timer? _periodicAdTimer;
 
   // Navigation action counter (shared across the whole app)
   static int _navCount = 0;
-  static const int _navThreshold = 6;
+  static const int _navThreshold = 3;
 
   static void onNavigationAction() {
     _navCount++;
@@ -74,28 +76,28 @@ class AdManager {
     }
   }
 
-  /// Initialize Ads and start periodic timer
-  static Future<void> initialize() async {
-    if (kIsWeb) return;
-    await MobileAds.instance.initialize();
-  }
+  // /// Initialize Ads and start periodic timer
+  // static Future<void> initialize() async {
+  //   if (kIsWeb) return;
+  //   await MobileAds.instance.initialize();
+  // }
 
   static void loadOtherAds() {
     if (kIsWeb) return;
     loadInterstitialAd();
     loadRewardedAd();
-    _startPeriodicAds();
+    //_startPeriodicAds();
   }
-
-  static void pauseAds() {
-    _periodicAdTimer?.cancel();
-    _periodicAdTimer = null;
-  }
-
-  static void resumeAds() {
-    if (kIsWeb) return;
-    _startPeriodicAds();
-  }
+  //
+  // static void pauseAds() {
+  //   _periodicAdTimer?.cancel();
+  //   _periodicAdTimer = null;
+  // }
+  //
+  // static void resumeAds() {
+  //   if (kIsWeb) return;
+  //   //_startPeriodicAds();
+  // }
 
   // --- App Open Ad ---
   static void loadAppOpenAd({
@@ -144,13 +146,13 @@ class AdManager {
   }
 
   // --- Periodic Ads ---
-  static void _startPeriodicAds() {
-    _periodicAdTimer?.cancel();
-    _periodicAdTimer = Timer.periodic(const Duration(seconds: 120), (timer) {
-      debugPrint("Periodic Ad Triggered");
-      showInterstitialAd();
-    });
-  }
+  // static void _startPeriodicAds() {
+  //   _periodicAdTimer?.cancel();
+  //   _periodicAdTimer = Timer.periodic(const Duration(seconds: 40), (timer) {
+  //     debugPrint("Periodic Ad Triggered");
+  //     showInterstitialAd();
+  //   });
+  // }
 
   // --- Interstitial Ad ---
 
@@ -228,6 +230,7 @@ class AdManager {
       ),
     );
   }
+
 
   static void showRewardedAd({
     required Function(RewardItem) onUserEarnedReward,

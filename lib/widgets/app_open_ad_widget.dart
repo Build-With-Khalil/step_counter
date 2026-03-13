@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter/foundation.dart';
+import '../utils/ad_helper.dart';
+
 
 class AppOpenAdWidget {
   static bool _isShowingAd = false;
@@ -17,7 +19,7 @@ class AppOpenAdWidget {
     final completer = Completer<void>();
 
     AppOpenAd.load(
-      adUnitId: 'ca-app-pub-8523132132584450/1704684354',
+      adUnitId: AdHelper.appOpenAdUnitId,
       request: const AdRequest(),
       adLoadCallback: AppOpenAdLoadCallback(
         onAdLoaded: (ad) {

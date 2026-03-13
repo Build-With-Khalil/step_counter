@@ -30,6 +30,7 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
           debugPrint('App Open Ad error: $e');
         });
       }
+
       final prefs = await SharedPreferences.getInstance();
       final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
       if (isFirstLaunch) {
@@ -37,6 +38,7 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
       } else {
         Get.off(() => const HomePage());
       }
+
     });
   }
 

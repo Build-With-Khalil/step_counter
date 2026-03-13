@@ -101,7 +101,7 @@ class OnboardingController extends GetxController {
     _isStartJourneyAdLoading = true;
 
     InterstitialAd.load(
-      adUnitId: AdHelper.interstitialAdUnitId,
+      adUnitId: AdHelper.rewardedAdUnitId,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {

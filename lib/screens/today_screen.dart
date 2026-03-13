@@ -97,6 +97,7 @@ class TodayPage extends StatelessWidget {
                       ],
                     );
                   }),
+
                   SizedBox(height: screenHeight * 0.02),
 
                   Obx(() => Container(
@@ -235,9 +236,11 @@ class TodayPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: screenHeight * 0.02),
+
                   NativeAdWidget(
-                    adUnitId: AdHelper.nativeAdUnitId,
+                    adUnitId: AdHelper.native2AdUnitId,
                   ),
+
                   SizedBox(height: screenHeight * 0.01),
 
                   Obx(() {

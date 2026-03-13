@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -14,34 +15,51 @@ class NativeAdWidget extends StatefulWidget {
   });
 
   @override
-  _NativeAdWidgetState createState() => _NativeAdWidgetState();
+  State<NativeAdWidget> createState() => _NativeAdWidgetState();
 }
 
 class _NativeAdWidgetState extends State<NativeAdWidget> {
   NativeAd? _nativeAd;
   bool _isAdLoaded = false;
 
+  late TemplateType _templateType;
+  late double _adHeight;
+
   @override
   void initState() {
     super.initState();
     if (!kIsWeb) {
+      _selectRandomTemplate();
       _loadNativeAd();
+    }
+  }
+
+  void _selectRandomTemplate() {
+    int rand = Random().nextInt(2);
+
+    if (rand == 0) {
+      _templateType = TemplateType.small;
+      _adHeight = 120;
+    } else {
+      _templateType = TemplateType.medium;
+      _adHeight = 300;
     }
   }
 
   void _loadNativeAd() {
     _nativeAd?.dispose();
+
     _nativeAd = NativeAd(
       adUnitId: widget.adUnitId,
       request: const AdRequest(),
       listener: NativeAdListener(
         onAdLoaded: (Ad ad) {
-          debugPrint('NativeAdWidget: Ad loaded successfully');
+          debugPrint('NativeAdWidget: Ad loaded');
+
           if (mounted) {
             setState(() => _isAdLoaded = true);
             widget.onAdLoaded?.call(true);
 
-            // Log analytics impression
             FirebaseAnalytics.instance.logAdImpression(
               adPlatform: 'AdMob',
               adSource: 'native',
@@ -51,16 +69,17 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
           debugPrint(
-              'NativeAdWidget: Failed to load: ${error.code} - ${error.message}');
+              'NativeAdWidget: Failed ${error.code} - ${error.message}');
           ad.dispose();
+
           if (mounted) {
             setState(() => _isAdLoaded = false);
             widget.onAdLoaded?.call(false);
           }
         },
       ),
-      nativeTemplateStyle:  NativeTemplateStyle(
-        templateType: TemplateType.medium,
+      nativeTemplateStyle: NativeTemplateStyle(
+        templateType: _templateType,
       ),
     )..load();
   }
@@ -78,8 +97,7 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
     }
 
     return SizedBox(
-      height: 300
-      , // static height recommended for TemplateType.medium
+      height: _adHeight,
       width: double.infinity,
       child: AdWidget(ad: _nativeAd!),
     );

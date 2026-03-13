@@ -234,6 +234,8 @@ class HeightWeightScreen extends StatelessWidget {
                   ),
                 ),
 
+                const SizedBox(height: 24),
+
                 // ── Native Ad fills remaining space ──
                 Expanded(
                   child: NativeAdWidget(

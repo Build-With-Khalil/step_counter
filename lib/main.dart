@@ -45,17 +45,17 @@ debugPrint('Main: MobileAds initialized');
   Get.put(ProfileController());
   Get.put(PermissionController());
 
-  WidgetsBinding.instance.addObserver(
-    LifecycleEventHandler(
-      resumeCallBack: () async {
-        Get.find<ReportController>().refreshFromStorage();
-        AdManager.resumeAds();
-      },
-      pauseCallBack: () async {
-        AdManager.pauseAds();
-      },
-    ),
-  );
+  // WidgetsBinding.instance.addObserver(
+  //   LifecycleEventHandler(
+  //     resumeCallBack: () async {
+  //       Get.find<ReportController>().refreshFromStorage();
+  //       AdManager.resumeAds();
+  //     },
+  //     pauseCallBack: () async {
+  //       AdManager.pauseAds();
+  //     },
+  //   ),
+  // );
 
   runApp(const MyApp());
 }

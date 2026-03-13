@@ -39,8 +39,8 @@ android {
         applicationId = "com.aqib.pedometer"
         minSdk = flutter.minSdkVersion
         targetSdk = 36
-        versionCode = 10
-        versionName = "1.0.9"
+        versionCode = 11
+        versionName = "1.1.0"
     }
 
     if (keystorePropertiesFile.exists()) {
@@ -70,3 +70,4 @@ flutter {
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }
+

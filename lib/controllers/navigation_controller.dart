@@ -20,23 +20,15 @@ class NavigationController extends GetxController with WidgetsBindingObserver {
   void onInit() {
     super.onInit();
     WidgetsBinding.instance.addObserver(this);
-    _loadAd();
-    _startTimer();
-  }
+    _loadAd();}
+
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused) {
       _timer?.cancel();
     } else if (state == AppLifecycleState.resumed) {
-      _startTimer();
     }
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 40), (_) {
-      _showAd();
-    });
   }
 
   void _loadAd() {
