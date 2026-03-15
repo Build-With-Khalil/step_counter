@@ -16,6 +16,7 @@ void _logAd(String event, String placement, {String? format}) {
 }
 
 class OnboardingController extends GetxController {
+
   final PageController pageController = PageController();
   final RxInt currentPage = 0.obs;
   final RxDouble goalSteps = 10000.0.obs;
@@ -101,7 +102,7 @@ class OnboardingController extends GetxController {
     _isStartJourneyAdLoading = true;
 
     InterstitialAd.load(
-      adUnitId: AdHelper.rewardedAdUnitId,
+      adUnitId: AdHelper.interstitialAdUnitId,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {

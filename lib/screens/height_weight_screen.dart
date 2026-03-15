@@ -160,7 +160,7 @@ class HeightWeightScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: h * 0.025),
+                SizedBox(height: h * 0.08),
 
                 // ── Height picker ──
                 Center(
@@ -236,13 +236,7 @@ class HeightWeightScreen extends StatelessWidget {
 
                 const SizedBox(height: 24),
 
-                // ── Native Ad fills remaining space ──
-                Expanded(
-                  child: NativeAdWidget(
-                    adUnitId: AdHelper.nativeAdUnitId,
-
-                  ),
-                ),
+                const Spacer(),
 
                 // ── START button ──
                 Padding(

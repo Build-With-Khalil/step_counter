@@ -57,7 +57,7 @@ class AbsSelectScreen extends StatelessWidget {
             ),
           ),
           NativeAdWidget(
-            adUnitId: AdHelper.nativeAdUnitId,
+            adUnitId: AdHelper.native2AdUnitId,
           ),
         ],
       ),

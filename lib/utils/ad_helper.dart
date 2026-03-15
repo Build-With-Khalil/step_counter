@@ -154,7 +154,7 @@ class AdManager {
   //   });
   // }
 
-  // --- Interstitial Ad ---
+  // --- Interstitial Ad For Click ---
 
   static void loadInterstitialAd() {
     if (kIsWeb || _isInterstitialLoading) return;
@@ -256,4 +256,3 @@ class AdNavigatorObserver extends NavigatorObserver {
     AdManager.onNavigationAction();
   }
 }
-

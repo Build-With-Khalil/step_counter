@@ -36,7 +36,7 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
       if (isFirstLaunch) {
         Get.off(() => const OnBoardingScreen());
       } else {
-        Get.off(() => const HomePage());
+        Get.off(() => const OnBoardingScreen());
       }
 
     });
