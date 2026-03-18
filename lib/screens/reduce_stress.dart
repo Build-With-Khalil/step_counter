@@ -11,6 +11,8 @@ class ReduceStress extends StatelessWidget {
     AbsMoveModel(name: 'DIET', iconPath: 'assets/images/diet.gif', reps: 'Eat balanced meals, cut sugar, avoid oily foods, and add more fruits & veggies for a lighter, healthier body.'),
   ];
 
+   ReduceStress({super.key});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

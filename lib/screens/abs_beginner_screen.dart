@@ -12,6 +12,8 @@ class AbsBeginnerScreen extends StatelessWidget {
     AbsMoveModel(name: 'SEATED ABS CIRCLE', iconPath: 'assets/images/abs_beg4.gif', reps: '8 circles clockwise + 8 anticlockwise'),
   ];
 
+  AbsBeginnerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

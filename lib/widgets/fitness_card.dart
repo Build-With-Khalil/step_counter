@@ -10,7 +10,7 @@ class FitnessContainer extends StatelessWidget {
   final VoidCallback? onTap;
 
   const FitnessContainer({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.imagePath,
@@ -18,7 +18,7 @@ class FitnessContainer extends StatelessWidget {
     this.width = 140, // ✅ Reduced container width
     this.height = 200, // ✅ Increased container height
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

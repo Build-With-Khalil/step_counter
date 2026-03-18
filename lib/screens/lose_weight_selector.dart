@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:step_counter/screens/abs_intermediate_screen.dart';
 import 'package:step_counter/screens/lose_weight_beginner.dart';
+
 import '../utils/ad_helper.dart';
 import '../widgets/NativeAdWidget.dart';
 import '../widgets/select_container.dart';
-import 'abs_advance_screen.dart';
-import 'abs_beginner_screen.dart';
 import 'lose_weight_advance.dart';
 import 'lose_weight_intermediate.dart';
 
@@ -16,7 +13,6 @@ class LoseWeightSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context); // get current theme
 
     return Scaffold(
       appBar: AppBar(

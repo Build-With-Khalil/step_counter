@@ -1,13 +1,11 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:step_counter/controllers/navigation_controller.dart';
 import 'package:step_counter/screens/profile_screen.dart';
 import 'package:step_counter/screens/report_screen.dart';
 import 'package:step_counter/screens/today_screen.dart';
-import 'package:step_counter/utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
+
 import 'goal_screen.dart';
 
 class HomePage extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:step_counter/screens/abs_intermediate_screen.dart';
 import '../utils/ad_helper.dart';
 import '../widgets/NativeAdWidget.dart';
@@ -13,8 +12,6 @@ class AbsSelectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

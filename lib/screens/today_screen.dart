@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:fl_chart/fl_chart.dart';
-import 'package:get/get.dart';
 import 'package:confetti/confetti.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:step_counter/utils/ad_helper.dart';
+
 import '../controllers/goal_controller.dart';
 import '../controllers/todayscreen_controllr.dart';
 import '../services/celebration_service.dart';
@@ -154,7 +154,7 @@ class TodayPage extends StatelessWidget {
                           padding: EdgeInsets.all(screenWidth * 0.04),
                           child: Obx(() {
                             final goal =
-                                goalController.dailyStepGoal.value ?? 3000;
+                                goalController.dailyStepGoal.value;
                             final steps = controller.totalSteps.value;
                             final remaining = (goal - steps).clamp(0, goal);
                             final progress =
@@ -244,7 +244,7 @@ class TodayPage extends StatelessWidget {
                   SizedBox(height: screenHeight * 0.01),
 
                   Obx(() {
-                    final goal = goalController.dailyStepGoal.value ?? 3000;
+                    final goal = goalController.dailyStepGoal.value;
                     final days = [
                       'Mon',
                       'Tue',

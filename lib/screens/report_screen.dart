@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:step_counter/screens/achievments_screen.dart';
 import 'package:step_counter/utils/ad_helper.dart';
+
 import '../controllers/report_controller.dart';
 import 'daily_steps_show.dart';
 

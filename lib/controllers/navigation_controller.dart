@@ -59,38 +59,6 @@ class NavigationController extends GetxController with WidgetsBindingObserver {
     );
   }
 
-  void _showAd() {
-    if (_interstitialAd == null) return;
-
-    FirebaseAnalytics.instance.logAdImpression(
-      adPlatform: 'AdMob',
-      adSource: 'google',
-      adFormat: 'interstitial',
-      adUnitName: 'nav_tab',
-    );
-
-    _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-      onAdDismissedFullScreenContent: (ad) {
-        ad.dispose();
-        _interstitialAd = null;
-        FirebaseAnalytics.instance.logEvent(
-          name: 'ad_dismissed',
-          parameters: {'placement': 'nav_tab'},
-        );
-        _loadAd();
-      },
-      onAdFailedToShowFullScreenContent: (ad, error) {
-        ad.dispose();
-        _interstitialAd = null;
-        FirebaseAnalytics.instance.logEvent(
-          name: 'ad_failed_to_show',
-          parameters: {'placement': 'nav_tab'},
-        );
-        _loadAd();
-      },
-    );
-    _interstitialAd!.show();
-  }
 
   void changeTab(int index) {
     if (index == _selectedIndex.value) return;

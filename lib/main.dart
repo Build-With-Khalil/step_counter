@@ -61,13 +61,7 @@ debugPrint('Main: MobileAds initialized');
 
 // Handles permission requests via GetX — no BuildContext needed
 class PermissionController extends GetxController {
-  @override
-  void onReady() {
-    super.onReady();
-    _checkPermissions();
-  }
-
-  Future<void> _checkPermissions() async {
+  Future<void> checkPermissions() async {
     final activityStatus = await Permission.activityRecognition.status;
     final notificationStatus = await Permission.notification.status;
 

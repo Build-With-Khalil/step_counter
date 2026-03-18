@@ -1,5 +1,5 @@
-import 'dart:async';
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -56,10 +56,14 @@ class AdManager {
   static InterstitialAd? _interstitialAd;
   static RewardedAd? _rewardedAd;
   static AppOpenAd? _appOpenAd;
+  static NativeAd? _nativeAd;
+  static NativeAd? _native2Ad;
 
   static bool _isInterstitialLoading = false;
   static bool _isRewardedLoading = false;
   static bool _isAppOpenAdLoading = false;
+  static bool _isNativeAdLoading = false;
+  static bool _isNative2AdLoading = false;
 
   // Periodic Ad Timer
   //static Timer? _periodicAdTimer;
@@ -86,6 +90,9 @@ class AdManager {
     if (kIsWeb) return;
     loadInterstitialAd();
     loadRewardedAd();
+    loadAppOpenAd();
+    loadNativeAd();
+    loadNative2Ad();
     //_startPeriodicAds();
   }
   //
@@ -100,11 +107,17 @@ class AdManager {
   // }
 
   // --- App Open Ad ---
+  static AppOpenAd? claimAppOpenAd() {
+    final ad = _appOpenAd;
+    _appOpenAd = null;
+    return ad;
+  }
+
   static void loadAppOpenAd({
     VoidCallback? onAdLoaded,
     Function(LoadAdError)? onAdFailed,
   }) {
-    if (kIsWeb || _isAppOpenAdLoading) return;
+    if (kIsWeb || _isAppOpenAdLoading || _appOpenAd != null) return;
     _isAppOpenAdLoading = true;
 
     AppOpenAd.load(
@@ -143,6 +156,67 @@ class AdManager {
     } else {
       onAdDismissed();
     }
+  }
+
+  // --- Native Ads ---
+  static void loadNativeAd() {
+    if (kIsWeb || _isNativeAdLoading || _nativeAd != null) return;
+    _isNativeAdLoading = true;
+    _nativeAd = NativeAd(
+      adUnitId: AdHelper.nativeAdUnitId,
+      request: const AdRequest(),
+      listener: NativeAdListener(
+        onAdLoaded: (ad) {
+          _isNativeAdLoading = false;
+          debugPrint('AdManager: NativeAd preloaded');
+        },
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+          _nativeAd = null;
+          _isNativeAdLoading = false;
+          debugPrint('AdManager: NativeAd failed to preload: $error');
+        },
+      ),
+      nativeTemplateStyle: NativeTemplateStyle(templateType: TemplateType.medium),
+    )..load();
+  }
+
+  static void loadNative2Ad() {
+    if (kIsWeb || _isNative2AdLoading || _native2Ad != null) return;
+    _isNative2AdLoading = true;
+    _native2Ad = NativeAd(
+      adUnitId: AdHelper.native2AdUnitId,
+      request: const AdRequest(),
+      listener: NativeAdListener(
+        onAdLoaded: (ad) {
+          _isNative2AdLoading = false;
+          debugPrint('AdManager: Native2Ad preloaded');
+        },
+        onAdFailedToLoad: (ad, error) {
+          ad.dispose();
+          _native2Ad = null;
+          _isNative2AdLoading = false;
+          debugPrint('AdManager: Native2Ad failed to preload: $error');
+        },
+      ),
+      nativeTemplateStyle: NativeTemplateStyle(templateType: TemplateType.medium),
+    )..load();
+  }
+
+  static NativeAd? claimNativeAdByUnitId(String adUnitId) {
+    if (adUnitId == AdHelper.nativeAdUnitId) {
+      final ad = _nativeAd;
+      _nativeAd = null;
+      if (ad != null) loadNativeAd();
+      return ad;
+    }
+    if (adUnitId == AdHelper.native2AdUnitId) {
+      final ad = _native2Ad;
+      _native2Ad = null;
+      if (ad != null) loadNative2Ad();
+      return ad;
+    }
+    return null;
   }
 
   // --- Periodic Ads ---

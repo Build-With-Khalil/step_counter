@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:step_counter/screens/privacy_policy.dart';
 import 'package:step_counter/utils/ad_helper.dart';
+
 import '../controllers/profile_controller.dart';
-import '../widgets/NativeAdWidget.dart';
 import '../controllers/theme_controller.dart';
 import '../services/storage_services.dart';
+import '../widgets/NativeAdWidget.dart';
 import '../widgets/setting_tile.dart';
 import 'faqs.dart';
 import 'instruction_screen.dart';

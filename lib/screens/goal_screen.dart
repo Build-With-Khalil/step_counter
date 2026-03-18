@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:step_counter/screens/reduce_stress.dart';
 import 'package:step_counter/utils/ad_helper.dart';
+
 import '../controllers/goal_controller.dart';
-import '../widgets/NativeAdWidget.dart';
 import '../controllers/reminder_controller.dart';
 import '../controllers/todayscreen_controllr.dart';
 import '../utils/achievement_config.dart';
+import '../widgets/NativeAdWidget.dart';
 import '../widgets/fitness_card.dart';
 import 'abs_select_screen.dart';
 import 'lose_weight_selector.dart';
 import 'morning_warmup.dart';
 
 class HealthScreen extends StatelessWidget {
-  const HealthScreen({Key? key}) : super(key: key);
+  const HealthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

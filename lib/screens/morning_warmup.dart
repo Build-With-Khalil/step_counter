@@ -28,6 +28,8 @@ class MorningWarmup extends StatelessWidget {
     ),
   ];
 
+  MorningWarmup({super.key});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
