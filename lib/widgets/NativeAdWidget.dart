@@ -97,7 +97,13 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
       return const SizedBox.shrink();
     }
 
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    final adHeight = _templateType == TemplateType.small
+        ? (screenHeight * 0.15).clamp(100.0, 130.0)
+        : (screenHeight * 0.44).clamp(320.0, 380.0);
+
     return SizedBox(
+      height: adHeight,
       width: double.infinity,
       child: AdWidget(ad: _nativeAd!),
     );
