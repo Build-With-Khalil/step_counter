@@ -162,17 +162,17 @@ class AdManager {
   static void loadNativeAd() {
     if (kIsWeb || _isNativeAdLoading || _nativeAd != null) return;
     _isNativeAdLoading = true;
-    _nativeAd = NativeAd(
+    NativeAd(
       adUnitId: AdHelper.nativeAdUnitId,
       request: const AdRequest(),
       listener: NativeAdListener(
         onAdLoaded: (ad) {
+          _nativeAd = ad as NativeAd; // only set once the ad is fully loaded
           _isNativeAdLoading = false;
           debugPrint('AdManager: NativeAd preloaded');
         },
         onAdFailedToLoad: (ad, error) {
           ad.dispose();
-          _nativeAd = null;
           _isNativeAdLoading = false;
           debugPrint('AdManager: NativeAd failed to preload: $error');
         },
@@ -184,17 +184,17 @@ class AdManager {
   static void loadNative2Ad() {
     if (kIsWeb || _isNative2AdLoading || _native2Ad != null) return;
     _isNative2AdLoading = true;
-    _native2Ad = NativeAd(
+    NativeAd(
       adUnitId: AdHelper.native2AdUnitId,
       request: const AdRequest(),
       listener: NativeAdListener(
         onAdLoaded: (ad) {
+          _native2Ad = ad as NativeAd; // only set once the ad is fully loaded
           _isNative2AdLoading = false;
           debugPrint('AdManager: Native2Ad preloaded');
         },
         onAdFailedToLoad: (ad, error) {
           ad.dispose();
-          _native2Ad = null;
           _isNative2AdLoading = false;
           debugPrint('AdManager: Native2Ad failed to preload: $error');
         },
