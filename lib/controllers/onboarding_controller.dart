@@ -17,6 +17,7 @@ void _logAd(String event, String placement, {String? format}) {
 
 class OnboardingController extends GetxController {
 
+
   final PageController pageController = PageController();
   final RxInt currentPage = 0.obs;
   final RxDouble goalSteps = 10000.0.obs;
@@ -151,10 +152,10 @@ class OnboardingController extends GetxController {
     final prev = currentPage.value;
     currentPage.value = index;
     // Show interstitial only on Get Started (0→1) transition
-    if (index == 1 && prev == 0) {
-      AdManager.showInterstitialAd();
-      _logAd('ad_impression', 'onboarding_get_started', format: 'interstitial');
-    }
+    // if (index == 1 && prev == 0) {
+    //   AdManager.showInterstitialAd();
+    //   _logAd('ad_impression', 'onboarding_get_started', format: 'interstitial');
+    // }
   }
 
   void skipToLast() {

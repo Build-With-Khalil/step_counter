@@ -1,9 +1,8 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../controllers/onboarding_controller.dart';
+import '../utils/ad_helper.dart';
 import '../widgets/NativeAdWidgetForMedium.dart';
 
 // ─── Colors ──────────────────────────────────────────────────────────────────
@@ -41,6 +40,7 @@ class OnBoardingScreen extends StatelessWidget {
                         subtitle: 'Track your daily movement in real time.',
                         content: const _StepCircleWidget(),
                       ),
+
                       _PageShell(
                         title: 'Visualize Progress',
                         subtitle: 'See your consistency at a glance.',
@@ -65,28 +65,25 @@ class OnBoardingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(
                     4,
-                    (i) => _Dot(active: i == ctrl.currentPage.value),
+                        (i) => _Dot(active: i == ctrl.currentPage.value),
                   ),
                 )),
 
                 const SizedBox(height: 10),
 
-                // Native ad on first & last onboarding page
+                //Native ad on first on boarding page
                 Obx(() {
-                  if (ctrl.currentPage.value == 0 ||
-                      ctrl.currentPage.value == 3) {
+                  if (ctrl.currentPage.value == 0 || ctrl.currentPage.value == 3 ) {
                     return const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      child: NativeAdWidgetForMedium(
-                        adUnitId: 'ca-app-pub-8523132132584450/4352310252',
-                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      child: NativeAdWidgetForMedium(adUnitId: 'ca-app-pub-8523132132584450/4352310252',),
                     );
                   }
                   return const SizedBox(height: 10);
                 }),
 
-                // ── Fixed: action button ──
+
+                // ── Fixed: action button (label + color change reactively) ──
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: SizedBox(
@@ -98,10 +95,10 @@ class OnBoardingScreen extends StatelessWidget {
                       final label = page == 0
                           ? 'Get Started'
                           : page == 3
-                              ? 'Start Journey  →'
-                              : 'Next Step';
+                          ? 'Start Journey  →'
+                          : 'Next Step';
                       final onTap =
-                          page == 3 ? ctrl.finishOnboarding : ctrl.nextPage;
+                      page == 3 ? ctrl.finishOnboarding : ctrl.nextPage;
                       return isGreen
                           ? _GreenButton(label: label, onTap: onTap)
                           : _DarkButton(label: label, onTap: onTap);
@@ -116,16 +113,16 @@ class OnBoardingScreen extends StatelessWidget {
             // ── Skip button overlay (top-right, pages 0-2 only) ──
             Obx(() => ctrl.currentPage.value < 3
                 ? Positioned(
-                    top: 16,
-                    right: 16,
-                    child: TextButton(
-                      onPressed: ctrl.onSkipPressed,
-                      child: const Text(
-                        'Skip',
-                        style: TextStyle(color: Colors.white60, fontSize: 15),
-                      ),
-                    ),
-                  )
+              top: 16,
+              right: 16,
+              child: TextButton(
+                onPressed: ctrl.onSkipPressed,
+                child: const Text(
+                  'Skip',
+                  style: TextStyle(color: Colors.white60, fontSize: 15),
+                ),
+              ),
+            )
                 : const SizedBox()),
           ],
         ),
@@ -148,30 +145,26 @@ class _PageShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: size.height * 0.05),
+          const SizedBox(height: 48),
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
-              fontSize: size.width * 0.065,
+              fontSize: 26,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: size.height * 0.01),
+          const SizedBox(height: 8),
           Text(
             subtitle,
-            style: TextStyle(
-              color: Colors.white54,
-              fontSize: size.width * 0.035,
-            ),
+            style: const TextStyle(color: Colors.white54, fontSize: 14),
           ),
-          SizedBox(height: size.height * 0.03),
+          const SizedBox(height: 28),
           Expanded(child: Center(child: content)),
         ],
       ),
@@ -215,7 +208,7 @@ class _GreenButton extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         ),
         onPressed: onTap,
         child: Text(
@@ -263,25 +256,24 @@ class _StepCircleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.sizeOf(context).width * 0.62;
     return SizedBox(
-      width: size,
-      height: size,
+      width: 250,
+      height: 250,
       child: Stack(
         alignment: Alignment.center,
         children: [
           CustomPaint(
-            size: Size(size, size),
+            size: const Size(250, 250),
             painter: _ArcPainter(),
           ),
-          Column(
+          const Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 '7,842',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: size * 0.18,
+                  fontSize: 46,
                   fontWeight: FontWeight.bold,
                   letterSpacing: -1,
                 ),
@@ -290,7 +282,7 @@ class _StepCircleWidget extends StatelessWidget {
                 'STEPS TODAY',
                 style: TextStyle(
                   color: Colors.white38,
-                  fontSize: size * 0.05,
+                  fontSize: 12,
                   letterSpacing: 2,
                 ),
               ),
@@ -302,14 +294,15 @@ class _StepCircleWidget extends StatelessWidget {
   }
 }
 
+
 class _ArcPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2 - 14;
     const strokeW = 14.0;
-    const startAngle = pi * 0.75;
-    const sweepAngle = pi * 1.5;
+    const startAngle = pi * 0.75; // 135° — bottom-left
+    const sweepAngle = pi * 1.5; // 270°
 
     final rect = Rect.fromCircle(center: center, radius: radius);
 
@@ -362,7 +355,6 @@ class _CalendarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cellHeight = MediaQuery.sizeOf(context).height * 0.04;
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -391,24 +383,23 @@ class _CalendarWidget extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           ..._pattern.map(
-            (row) => Padding(
+                (row) => Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: row
                     .map(
-                      (active) => Expanded(
-                        child: Container(
-                          height: cellHeight,
-                          margin: const EdgeInsets.symmetric(horizontal: 4),
-                          decoration: BoxDecoration(
-                            color: active
-                                ? _teal.withValues(alpha: 0.85)
-                                : const Color(0xFF1A2E40),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                      ),
-                    )
+                      (active) => Container(
+                    width: 48,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      color: active
+                          ? _teal.withValues(alpha: 0.85)
+                          : const Color(0xFF1A2E40),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                )
                     .toList(),
               ),
             ),
@@ -441,34 +432,34 @@ class _FitnessHubWidget extends StatelessWidget {
       children: _items
           .map(
             (item) => Container(
-              decoration: BoxDecoration(
-                color: _card,
-                borderRadius: BorderRadius.circular(20),
+          decoration: BoxDecoration(
+            color: _card,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(14),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF1A3040),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  item['icon'] as IconData,
+                  color: _teal,
+                  size: 26,
+                ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(14),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFF1A3040),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      item['icon'] as IconData,
-                      color: _teal,
-                      size: 26,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    item['label'] as String,
-                    style: const TextStyle(color: Colors.white, fontSize: 13),
-                  ),
-                ],
+              const SizedBox(height: 12),
+              Text(
+                item['label'] as String,
+                style: const TextStyle(color: Colors.white, fontSize: 13),
               ),
-            ),
-          )
+            ],
+          ),
+        ),
+      )
           .toList(),
     );
   }
@@ -486,7 +477,6 @@ class _GoalSliderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.sizeOf(context).width;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
       decoration: BoxDecoration(
@@ -497,41 +487,41 @@ class _GoalSliderWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Obx(() => Text(
-                _format(ctrl.goalSteps.value),
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: width * 0.13,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: -1,
-                ),
-              )),
-          Text(
+            _format(ctrl.goalSteps.value),
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 54,
+              fontWeight: FontWeight.bold,
+              letterSpacing: -1,
+            ),
+          )),
+          const Text(
             'STEPS DAILY',
             style: TextStyle(
               color: Colors.white38,
-              fontSize: width * 0.032,
+              fontSize: 13,
               letterSpacing: 2,
             ),
           ),
           const SizedBox(height: 28),
           Obx(() => SliderTheme(
-                data: SliderTheme.of(context).copyWith(
-                  activeTrackColor: _teal,
-                  inactiveTrackColor: Colors.white12,
-                  thumbColor: _teal,
-                  overlayColor: _teal.withValues(alpha: 0.15),
-                  trackHeight: 4,
-                  thumbShape:
-                      const RoundSliderThumbShape(enabledThumbRadius: 8),
-                ),
-                child: Slider(
-                  value: ctrl.goalSteps.value,
-                  min: 5000,
-                  max: 15000,
-                  divisions: 20,
-                  onChanged: (val) => ctrl.goalSteps.value = val,
-                ),
-              )),
+            data: SliderTheme.of(context).copyWith(
+              activeTrackColor: _teal,
+              inactiveTrackColor: Colors.white12,
+              thumbColor: _teal,
+              overlayColor: _teal.withValues(alpha: 0.15),
+              trackHeight: 4,
+              thumbShape:
+              const RoundSliderThumbShape(enabledThumbRadius: 8),
+            ),
+            child: Slider(
+              value: ctrl.goalSteps.value,
+              min: 5000,
+              max: 15000,
+              divisions: 20,
+              onChanged: (val) => ctrl.goalSteps.value = val,
+            ),
+          )),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: Row(

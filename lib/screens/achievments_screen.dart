@@ -136,7 +136,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                     screenHeight: screenHeight,
                   ),
                   SizedBox(height: screenHeight * 0.03),
-                  NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
+                  // NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
                 ],
               ),
             );

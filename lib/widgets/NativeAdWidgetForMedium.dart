@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import '../utils/ad_helper.dart';
 
 class NativeAdWidgetForMedium extends StatefulWidget {
   final String adUnitId;
@@ -23,19 +22,13 @@ class _NativeAdWidgetState extends State<NativeAdWidgetForMedium> {
   bool _isAdLoaded = false;
 
   final TemplateType _templateType = TemplateType.medium;
+  final double _adHeight = 300; // Recommended height for medium native
 
   @override
   void initState() {
     super.initState();
     if (!kIsWeb) {
-      final cached = AdManager.claimNativeAdByUnitId(widget.adUnitId);
-      if (cached != null) {
-        _nativeAd = cached;
-        _isAdLoaded = true;
-        widget.onAdLoaded?.call(true);
-      } else {
-        _loadNativeAd();
-      }
+      _loadNativeAd();
     }
   }
 
@@ -89,11 +82,8 @@ class _NativeAdWidgetState extends State<NativeAdWidgetForMedium> {
       return const SizedBox.shrink();
     }
 
-    final adHeight =
-        (MediaQuery.sizeOf(context).height * 0.44).clamp(320.0, 380.0);
-
     return SizedBox(
-      height: adHeight,
+      height: _adHeight,
       width: double.infinity,
       child: AdWidget(ad: _nativeAd!),
     );

@@ -179,12 +179,12 @@ class AbsBeginnerScreen extends StatelessWidget {
                 childCount: moves.length,
               ),
             ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
-              ),
-            ),
+            // SliverToBoxAdapter(
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(16),
+            //     child: NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
+            //   ),
+            // ),
           ],
         ),
       ),

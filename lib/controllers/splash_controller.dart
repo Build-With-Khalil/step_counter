@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../controllers/onboarding_controller.dart';
 import '../main.dart';
 import '../screens/onboarding_screen.dart';
+import '../utils/ad_helper.dart';
+import '../widgets/ads_manager.dart';
 import '../widgets/app_open_ad_widget.dart';
 
 class SplashController extends GetxController with GetTickerProviderStateMixin {
@@ -14,9 +16,15 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
   void onInit() {
     super.onInit();
 
-    // Preload onboarding ads immediately so they're ready before splash ends
+    // Preload onboarding controller
     if (!Get.isRegistered<OnboardingController>()) {
       Get.put(OnboardingController());
+    }
+
+    // ── PRELOAD NATIVE ADS ─────────────────────────────────────────────
+    if (!kIsWeb) {
+      // Preload multiple sizes
+      AdsManager.instance.preloadNativeAd(AdHelper.nativeAdUnitId);
     }
 
     animationController = AnimationController(

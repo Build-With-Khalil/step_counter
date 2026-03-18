@@ -10,7 +10,7 @@ class AdHelper {
   static String get nativeAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
-      return 'ca-app-pub-8523132132584450/4352310252';
+      return 'ca-app-pub-8523132132584450/9987520551';
     }
     throw UnsupportedError('Unsupported platform');
   }
