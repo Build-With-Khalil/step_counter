@@ -1,8 +1,9 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../controllers/onboarding_controller.dart';
-import '../utils/ad_helper.dart';
 import '../widgets/NativeAdWidgetForMedium.dart';
 
 // ─── Colors ──────────────────────────────────────────────────────────────────

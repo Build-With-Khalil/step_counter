@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:step_counter/services/notification_services.dart';
 import 'package:step_counter/services/reminder_services.dart';
-import 'package:step_counter/utils/lifecycle_handler.dart';
 import 'controllers/achievements_controller.dart';
 import 'controllers/goal_controller.dart';
 import 'controllers/profile_controller.dart';
@@ -62,13 +61,7 @@ debugPrint('Main: MobileAds initialized');
 
 // Handles permission requests via GetX — no BuildContext needed
 class PermissionController extends GetxController {
-  @override
-  void onReady() {
-    super.onReady();
-    _checkPermissions();
-  }
-
-  Future<void> _checkPermissions() async {
+  Future<void> checkPermissions() async {
     final activityStatus = await Permission.activityRecognition.status;
     final notificationStatus = await Permission.notification.status;
 

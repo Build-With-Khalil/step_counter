@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../controllers/onboarding_controller.dart';
-import '../screens/homepage.dart';
+import '../main.dart';
 import '../screens/onboarding_screen.dart';
 import '../widgets/app_open_ad_widget.dart';
 
@@ -30,6 +30,8 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
           debugPrint('App Open Ad error: $e');
         });
       }
+
+      await Get.find<PermissionController>().checkPermissions();
 
       final prefs = await SharedPreferences.getInstance();
       final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;

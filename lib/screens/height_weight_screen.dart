@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../controllers/height_weight_controller.dart';
-import '../utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
 import 'homepage.dart';
 
 class HeightWeightScreen extends StatelessWidget {

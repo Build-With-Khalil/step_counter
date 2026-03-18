@@ -6,7 +6,10 @@
       "Bash(xargs rm:*)",
       "Bash(rm:*)",
       "Bash(flutter analyze:*)",
-      "Bash(C:/src/flutter/bin/flutter --version 2>&1 | head -5)"
+      "Bash(C:/src/flutter/bin/flutter --version 2>&1 | head -5)",
+      "Bash(cd \"C:\\\\Users\\\\user\\\\StudioProjects\\\\step_counter\" && flutter clean 2>&1)",
+      "Read(//mnt/c/Users/user/StudioProjects/**)",
+      "Bash(dart analyze:*)"
     ]
   }
 }

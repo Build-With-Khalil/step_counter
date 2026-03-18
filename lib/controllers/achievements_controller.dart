@@ -25,7 +25,7 @@ class AchievementsController extends GetxController {
     loadBadges();
     _loadTrophies();
     loadProgress();
-    ever(Get.find<TodayScreenController>().totalSteps, (steps) => updateAchievements(steps as int)); // Real-time update
+    ever(Get.find<TodayScreenController>().totalSteps, (steps) => updateAchievements(steps)); // Real-time update
   }
 
   Future<void> _initNotifications() async {

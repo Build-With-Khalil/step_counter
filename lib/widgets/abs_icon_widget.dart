@@ -4,7 +4,7 @@ class AbsIconWidget extends StatelessWidget {
   final String path;
   final double size;
 
-  const AbsIconWidget({required this.path, this.size = 80});
+  const AbsIconWidget({super.key, required this.path, this.size = 80});
 
   @override
   Widget build(BuildContext context) {

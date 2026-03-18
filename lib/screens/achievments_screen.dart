@@ -8,7 +8,7 @@ import '../widgets/NativeAdWidget.dart';
 import '../widgets/achievment_badge.dart';
 
 class AchievementsPage extends StatefulWidget {
-  AchievementsPage({super.key});
+  const AchievementsPage({super.key});
 
   @override
   State<AchievementsPage> createState() => _AchievementsPageState();

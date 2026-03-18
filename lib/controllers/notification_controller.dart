@@ -51,7 +51,7 @@ class NotificationController extends GetxController {
   Future<void> _checkProgress() async {
     final controller = Get.find<TodayScreenController>();
     final steps = controller.totalSteps.value;
-    final goal = Get.find<GoalController>().dailyStepGoal.value ?? 3000; // Default to 3000 if null
+    final goal = Get.find<GoalController>().dailyStepGoal.value; // Default to 3000 if null
     final now = DateTime.now();
     final lastSavedDate = await StorageService.getLastSavedDate() ?? DateTime.now(); // Await the future
 

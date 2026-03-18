@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import '../utils/ad_helper.dart';
 
 class NativeAdWidget extends StatefulWidget {
   final String adUnitId;
@@ -23,27 +24,27 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
   bool _isAdLoaded = false;
 
   late TemplateType _templateType;
-  late double _adHeight;
 
   @override
   void initState() {
     super.initState();
     if (!kIsWeb) {
-      _selectRandomTemplate();
-      _loadNativeAd();
+      final cached = AdManager.claimNativeAdByUnitId(widget.adUnitId);
+      if (cached != null) {
+        _nativeAd = cached;
+        _isAdLoaded = true;
+        _templateType = TemplateType.medium;
+        widget.onAdLoaded?.call(true);
+      } else {
+        _selectRandomTemplate();
+        _loadNativeAd();
+      }
     }
   }
 
   void _selectRandomTemplate() {
     int rand = Random().nextInt(2);
-
-    if (rand == 0) {
-      _templateType = TemplateType.small;
-      _adHeight = 120;
-    } else {
-      _templateType = TemplateType.medium;
-      _adHeight = 300;
-    }
+    _templateType = rand == 0 ? TemplateType.small : TemplateType.medium;
   }
 
   void _loadNativeAd() {
@@ -97,7 +98,6 @@ class _NativeAdWidgetState extends State<NativeAdWidget> {
     }
 
     return SizedBox(
-      height: _adHeight,
       width: double.infinity,
       child: AdWidget(ad: _nativeAd!),
     );

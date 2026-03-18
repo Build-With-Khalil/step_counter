@@ -12,6 +12,8 @@ class LoseWeightAdvancedScreen extends StatelessWidget {
     AbsMoveModel(name: 'SQUAT REACH', iconPath: 'assets/images/squat_reach_exercise.gif', reps: '40 reps'),
   ];
 
+   LoseWeightAdvancedScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
