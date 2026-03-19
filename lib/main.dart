@@ -18,6 +18,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'utils/ad_helper.dart';
+import 'widgets/app_open_ad_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +44,12 @@ debugPrint('Main: MobileAds initialized');
   Get.put(ReminderController(), permanent: true);
   Get.put(ProfileController());
   Get.put(PermissionController());
-
+// Load app open ad in background (non-blocking for faster startup)
+  if (!kIsWeb) {
+    AppOpenAdWidget.loadAndShowAppOpenAd().catchError((e) {
+      debugPrint('Error showing App Open Ad: $e');
+    });
+  }
   // WidgetsBinding.instance.addObserver(
   //   LifecycleEventHandler(
   //     resumeCallBack: () async {
@@ -112,7 +118,7 @@ class MyApp extends StatelessWidget {
           ),
           themeMode: themeController.themeMode,
           navigatorObservers: [],
-          home: SplashScreen(),
+          home: const SplashScreen(),
         ));
   }
 }

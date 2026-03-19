@@ -39,8 +39,8 @@ android {
         applicationId = "com.aqib.pedometer"
         minSdk = flutter.minSdkVersion
         targetSdk = 36
-        versionCode = 12
-        versionName = "1.1.1"
+        versionCode = 13
+        versionName = "1.1.2"
     }
 
     if (keystorePropertiesFile.exists()) {

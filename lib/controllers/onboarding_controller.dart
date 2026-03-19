@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../main.dart';
 import '../screens/gender_select_screen.dart';
 import '../utils/ad_helper.dart';
 
@@ -120,6 +122,13 @@ class OnboardingController extends GetxController {
     );
   }
 
+  Future<void> _proceedAfterOnboarding() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isFirstLaunch', false);
+    await Get.find<PermissionController>().checkPermissions();
+    Get.off(() => const GenderSelectScreen());
+  }
+
   void finishOnboarding() {
     if (_startJourneyAd != null) {
       _analytics.logAdImpression(
@@ -133,18 +142,18 @@ class OnboardingController extends GetxController {
           ad.dispose();
           _startJourneyAd = null;
           _logAd('ad_dismissed', 'onboarding_start_journey');
-          Get.off(() => const GenderSelectScreen());
+          _proceedAfterOnboarding();
         },
         onAdFailedToShowFullScreenContent: (ad, error) {
           ad.dispose();
           _startJourneyAd = null;
           _logAd('ad_failed_to_show', 'onboarding_start_journey');
-          Get.off(() => const GenderSelectScreen());
+          _proceedAfterOnboarding();
         },
       );
       _startJourneyAd!.show();
     } else {
-      Get.off(() => const GenderSelectScreen());
+      _proceedAfterOnboarding();
     }
   }
 
