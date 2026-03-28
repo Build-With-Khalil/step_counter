@@ -30,6 +30,7 @@ void main() async {
     await MobileAds.instance.initialize();
 debugPrint('Main: MobileAds initialized');
     AdManager.loadOtherAds();
+    AdManager.loadNativeAd();
   } else {
     debugPrint('Main: Running on Web - Skipping MobileAds initialization');
   }
@@ -58,17 +59,6 @@ debugPrint('Main: MobileAds initialized');
       debugPrint('Error showing App Open Ad: $e');
     });
   }
-  // WidgetsBinding.instance.addObserver(
-  //   LifecycleEventHandler(
-  //     resumeCallBack: () async {
-  //       Get.find<ReportController>().refreshFromStorage();
-  //       AdManager.resumeAds();
-  //     },
-  //     pauseCallBack: () async {
-  //       AdManager.pauseAds();
-  //     },
-  //   ),
-  // );
 
   runApp(const MyApp());
 }

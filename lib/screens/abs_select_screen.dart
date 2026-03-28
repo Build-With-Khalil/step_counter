@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:step_counter/screens/abs_intermediate_screen.dart';
+import '../utils/NativeAdWidget.dart';
 import '../utils/ad_helper.dart';
 import '../widgets/select_container.dart';
 import 'abs_advance_screen.dart';
@@ -54,9 +55,10 @@ class AbsSelectScreen extends StatelessWidget {
               },
             ),
           ),
-          // NativeAdWidget(
-          //   adUnitId: AdHelper.native2AdUnitId,
-          // ),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: const NativeAdWidget(),
+          ),
         ],
       ),
     );

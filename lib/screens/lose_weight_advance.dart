@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:step_counter/l10n/app_localizations.dart';
+import '../utils/NativeAdWidget.dart';
 import '../widgets/abs_icon_widget.dart';
 import '../widgets/abs_moves_model.dart';
-import '../utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
 
 class LoseWeightAdvancedScreen extends StatelessWidget {
   final List<AbsMoveModel> moves = [
@@ -139,10 +138,7 @@ class LoseWeightAdvancedScreen extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
-              ),
+              child: const NativeAdWidget(),
             ),
           ],
         ),

@@ -9,7 +9,7 @@ import 'package:step_counter/utils/ad_helper.dart';
 import '../controllers/profile_controller.dart';
 import '../controllers/theme_controller.dart';
 import '../services/storage_services.dart';
-import '../widgets/NativeAdWidget.dart';
+import '../utils/NativeAdWidget.dart';
 import '../widgets/setting_tile.dart';
 import 'faqs.dart';
 import 'instruction_screen.dart';
@@ -160,8 +160,9 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                NativeAdWidget(
-                  adUnitId: AdHelper.native2AdUnitId,
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: const NativeAdWidget(),
                 ),
                 const SizedBox(height: 20),
               ],

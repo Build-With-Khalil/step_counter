@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:step_counter/l10n/app_localizations.dart';
+import '../utils/NativeAdWidget.dart';
+import '../utils/ad_helper.dart';
 import '../widgets/abs_icon_widget.dart';
 import '../widgets/abs_moves_model.dart';
 
@@ -179,12 +181,9 @@ class AbsBeginnerScreen extends StatelessWidget {
                 childCount: moves.length,
               ),
             ),
-            // SliverToBoxAdapter(
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(16),
-            //     child: NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
-            //   ),
-            // ),
+            SliverToBoxAdapter(
+              child: const NativeAdWidget(),
+            ),
           ],
         ),
       ),

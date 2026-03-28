@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import '../controllers/achievements_controller.dart';
-import '../utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
+import '../utils/NativeAdWidget.dart';
 import 'achievments_screen.dart';
 
 class TrophiesPage extends StatelessWidget {
@@ -83,7 +82,10 @@ class TrophiesPage extends StatelessWidget {
           },
         );
       })),
-          NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: const NativeAdWidget(),
+          ),
         ],
       ),
     );

@@ -1,29 +1,21 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdHelper {
-
-  //Native AD Unit ID
+  // Native AD Unit ID
   static String get nativeAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
-      return 'ca-app-pub-8523132132584450/9987520551';
+      return 'ca-app-pub-8523132132584450/4352310252';
     }
     throw UnsupportedError('Unsupported platform');
   }
 
-  static String get native2AdUnitId{
-    if (kIsWeb) return '';
-    if (Platform.isAndroid) {
-      return 'ca-app-pub-8523132132584450/9987520551';
-    }
-    throw UnsupportedError('Unsupported platform');
-  }
-
-//Interstitial Ad Unit ID
+  // Interstitial Ad Unit ID
   static String get interstitialAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
@@ -32,7 +24,7 @@ class AdHelper {
     throw UnsupportedError('Unsupported platform');
   }
 
-  //Reward Ad Unit ID
+  // Rewarded Ad Unit ID
   static String get rewardedAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
@@ -41,8 +33,7 @@ class AdHelper {
     throw UnsupportedError('Unsupported platform');
   }
 
-
-//APP Open Ad Uni ID
+  // App Open Ad Unit ID
   static String get appOpenAdUnitId {
     if (kIsWeb) return '';
     if (Platform.isAndroid) {
@@ -56,19 +47,11 @@ class AdManager {
   static InterstitialAd? _interstitialAd;
   static RewardedAd? _rewardedAd;
   static AppOpenAd? _appOpenAd;
-  static NativeAd? _nativeAd;
-  static NativeAd? _native2Ad;
 
   static bool _isInterstitialLoading = false;
   static bool _isRewardedLoading = false;
   static bool _isAppOpenAdLoading = false;
-  static bool _isNativeAdLoading = false;
-  static bool _isNative2AdLoading = false;
 
-  // Periodic Ad Timer
-  //static Timer? _periodicAdTimer;
-
-  // Navigation action counter (shared across the whole app)
   static int _navCount = 0;
   static const int _navThreshold = 3;
 
@@ -80,30 +63,12 @@ class AdManager {
     }
   }
 
-  // /// Initialize Ads and start periodic timer
-  // static Future<void> initialize() async {
-  //   if (kIsWeb) return;
-  //   await MobileAds.instance.initialize();
-  // }
-
   static void loadOtherAds() {
     if (kIsWeb) return;
     loadInterstitialAd();
     loadRewardedAd();
-    loadNativeAd();
-    loadNative2Ad();
-    //_startPeriodicAds();
+    loadAppOpenAd();
   }
-  //
-  // static void pauseAds() {
-  //   _periodicAdTimer?.cancel();
-  //   _periodicAdTimer = null;
-  // }
-  //
-  // static void resumeAds() {
-  //   if (kIsWeb) return;
-  //   //_startPeriodicAds();
-  // }
 
   // --- App Open Ad ---
   static AppOpenAd? claimAppOpenAd() {
@@ -157,78 +122,54 @@ class AdManager {
     }
   }
 
-  // --- Native Ads ---
+  // --- Native AD code ---
+  static NativeAd? _cachedNativeAd;
+  static TemplateType? _cachedTemplate;
+  static bool _isNativeLoading = false;
+
+  static NativeAd? get cachedNativeAd => _cachedNativeAd;
+  static TemplateType? get cachedTemplate => _cachedTemplate;
+
+  static void markNativeAdUsed() {
+    _cachedNativeAd = null;
+    _cachedTemplate = null;
+  }
+
   static void loadNativeAd() {
-    if (kIsWeb || _isNativeAdLoading || _nativeAd != null) return;
-    _isNativeAdLoading = true;
-    NativeAd(
+    if (kIsWeb || _isNativeLoading || _cachedNativeAd != null) return;
+
+    _isNativeLoading = true;
+
+    final rand = Random().nextInt(2);
+    final template = rand == 0 ? TemplateType.small : TemplateType.medium;
+
+    _cachedTemplate = template;
+
+    _cachedNativeAd = NativeAd(
       adUnitId: AdHelper.nativeAdUnitId,
       request: const AdRequest(),
       listener: NativeAdListener(
         onAdLoaded: (ad) {
-          _nativeAd = ad as NativeAd; // only set once the ad is fully loaded
-          _isNativeAdLoading = false;
-          debugPrint('AdManager: NativeAd preloaded');
+          _isNativeLoading = false;
+          debugPrint('Native Ad loaded (${template.name})');
         },
         onAdFailedToLoad: (ad, error) {
+          _isNativeLoading = false;
           ad.dispose();
-          _isNativeAdLoading = false;
-          debugPrint('AdManager: NativeAd failed to preload: $error');
+          _cachedNativeAd = null;
+          _cachedTemplate = null;
+          debugPrint('Native Ad failed: ${error.code}');
         },
       ),
-      nativeTemplateStyle: NativeTemplateStyle(templateType: TemplateType.medium),
-    ).load();
-  }
-
-  static void loadNative2Ad() {
-    if (kIsWeb || _isNative2AdLoading || _native2Ad != null) return;
-    _isNative2AdLoading = true;
-    NativeAd(
-      adUnitId: AdHelper.native2AdUnitId,
-      request: const AdRequest(),
-      listener: NativeAdListener(
-        onAdLoaded: (ad) {
-          _native2Ad = ad as NativeAd; // only set once the ad is fully loaded
-          _isNative2AdLoading = false;
-          debugPrint('AdManager: Native2Ad preloaded');
-        },
-        onAdFailedToLoad: (ad, error) {
-          ad.dispose();
-          _isNative2AdLoading = false;
-          debugPrint('AdManager: Native2Ad failed to preload: $error');
-        },
+      nativeTemplateStyle: NativeTemplateStyle(
+        templateType: template,
+        mainBackgroundColor: Colors.white,
+        cornerRadius: 12,
       ),
-      nativeTemplateStyle: NativeTemplateStyle(templateType: TemplateType.medium),
-    ).load();
+    )..load();
   }
 
-  static NativeAd? claimNativeAdByUnitId(String adUnitId) {
-    if (adUnitId == AdHelper.nativeAdUnitId) {
-      final ad = _nativeAd;
-      _nativeAd = null;
-      if (ad != null) loadNativeAd();
-      return ad;
-    }
-    if (adUnitId == AdHelper.native2AdUnitId) {
-      final ad = _native2Ad;
-      _native2Ad = null;
-      if (ad != null) loadNative2Ad();
-      return ad;
-    }
-    return null;
-  }
-
-  // --- Periodic Ads ---
-  // static void _startPeriodicAds() {
-  //   _periodicAdTimer?.cancel();
-  //   _periodicAdTimer = Timer.periodic(const Duration(seconds: 40), (timer) {
-  //     debugPrint("Periodic Ad Triggered");
-  //     showInterstitialAd();
-  //   });
-  // }
-
-  // --- Interstitial Ad For Click ---
-
+  // --- Interstitial Ad ---
   static void loadInterstitialAd() {
     if (kIsWeb || _isInterstitialLoading || _interstitialAd != null) return;
     _isInterstitialLoading = true;
@@ -271,7 +212,6 @@ class AdManager {
   }
 
   // --- Rewarded Ad ---
-
   static void loadRewardedAd() {
     if (kIsWeb || _isRewardedLoading) return;
     _isRewardedLoading = true;
@@ -304,7 +244,6 @@ class AdManager {
     );
   }
 
-
   static void showRewardedAd({
     required Function(RewardItem) onUserEarnedReward,
   }) {
@@ -319,7 +258,6 @@ class AdManager {
       loadRewardedAd();
     }
   }
-
 }
 
 class AdNavigatorObserver extends NavigatorObserver {

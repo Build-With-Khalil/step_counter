@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import '../controllers/daily_steps_show_controller.dart';
-import '../utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
+import '../utils/NativeAdWidget.dart';
 
 class DailyStepShow extends StatelessWidget {
   DailyStepShow({super.key});
@@ -196,8 +195,10 @@ class DailyStepShow extends StatelessWidget {
                   ),
                 );
               }),
-
-              NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                child: const NativeAdWidget(),
+              ),
             ],
           ),
         ),

@@ -3,12 +3,11 @@ import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:step_counter/screens/reduce_stress.dart';
 import 'package:step_counter/utils/ad_helper.dart';
-
 import '../controllers/goal_controller.dart';
 import '../controllers/reminder_controller.dart';
 import '../controllers/todayscreen_controllr.dart';
+import '../utils/NativeAdWidget.dart';
 import '../utils/achievement_config.dart';
-import '../widgets/NativeAdWidget.dart';
 import '../widgets/fitness_card.dart';
 import 'abs_select_screen.dart';
 import 'lose_weight_selector.dart';
@@ -541,16 +540,11 @@ class HealthScreen extends StatelessWidget {
                   ),
                 ),
 
-                // Native Ad at bottom
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: screenWidth * 0.045,
-                    vertical: screenHeight * 0.015,
-                  ),
-                  child: NativeAdWidget(
-                    adUnitId: AdHelper.native2AdUnitId,
-                  ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: const NativeAdWidget(),
                 ),
+
               ],
             ),
           );

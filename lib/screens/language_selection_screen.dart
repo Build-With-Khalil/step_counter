@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/locale_controller.dart';
+import '../utils/NativeAdWidget.dart';
 import 'onboarding_screen.dart';
 
 class LanguageSelectionScreen extends StatefulWidget {
@@ -107,6 +108,9 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
                 onChanged: (v) => setState(() => _searchQuery = v),
               ),
               Expanded(child: _buildGrid(isDark)),
+
+              const NativeAdWidget(),
+
               _ContinueFooter(
                 isDark: isDark,
                 selectedCode: _selectedCode,
@@ -199,22 +203,22 @@ class _Header extends StatelessWidget {
       child: Column(
         children: [
           // Globe icon in a frosted circle
-          Container(
-            width: 76,
-            height: 76,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white.withValues(alpha: 0.12),
-              border: Border.all(
-                  color: Colors.white.withValues(alpha: 0.28), width: 2),
-            ),
-            child: const Icon(
-              Icons.language_rounded,
-              color: Colors.white,
-              size: 40,
-            ),
-          ),
-          const SizedBox(height: 18),
+          // Container(
+          //   width: 76,
+          //   height: 76,
+          //   decoration: BoxDecoration(
+          //     shape: BoxShape.circle,
+          //     color: Colors.white.withValues(alpha: 0.12),
+          //     border: Border.all(
+          //         color: Colors.white.withValues(alpha: 0.28), width: 2),
+          //   ),
+          //   child: const Icon(
+          //     Icons.language_rounded,
+          //     color: Colors.white,
+          //     size: 40,
+          //   ),
+          // ),
+          //const SizedBox(height: 18),
           const Text(
             'Choose Your Language',
             style: TextStyle(
@@ -231,8 +235,8 @@ class _Header extends StatelessWidget {
             'اردو  •  हिन्दी  •  Español  •  中文  •  العربية',
             style: TextStyle(
               color: Colors.white.withValues(alpha: 0.70),
-              fontSize: 13,
-              letterSpacing: 1.1,
+              fontSize: 11.5,
+              letterSpacing: 1.0,
               height: 1.6,
             ),
             textAlign: TextAlign.center,
@@ -241,7 +245,7 @@ class _Header extends StatelessWidget {
           Text(
             'Français  •  Deutsch  •  Türkçe  •  Русский',
             style: TextStyle(
-              color: Colors.white.withValues(alpha: 0.50),
+              color: Colors.white.withValues(alpha: 0.70),
               fontSize: 11.5,
               letterSpacing: 1.0,
             ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import '../controllers/onboarding_controller.dart';
+import '../utils/NativeAdWidget.dart';
 import '../widgets/NativeAdWidgetForMedium.dart';
 
 // ─── Colors ──────────────────────────────────────────────────────────────────
@@ -72,17 +73,10 @@ class OnBoardingScreen extends StatelessWidget {
 
                 const SizedBox(height: 10),
 
-                //Native ad on first on boarding page
-                Obx(() {
-                  if (ctrl.currentPage.value == 0 || ctrl.currentPage.value == 3 ) {
-                    return const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      child: NativeAdWidgetForMedium(adUnitId: 'ca-app-pub-8523132132584450/4352310252',),
-                    );
-                  }
-                  return const SizedBox(height: 10);
-                }),
-
+                // Container(
+                //   margin: const EdgeInsets.symmetric(vertical: 10),
+                //   child: const NativeAdWidget(),
+                // ),
 
                 // ── Fixed: action button (label + color change reactively) ──
                 Padding(

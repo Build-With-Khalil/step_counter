@@ -8,7 +8,7 @@ import 'package:step_counter/utils/ad_helper.dart';
 import '../controllers/goal_controller.dart';
 import '../controllers/todayscreen_controllr.dart';
 import '../services/celebration_service.dart';
-import '../widgets/NativeAdWidget.dart';
+import '../utils/NativeAdWidget.dart';
 
 class TodayPage extends StatelessWidget {
   TodayPage({super.key});
@@ -239,8 +239,9 @@ class TodayPage extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.02),
 
-                  NativeAdWidget(
-                    adUnitId: AdHelper.native2AdUnitId,
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    child: const NativeAdWidget(),
                   ),
 
                   SizedBox(height: screenHeight * 0.01),

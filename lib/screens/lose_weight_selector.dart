@@ -3,8 +3,8 @@ import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:step_counter/screens/lose_weight_beginner.dart';
 
+import '../utils/NativeAdWidget.dart';
 import '../utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
 import '../widgets/select_container.dart';
 import 'lose_weight_advance.dart';
 import 'lose_weight_intermediate.dart';
@@ -56,8 +56,9 @@ class LoseWeightSelector extends StatelessWidget {
               },
             ),
           ),
-          NativeAdWidget(
-            adUnitId: AdHelper.nativeAdUnitId,
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            child: const NativeAdWidget(),
           ),
         ],
       ),

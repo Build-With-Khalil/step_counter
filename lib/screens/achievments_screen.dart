@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:confetti/confetti.dart';
 import 'package:step_counter/screens/trophies_collected.dart';
 import '../controllers/achievements_controller.dart';
+import '../utils/NativeAdWidget.dart';
 import '../utils/ad_helper.dart';
 import '../widgets/achievment_badge.dart';
 
@@ -141,7 +142,10 @@ class _AchievementsPageState extends State<AchievementsPage> {
                     l10n: l10n,
                   ),
                   SizedBox(height: screenHeight * 0.03),
-                  // NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
+                  Container(
+                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    child: const NativeAdWidget(),
+                  ),
                 ],
               ),
             );
