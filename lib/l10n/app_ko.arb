@@ -1,0 +1,222 @@
+{
+  "@@locale": "ko",
+
+  "appTagline": "당신의\n건강\n파트너",
+  "appSubtitle": "간단하고, 편안하고, 건강하게",
+
+  "onboardingPage1Title": "모든 걸음이 중요합니다",
+  "onboardingPage1Subtitle": "매일의 움직임을 실시간으로 추적하세요.",
+  "onboardingPage2Title": "진행 상황 시각화",
+  "onboardingPage2Subtitle": "한눈에 일관성을 확인하세요.",
+  "onboardingPage3Title": "당신의 피트니스 허브",
+  "onboardingPage3Subtitle": "건강을 유지하는 데 필요한 모든 것.",
+  "onboardingPage4Title": "목표를 설정하세요",
+  "onboardingPage4Subtitle": "일일 목표를 맞춤 설정하세요.",
+  "getStarted": "시작하기",
+  "nextStep": "다음 단계",
+  "startJourney": "여행 시작  →",
+  "skip": "건너뛰기",
+  "october": "10월",
+  "daysActive": "22일 활성",
+  "stepsToday": "오늘의 걸음수",
+  "stepsDaily": "일일 걸음수",
+  "workouts": "운동",
+  "heartRate": "심박수",
+  "metrics": "지표",
+  "reports": "보고서",
+
+  "permissionsRequired": "권한 필요",
+  "permissionsDialogContent": "걸음수를 추적하고 동기 부여 알림을 보내려면 활동 및 알림 권한을 허용해 주세요.",
+  "notNow": "나중에",
+  "allow": "허용",
+  "permissionsNotGranted": "권한이 부여되지 않았습니다. 일부 기능이 작동하지 않을 수 있습니다.",
+  "permissions": "권한",
+
+  "setDailyStepGoal": "일일 걸음 목표 설정",
+  "failedToLoadData": "데이터 로드 실패",
+  "retry": "다시 시도",
+  "achievementProgress": "성취 진행도",
+  "bmiNotSet": "BMI: 설정 안 됨",
+  "setHeightWeight": "프로필에서 키와 몸무게 설정",
+  "dailyReminder": "일일 알림",
+  "dailyReminderSubtitle": "매일 아침 9시에 동기 부여 인용문 받기",
+  "resetTodaysSteps": "오늘의 걸음수 초기화",
+  "resetAllData": "모든 데이터 초기화",
+  "fitnessSection": "피트니스 섹션",
+  "absTitle": "복근 운동",
+  "absSubtitle": "복근을 위한 단 네 가지 동작",
+  "loseWeight": "체중 감량",
+  "loseWeightSubtitle": "지방을 더 효과적으로 연소",
+  "reduceStress": "스트레스 해소",
+  "reduceStressSubtitle": "맑은 정신, 휴식과 명상",
+  "morningWarmup": "아침 워밍업",
+  "morningWarmupSubtitle": "신선한 공기와 비타민 D 섭취",
+
+  "todaysTotalSteps": "오늘 총 걸음수",
+  "mile": "마일",
+  "kcal": "칼로리",
+  "time": "시간",
+  "daysStreak": "연속 일수",
+  "goalSteps": "목표: {goal}걸음",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "{remaining}걸음 남음",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "성취",
+  "thisMonth": "이번 달",
+  "totalSteps": "총 걸음수",
+  "monthlyProgress": "월간 진행도",
+
+  "editProfile": "프로필 편집",
+  "theme": "테마",
+  "appLinkCopied": "앱 링크가 클립보드에 복사되었습니다",
+  "instruction": "사용 방법",
+  "instructionSubtitle": "앱 사용 안내",
+  "shareApp": "앱 공유",
+  "shareAppSubtitle": "친구들과 앱을 공유하세요",
+  "faqs": "자주 묻는 질문",
+  "faqsSubtitle": "자주 묻는 질문",
+  "privacyPolicy": "개인정보 처리방침",
+  "privacyPolicySubtitle": "앱 개인정보 처리방침",
+  "nameLabel": "이름",
+  "ageLabel": "나이",
+  "cancel": "취소",
+  "save": "저장",
+  "profileUpdated": "프로필 업데이트됨",
+  "profileSavedMessage": "프로필이 성공적으로 저장되었습니다.",
+  "invalidInput": "잘못된 입력",
+  "invalidInputMessage": "유효한 이름과 나이를 입력하세요.",
+  "loading": "로딩 중...",
+  "notSet": "설정 안 됨",
+  "ageDisplay": "나이: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "성별",
+  "genderHint": "보폭 길이와 칼로리 소모를 측정하기 위해 필요합니다.",
+  "male": "남성",
+  "female": "여성",
+  "next": "다음",
+  "selectPrefix": "선택",
+
+  "moreAboutYouPrefix": "더",
+  "moreAboutYouSuffix": "나에 대해",
+  "heightWeightHint": "정확성을 위해 올바른 키와 몸무게를 입력해 주세요. 이 데이터는 절대 공유하지 않습니다.",
+  "height": "키",
+  "weight": "몸무게",
+  "selectHeightCm": "키 선택 (cm)",
+  "selectWeightKg": "몸무게 선택 (kg)",
+  "start": "시작",
+
+  "absWorkouts": "복근 운동",
+  "beginner": "초급",
+  "intermediate": "중급",
+  "advanced": "고급",
+  "advance": "진행",
+  "duration15mins": "15분",
+  "duration30mins": "30분",
+  "duration40plusMins": "40분 이상",
+
+  "introduction": "소개",
+  "level": "레벨",
+  "duration": "시간",
+
+  "absBeginnerIntro": "이 초급 복근 운동은 핵심 근육을 활성화하고 안정성을 향상시키며 기초 체력을 키우도록 설계되었습니다. 피트니스 여정을 시작하기에 완벽합니다.",
+  "burnt45kcal": "소모 칼로리 약 45kcal",
+  "time10to15min": "시간: 10~15분",
+
+  "absIntermediateIntro": "이 중급 복근 운동은 더 긴 유지, 높은 반복 횟수, 역동적인 동작으로 코어 근력을 키웁니다. 기초를 넘어 발전하기에 이상적입니다.",
+  "burnt85to100kcal": "소모 칼로리 약 85~100kcal",
+  "time20to30min": "시간: 20~30분",
+
+  "absAdvancedIntro": "이 고급 복근 운동은 높은 반복 동작, 정적 유지, 역동적인 전환으로 깊은 코어 근육을 타겟합니다. 정의, 근력, 지구력 향상에 완벽합니다.",
+  "burnt130to160kcal": "소모 칼로리 약 130~160kcal",
+  "time40plusMin": "시간: 40분 이상",
+
+  "loseWeightBeginnerIntro": "이 초급 지방 연소 운동은 심박수를 높이고, 신진대사를 촉진하며, 체중 감량 여정을 시작하도록 설계되었습니다. 장비가 필요 없습니다.",
+  "burnt60kcal": "소모 칼로리 약 60kcal",
+  "time12to18min": "시간: 12~18분",
+
+  "loseWeightIntermediateIntro": "이 중급 지방 연소 운동은 지구력에 도전하고 지방 감소를 가속화하기 위해 각 동작을 강화합니다. 장비 불필요—필요한 것은 의지뿐.",
+  "burnt90to100kcal": "소모 칼로리 약 90~100kcal",
+  "time25to30min": "시간: 25~30분",
+
+  "loseWeightAdvancedIntro": "이 고급 지방 연소 운동은 지구력, 근력, 협응력에 도전하도록 제작되었습니다. 높은 반복, 폭발적인 동작, 진지한 땀을 기대하세요.",
+  "burnt140to160kcal": "소모 칼로리 약 140~160kcal",
+
+  "reduceStressIntro": "이 스트레스 해소 운동에서는 요가를 연습하고, 아침 산책을 하며, 깨끗한 식단을 따릅니다. 요가는 마음과 몸을 진정시키고, 걷기는 기분을 상쾌하게 하며, 균형 잡힌 식단은 가볍고 건강하며 스트레스 없는 상태를 유지시켜 줍니다.",
+  "burnt70kcal": "소모 칼로리 약 70kcal",
+
+  "morningWarmupIntro": "이 아침 워밍업에는 혈액 순환 개선, 뻣뻣함 해소, 하루를 위한 에너지 충전을 위한 걷기, 점핑잭, 푸쉬업, 어깨 스트레칭이 포함됩니다.",
+  "burnt60to80kcal": "소모 칼로리 약 60~80kcal",
+  "time10to15minWarmup": "시간: 10~15분",
+
+  "achievementsTitle": "성취",
+  "unlocked": "달성",
+  "locked": "잠금",
+  "unlockedBadge": "달성: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "레벨 {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "수집된 트로피",
+  "noTrophiesYet": "아직 트로피가 없습니다. 하루에 10,000걸음을 걸어서 하나를 획득하세요!",
+
+  "appGuide": "앱 가이드",
+  "dailyWeeklyTracking": "🏃 일일 및 주간 추적",
+  "dailyWeeklyTrackingDesc": "첫 번째 메인 화면에서는 상단에 실시간으로 일일 걸음수를 볼 수 있습니다. 아래에는 주간 막대 차트가 한 주의 각 날에 대한 진행 상황을 보여줍니다.",
+  "monthlyReportAchievements": "📊 월간 보고서 및 성취",
+  "monthlyReportDesc": "두 번째 화면은 걸음수의 완전한 월간 분석을 제공합니다. 각 날의 기록을 보고 총 거리, 칼로리, 지속 시간을 확인할 수 있습니다. 성취도 여기에 표시되며, 배지 잠금 해제를 향한 진행 상황도 볼 수 있습니다.",
+  "healthFitness": "💪 건강 및 피트니스",
+  "healthFitnessDesc": "세 번째 화면에서 일일 걸음 목표를 설정하고 BMI를 추적할 수 있습니다. 다음과 같은 피트니스 루틴도 찾을 수 있습니다:\n• 복근 운동\n• 체중 감량 운동\n• 스트레스 해소\n• 아침 워밍업\n\n각 섹션에는 예상 지속 시간과 소모 칼로리가 포함됩니다.",
+  "settingsProfile": "⚙️ 설정 및 프로필",
+  "settingsProfileDesc": "네 번째 화면에는 키와 성별 같은 개인 정보가 포함됩니다. 라이트와 다크 테마 사이를 전환하고, 필요한 경우 걸음수 데이터를 초기화할 수 있습니다.",
+  "tips": "🎯 팁",
+  "tipsDesc": "• 배지를 탭하여 설명을 확인하세요.\n• 성취를 달성하면 색종이가 진행 상황을 축하합니다.\n• 일관성을 유지하고 동기 부여를 받으려면 건강 화면을 매일 사용하세요.",
+  "gotIt": "알겠습니다!",
+
+  "privacyPolicyTitle": "개인정보 처리방침",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited는 귀하의 개인정보 보호에 최선을 다하고 있습니다. 당사 앱 Pedometer – Walk & Track은 개인 데이터를 손상시키지 않으면서 일상 활동을 모니터링하는 데 도움을 드리도록 설계되었습니다. 어떠한 사용자 정보도 수집, 저장 또는 전송하지 않습니다.",
+  "privacyPolicyPara2": "귀하의 이름, 이메일, 위치, 연락처 또는 기타 개인 식별자에 대한 액세스를 요청하거나 접근하지 않습니다. 모든 걸음수 추적 및 진행 데이터는 기기에서 로컬로 처리되며 절대 외부로 나가지 않습니다. 클라우드 동기화, 분석, 제3자 추적은 없습니다.",
+  "privacyPolicyPara3": "앱은 신체 활동 센서 액세스 및 알림 전송 권한을 요청할 수 있습니다. 이는 오직 걸음수 계산과 동기 부여 메시지 전달에만 사용됩니다. 데이터는 외부에 공유되지 않으며, 기기 외부에 정보가 저장되지 않습니다.",
+  "privacyPolicyPara4": "사용자 데이터를 수집하는 제3자 서비스, SDK 또는 API를 사용하지 않습니다. Pedometer – Walk & Track과의 경험은 완전히 비공개이며 자급자족합니다.",
+  "privacyPolicyPara5": "당사 앱은 모든 연령대에 적합하며 아동의 데이터를 의도적으로 수집하지 않습니다. 어떠한 정보도 수집하지 않으므로 남용이나 무단 접근의 위험이 없습니다.",
+  "privacyPolicyPara6": "앱의 작동 방식이나 기기와의 상호작용에 영향을 미치는 변경 사항이 생기면, 이 개인정보 처리방침도 변경 사항을 반영하여 업데이트합니다. 모든 단계에서 귀하에게 정보를 제공하고 보호하기 위해 최선을 다하겠습니다.",
+  "privacyPolicyContact": "문의 사항이나 지원이 필요하시면 다음으로 연락해 주세요:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "이 앱이 내 걸음수를 세나요?",
+  "faq1Answer": "네, Pedometer Walk & Track은 하루 종일 정확하게 걸음수를 셉니다. 활동의 완전한 보기를 제공하기 위해 거리, 소모 칼로리, 활동 시간도 추적합니다.",
+  "faq2Question": "앱에 체중 감량 운동이 있나요?",
+  "faq2Answer": "네, 앱에는 간단한 체중 감량 및 피트니스 운동이 포함되어 있습니다. 건강 화면 하단에서 찾을 수 있으며, 일일 운동 루틴을 지원하도록 설계되었습니다.",
+  "faq3Question": "앱이 걸음수의 월간 기록을 보관하나요?",
+  "faq3Answer": "네, 앱은 일일, 주간, 월간 걸음수 기록을 저장합니다. 이를 통해 시간이 지남에 따라 진행 상황을 검토하고 피트니스 목표를 달성하기 위한 동기 부여를 유지할 수 있습니다.",
+  "faq4Question": "개인 데이터를 저장하나요?",
+  "faq4Answer": "아니요, 서버에 개인 데이터를 저장하지 않습니다. 모든 걸음수, 기록, 활동 세부 정보는 기기에만 안전하게 저장됩니다. 이를 통해 개인정보와 정보에 대한 완전한 통제가 보장됩니다.",
+  "faq5Question": "앱이 내 데이터를 누군가와 공유하나요?",
+  "faq5Answer": "아니요, 귀하의 데이터는 절대 누구와도 공유되지 않습니다. Pedometer Walk & Track은 개인 데이터를 수집하지 않기 때문에 공유할 것이 없습니다. 완전한 신뢰와 안심으로 앱을 사용할 수 있습니다.",
+
+  "dailyRecords": "일일 기록",
+  "steps": "걸음",
+  "miles": "마일",
+  "monthlyCalendar": "월간 캘린더"
+}

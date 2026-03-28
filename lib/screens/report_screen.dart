@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:step_counter/screens/achievments_screen.dart';
 import 'package:step_counter/utils/ad_helper.dart';
@@ -14,6 +15,7 @@ class ReportPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
@@ -31,7 +33,7 @@ class ReportPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildToggleButton(
-                    "Achievements",
+                    l10n.achievements,
                     isDark,
                     'assets/icons/ach.png',
                     screenHeight,
@@ -62,7 +64,7 @@ class ReportPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "This Month",
+                        l10n.thisMonth,
                         style: TextStyle(
                           fontSize: screenWidth * 0.05,
                           fontWeight: FontWeight.bold,
@@ -76,7 +78,7 @@ class ReportPage extends StatelessWidget {
                             style: TextStyle(fontSize: screenWidth * 0.1),
                           ),
                           SizedBox(width: screenWidth * 0.025),
-                          Text('Total Steps'),
+                          Text(l10n.totalSteps),
                         ],
                       ),
                       Expanded(
@@ -87,13 +89,13 @@ class ReportPage extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
-                                  "$distance \nMile",
+                                  "$distance \n${l10n.mile}",
                                   textAlign: TextAlign.center,
                                 ),
                               ),
                               Expanded(
                                 child: Text(
-                                  "$calories \nKcal",
+                                  "$calories \n${l10n.kcal}",
                                   textAlign: TextAlign.center,
                                 ),
                               ),
@@ -117,7 +119,7 @@ class ReportPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    "Monthly Progress",
+                    l10n.monthlyProgress,
                     style: TextStyle(
                       fontSize: screenWidth * 0.045,
                       fontWeight: FontWeight.bold,

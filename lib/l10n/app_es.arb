@@ -1,0 +1,222 @@
+{
+  "@@locale": "es",
+
+  "appTagline": "TU\nCOMPAÑERO\nDE SALUD",
+  "appSubtitle": "Simple, relajante, saludable",
+
+  "onboardingPage1Title": "Cada Paso Cuenta",
+  "onboardingPage1Subtitle": "Rastrea tu movimiento diario en tiempo real.",
+  "onboardingPage2Title": "Visualiza el Progreso",
+  "onboardingPage2Subtitle": "Ve tu constancia de un vistazo.",
+  "onboardingPage3Title": "Tu Centro de Fitness",
+  "onboardingPage3Subtitle": "Todo lo que necesitas para mantenerte en forma.",
+  "onboardingPage4Title": "Establece tu Meta",
+  "onboardingPage4Subtitle": "Personaliza tu objetivo diario.",
+  "getStarted": "Comenzar",
+  "nextStep": "Siguiente Paso",
+  "startJourney": "Iniciar Viaje  →",
+  "skip": "Omitir",
+  "october": "Octubre",
+  "daysActive": "22 Días Activo",
+  "stepsToday": "PASOS HOY",
+  "stepsDaily": "PASOS DIARIOS",
+  "workouts": "Entrenamientos",
+  "heartRate": "Frecuencia Cardíaca",
+  "metrics": "Métricas",
+  "reports": "Informes",
+
+  "permissionsRequired": "Permisos Requeridos",
+  "permissionsDialogContent": "Para rastrear tus pasos y enviar notificaciones motivacionales, por favor permite los permisos de Actividad y Notificación.",
+  "notNow": "Ahora No",
+  "allow": "Permitir",
+  "permissionsNotGranted": "Permisos no concedidos. Algunas funciones pueden no funcionar.",
+  "permissions": "Permisos",
+
+  "setDailyStepGoal": "Establecer Meta Diaria de Pasos",
+  "failedToLoadData": "Error al cargar los datos",
+  "retry": "Reintentar",
+  "achievementProgress": "Progreso de Logros",
+  "bmiNotSet": "IMC: No establecido",
+  "setHeightWeight": "Establecer altura y peso en el perfil",
+  "dailyReminder": "Recordatorio Diario",
+  "dailyReminderSubtitle": "Recibe una cita motivacional cada mañana a las 9 AM",
+  "resetTodaysSteps": "Restablecer los Pasos de Hoy",
+  "resetAllData": "Restablecer Todos los Datos",
+  "fitnessSection": "Sección de Fitness",
+  "absTitle": "Abdominales",
+  "absSubtitle": "Solo Cuatro Movimientos para Abdominales",
+  "loseWeight": "Perder Peso",
+  "loseWeightSubtitle": "Quema grasa más efectivamente",
+  "reduceStress": "Reducir el Estrés",
+  "reduceStressSubtitle": "Mente clara, relájate y medita",
+  "morningWarmup": "Calentamiento Matutino",
+  "morningWarmupSubtitle": "Obtén algo de aire fresco y Vitamina D",
+
+  "todaysTotalSteps": "Total de Pasos de Hoy",
+  "mile": "Milla",
+  "kcal": "Kcal",
+  "time": "Tiempo",
+  "daysStreak": "Días Consecutivos",
+  "goalSteps": "Meta: {goal} pasos",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "{remaining} pasos restantes",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "Logros",
+  "thisMonth": "Este Mes",
+  "totalSteps": "Total de Pasos",
+  "monthlyProgress": "Progreso Mensual",
+
+  "editProfile": "Editar Perfil",
+  "theme": "Tema",
+  "appLinkCopied": "Enlace de la app copiado al portapapeles",
+  "instruction": "Instrucción",
+  "instructionSubtitle": "Guía para usar la app",
+  "shareApp": "Compartir App",
+  "shareAppSubtitle": "Comparte nuestra app con amigos",
+  "faqs": "Preguntas Frecuentes",
+  "faqsSubtitle": "Preguntas Frecuentes",
+  "privacyPolicy": "Política de Privacidad",
+  "privacyPolicySubtitle": "Política de Privacidad de la App",
+  "nameLabel": "Nombre",
+  "ageLabel": "Edad",
+  "cancel": "Cancelar",
+  "save": "Guardar",
+  "profileUpdated": "Perfil Actualizado",
+  "profileSavedMessage": "Tu perfil ha sido guardado exitosamente.",
+  "invalidInput": "Entrada Inválida",
+  "invalidInputMessage": "Por favor ingresa un nombre y edad válidos.",
+  "loading": "Cargando...",
+  "notSet": "No establecido",
+  "ageDisplay": "Edad: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "Tu Género",
+  "genderHint": "Lo necesitamos para medir la longitud de tu zancada y el gasto calórico.",
+  "male": "Masculino",
+  "female": "Femenino",
+  "next": "SIGUIENTE",
+  "selectPrefix": "Seleccionar",
+
+  "moreAboutYouPrefix": "Más",
+  "moreAboutYouSuffix": "Sobre Ti",
+  "heightWeightHint": "Para garantizar la precisión, por favor ingresa tu altura y peso correctos. Nunca compartimos estos datos.",
+  "height": "Altura",
+  "weight": "Peso",
+  "selectHeightCm": "Seleccionar Altura (cm)",
+  "selectWeightKg": "Seleccionar Peso (kg)",
+  "start": "INICIAR",
+
+  "absWorkouts": "Entrenamientos Abdominales",
+  "beginner": "Principiante",
+  "intermediate": "Intermedio",
+  "advanced": "Avanzado",
+  "advance": "Avanzar",
+  "duration15mins": "15 min",
+  "duration30mins": "30 min",
+  "duration40plusMins": "40+ min",
+
+  "introduction": "Introducción",
+  "level": "Nivel",
+  "duration": "Duración",
+
+  "absBeginnerIntro": "Este entrenamiento abdominal para principiantes está diseñado para activar tu núcleo, mejorar la estabilidad y construir fuerza fundamental. Perfecto para comenzar tu viaje de fitness.",
+  "burnt45kcal": "Quemado ~45 kcal",
+  "time10to15min": "Tiempo: 10–15 min",
+
+  "absIntermediateIntro": "Este entrenamiento abdominal intermedio desarrolla fuerza del core con retenciones más largas, más repeticiones y movimientos dinámicos. Ideal para progresar más allá de lo básico.",
+  "burnt85to100kcal": "Quemado ~85-100 kcal",
+  "time20to30min": "Tiempo: 20–30 min",
+
+  "absAdvancedIntro": "Este entrenamiento abdominal avanzado trabaja los músculos del núcleo profundo con movimientos de alta repetición, retenciones estáticas y transiciones dinámicas. Perfecto para desarrollar definición, fuerza y resistencia.",
+  "burnt130to160kcal": "Quemado ~130-160 kcal",
+  "time40plusMin": "Tiempo: 40+ min",
+
+  "loseWeightBeginnerIntro": "Este entrenamiento quema-grasa para principiantes está diseñado para elevar tu frecuencia cardíaca, impulsar el metabolismo y arrancar tu viaje de pérdida de peso. No se necesita equipo.",
+  "burnt60kcal": "Quemado ~60 kcal",
+  "time12to18min": "Tiempo: 12–18 min",
+
+  "loseWeightIntermediateIntro": "Este entrenamiento quema-grasa intermedio intensifica cada movimiento para desafiar tu resistencia y acelerar la pérdida de grasa. No se necesita equipo—solo compromiso.",
+  "burnt90to100kcal": "Quemado ~90-100 kcal",
+  "time25to30min": "Tiempo: 25–30 min",
+
+  "loseWeightAdvancedIntro": "Este entrenamiento quema-grasa avanzado está construido para desafiar tu resistencia, fuerza y coordinación. Espera altas repeticiones, movimientos explosivos y sudor de verdad.",
+  "burnt140to160kcal": "Quemado ~140-160 kcal",
+
+  "reduceStressIntro": "En este entrenamiento para reducir el estrés, practicarás Yoga, irás a caminar por la mañana y seguirás una dieta limpia. El Yoga calma tu mente y cuerpo, caminar refresca y mejora el ánimo, y una dieta equilibrada te mantiene ligero, saludable y libre de estrés.",
+  "burnt70kcal": "Quemado ~70 kcal",
+
+  "morningWarmupIntro": "Este calentamiento matutino incluye caminar, saltos de tijera, flexiones y estiramientos de hombros para mejorar la circulación, aliviar la rigidez y energizarte para el día.",
+  "burnt60to80kcal": "Quemado ~60–80 kcal",
+  "time10to15minWarmup": "Tiempo: 10–15 min",
+
+  "achievementsTitle": "Logros",
+  "unlocked": "Desbloqueado",
+  "locked": "Bloqueado",
+  "unlockedBadge": "Desbloqueado: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "Nivel {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "Trofeos Recolectados",
+  "noTrophiesYet": "Aún no hay trofeos recolectados. ¡Camina 10,000 pasos en un día para ganar uno!",
+
+  "appGuide": "Guía de la App",
+  "dailyWeeklyTracking": "🏃 Seguimiento Diario y Semanal",
+  "dailyWeeklyTrackingDesc": "En la primera pantalla principal, verás tu recuento diario de pasos en vivo en la parte superior. Debajo, un gráfico de barras semanal muestra tu progreso para cada día de la semana.",
+  "monthlyReportAchievements": "📊 Informe Mensual y Logros",
+  "monthlyReportDesc": "La segunda pantalla te da un desglose mensual completo de tus pasos. Puedes ver el registro de cada día y ver tu distancia total, calorías y duración. Los logros también se muestran aquí, con progreso hacia el desbloqueo de insignias.",
+  "healthFitness": "💪 Salud y Fitness",
+  "healthFitnessDesc": "En la tercera pantalla, puedes establecer tu meta diaria de pasos y rastrear tu IMC. También encontrarás rutinas de fitness como:\n• Entrenamientos abdominales\n• Ejercicios para perder peso\n• Reducción del estrés\n• Calentamientos matutinos\n\nCada sección incluye duración estimada y calorías quemadas.",
+  "settingsProfile": "⚙️ Configuración y Perfil",
+  "settingsProfileDesc": "La cuarta pantalla incluye tu información personal como altura y género. Puedes alternar entre temas claro y oscuro, y restablecer tus datos de pasos si es necesario.",
+  "tips": "🎯 Consejos",
+  "tipsDesc": "• Toca las insignias para ver sus descripciones.\n• Los confeti celebran tu progreso cuando desbloqueas logros.\n• Usa la pantalla de salud diariamente para mantenerte constante y motivado.",
+  "gotIt": "¡Entendido!",
+
+  "privacyPolicyTitle": "Política de Privacidad",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited se compromete a proteger tu privacidad. Nuestra app, Pedometer – Walk & Track, está diseñada para ayudarte a monitorear tu actividad diaria sin comprometer tus datos personales. No recopilamos, almacenamos ni transmitimos ninguna información de usuario—sin excepción.",
+  "privacyPolicyPara2": "No solicitamos ni accedemos a tu nombre, correo electrónico, ubicación, contactos ni ningún otro identificador personal. Todos los datos de seguimiento de pasos y progreso se procesan localmente en tu dispositivo y nunca lo abandonan. No hay sincronización en la nube, ni análisis, ni seguimiento de terceros.",
+  "privacyPolicyPara3": "La app puede solicitar permiso para acceder a sensores de actividad física y enviar notificaciones. Estos se usan únicamente para contar tus pasos y enviar mensajes motivacionales. Ningún dato se comparte externamente y no se almacena información más allá de tu dispositivo.",
+  "privacyPolicyPara4": "No utilizamos servicios de terceros, SDKs ni APIs que recopilen datos de usuarios. Tu experiencia con Pedometer – Walk & Track es completamente privada e independiente.",
+  "privacyPolicyPara5": "Nuestra app es adecuada para todos los grupos de edad y no recopila conscientemente ningún dato de menores. Dado que no recopilamos ninguna información, no hay riesgo de uso indebido o acceso no autorizado.",
+  "privacyPolicyPara6": "Si realizamos cambios en la app que afecten cómo funciona o interactúa con tu dispositivo, también actualizaremos esta Política de Privacidad para reflejar esos cambios. Estamos comprometidos a mantenerte informado y protegido en cada paso del camino.",
+  "privacyPolicyContact": "Para cualquier pregunta o soporte, puedes contactarnos en:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "¿Esta app cuenta mis pasos?",
+  "faq1Answer": "Sí, Pedometer Walk & Track cuenta con precisión tus pasos durante todo el día. También rastrea la distancia, las calorías quemadas y el tiempo activo para darte una vista completa de tu actividad.",
+  "faq2Question": "¿La app tiene ejercicios para perder peso?",
+  "faq2Answer": "Sí, la app incluye ejercicios simples para perder peso y fitness. Los puedes encontrar en la parte inferior de la pantalla de Salud, diseñados para apoyar tu rutina diaria de entrenamiento.",
+  "faq3Question": "¿La app guarda registros mensuales de mis pasos?",
+  "faq3Answer": "Sí, la app almacena tus registros diarios, semanales y mensuales de pasos. Esto te permite revisar tu progreso a lo largo del tiempo y mantenerte motivado para alcanzar tus metas de fitness.",
+  "faq4Question": "¿Almacenan mis datos personales?",
+  "faq4Answer": "No, no almacenamos ninguno de tus datos personales en servidores. Todos tus recuentos de pasos, registros y detalles de actividad se guardan de forma segura únicamente en tu dispositivo. Esto garantiza tu privacidad y control total sobre tu información.",
+  "faq5Question": "¿La app compartirá mis datos con alguien?",
+  "faq5Answer": "No, tus datos nunca se comparten con nadie. Dado que Pedometer Walk & Track no recopila tus datos personales, no hay nada que compartir. Puedes usar la app con total confianza y tranquilidad.",
+
+  "dailyRecords": "Registros Diarios",
+  "steps": "Pasos",
+  "miles": "Millas",
+  "monthlyCalendar": "Calendario Mensual"
+}

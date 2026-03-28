@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import '../widgets/abs_icon_widget.dart';
 import '../widgets/abs_moves_model.dart';
 import '../utils/ad_helper.dart';
@@ -17,6 +18,7 @@ class LoseWeightAdvancedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
@@ -40,7 +42,7 @@ class LoseWeightAdvancedScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Introduction',
+                      l10n.introduction,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -49,7 +51,7 @@ class LoseWeightAdvancedScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'This advanced fat-burning workout is built to challenge your endurance, strength, and coordination. Expect high reps, explosive movement, and serious sweat.',
+                      l10n.loseWeightAdvancedIntro,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         fontSize: 14,
                         color: isDark ? Colors.white70 : Colors.black87,
@@ -61,23 +63,23 @@ class LoseWeightAdvancedScreen extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            Text('Level', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
+                            Text(l10n.level, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
                             const SizedBox(height: 4),
-                            Text('Advanced', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
+                            Text(l10n.advanced, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
                           ],
                         ),
                         Column(
                           children: [
-                            Text('Kcal', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
+                            Text(l10n.kcal, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
                             const SizedBox(height: 4),
-                            Text('Burnt ~140-160 kcal', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
+                            Text(l10n.burnt140to160kcal, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
                           ],
                         ),
                         Column(
                           children: [
-                            Text('Duration', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
+                            Text(l10n.duration, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
                             const SizedBox(height: 4),
-                            Text('Time: 40+ min', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
+                            Text(l10n.time40plusMin, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
                           ],
                         ),
                       ],

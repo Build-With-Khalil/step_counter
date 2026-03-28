@@ -1,0 +1,222 @@
+{
+  "@@locale": "tr",
+
+  "appTagline": "SAĞLIK\nORTAĞINIZ",
+  "appSubtitle": "Basit, rahatlatıcı, sağlıklı",
+
+  "onboardingPage1Title": "Her Adım Önemli",
+  "onboardingPage1Subtitle": "Günlük hareketinizi gerçek zamanlı takip edin.",
+  "onboardingPage2Title": "İlerlemenizi Görselleştirin",
+  "onboardingPage2Subtitle": "Tutarlılığınızı bir bakışta görün.",
+  "onboardingPage3Title": "Fitness Merkeziniz",
+  "onboardingPage3Subtitle": "Fit kalmak için ihtiyacınız olan her şey.",
+  "onboardingPage4Title": "Hedefinizi Belirleyin",
+  "onboardingPage4Subtitle": "Günlük hedefinizi özelleştirin.",
+  "getStarted": "Başla",
+  "nextStep": "Sonraki Adım",
+  "startJourney": "Yolculuğu Başlat  →",
+  "skip": "Geç",
+  "october": "Ekim",
+  "daysActive": "22 Aktif Gün",
+  "stepsToday": "BUGÜNKÜ ADIMLAR",
+  "stepsDaily": "GÜNLÜK ADIMLAR",
+  "workouts": "Antrenmanlar",
+  "heartRate": "Kalp Atış Hızı",
+  "metrics": "Ölçümler",
+  "reports": "Raporlar",
+
+  "permissionsRequired": "İzinler Gerekli",
+  "permissionsDialogContent": "Adımlarınızı takip etmek ve motivasyonel bildirimler göndermek için lütfen Aktivite ve Bildirim izinlerine izin verin.",
+  "notNow": "Şimdi Değil",
+  "allow": "İzin Ver",
+  "permissionsNotGranted": "İzinler verilmedi. Bazı özellikler çalışmayabilir.",
+  "permissions": "İzinler",
+
+  "setDailyStepGoal": "Günlük Adım Hedefi Belirle",
+  "failedToLoadData": "Veriler yüklenemedi",
+  "retry": "Tekrar Dene",
+  "achievementProgress": "Başarı İlerlemesi",
+  "bmiNotSet": "BMI: Ayarlanmadı",
+  "setHeightWeight": "Profilde boy ve kilo belirleyin",
+  "dailyReminder": "Günlük Hatırlatıcı",
+  "dailyReminderSubtitle": "Her sabah saat 9'da motivasyonel bir alıntı alın",
+  "resetTodaysSteps": "Bugünün Adımlarını Sıfırla",
+  "resetAllData": "Tüm Verileri Sıfırla",
+  "fitnessSection": "Fitness Bölümü",
+  "absTitle": "Karın Egzersizleri",
+  "absSubtitle": "Karın İçin Sadece Dört Hareket",
+  "loseWeight": "Kilo Vermek",
+  "loseWeightSubtitle": "Yağı daha etkili yakın",
+  "reduceStress": "Stresi Azalt",
+  "reduceStressSubtitle": "Berrak zihin, rahatlama ve meditasyon",
+  "morningWarmup": "Sabah Isınması",
+  "morningWarmupSubtitle": "Temiz hava ve D Vitamini alın",
+
+  "todaysTotalSteps": "Bugünün Toplam Adımları",
+  "mile": "Mil",
+  "kcal": "Kkal",
+  "time": "Süre",
+  "daysStreak": "Gün Serisi",
+  "goalSteps": "Hedef: {goal} adım",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "{remaining} adım kaldı",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "Başarılar",
+  "thisMonth": "Bu Ay",
+  "totalSteps": "Toplam Adımlar",
+  "monthlyProgress": "Aylık İlerleme",
+
+  "editProfile": "Profili Düzenle",
+  "theme": "Tema",
+  "appLinkCopied": "Uygulama bağlantısı panoya kopyalandı",
+  "instruction": "Talimat",
+  "instructionSubtitle": "Uygulamayı kullanma kılavuzu",
+  "shareApp": "Uygulamayı Paylaş",
+  "shareAppSubtitle": "Uygulamamızı Arkadaşlarla Paylaşın",
+  "faqs": "SSS",
+  "faqsSubtitle": "Sıkça Sorulan Sorular",
+  "privacyPolicy": "Gizlilik Politikası",
+  "privacyPolicySubtitle": "Uygulamanın Gizlilik Politikası",
+  "nameLabel": "Ad",
+  "ageLabel": "Yaş",
+  "cancel": "İptal",
+  "save": "Kaydet",
+  "profileUpdated": "Profil Güncellendi",
+  "profileSavedMessage": "Profiliniz başarıyla kaydedildi.",
+  "invalidInput": "Geçersiz Giriş",
+  "invalidInputMessage": "Lütfen geçerli bir ad ve yaş girin.",
+  "loading": "Yükleniyor...",
+  "notSet": "Ayarlanmadı",
+  "ageDisplay": "Yaş: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "Cinsiyetiniz",
+  "genderHint": "Adım uzunluğunuzu ve kalori yakımınızı ölçmek için buna ihtiyacımız var.",
+  "male": "Erkek",
+  "female": "Kadın",
+  "next": "İLERİ",
+  "selectPrefix": "Seç",
+
+  "moreAboutYouPrefix": "Hakkınızda",
+  "moreAboutYouSuffix": "Daha Fazla",
+  "heightWeightHint": "Doğruluğu sağlamak için lütfen doğru boy ve kilonuzu girin. Bu verileri asla paylaşmayız.",
+  "height": "Boy",
+  "weight": "Kilo",
+  "selectHeightCm": "Boy Seçin (cm)",
+  "selectWeightKg": "Kilo Seçin (kg)",
+  "start": "BAŞLA",
+
+  "absWorkouts": "Karın Antrenmanları",
+  "beginner": "Başlangıç",
+  "intermediate": "Orta",
+  "advanced": "İleri",
+  "advance": "İlerle",
+  "duration15mins": "15 dakika",
+  "duration30mins": "30 dakika",
+  "duration40plusMins": "40+ dakika",
+
+  "introduction": "Giriş",
+  "level": "Seviye",
+  "duration": "Süre",
+
+  "absBeginnerIntro": "Bu başlangıç karın antrenmanı, çekirdek kaslarınızı aktive etmek, stabilitenizi geliştirmek ve temel güç oluşturmak için tasarlanmıştır. Fitness yolculuğunuzu başlatmak için mükemmel.",
+  "burnt45kcal": "Yakılan ~45 kkal",
+  "time10to15min": "Süre: 10–15 dk",
+
+  "absIntermediateIntro": "Bu orta düzey karın antrenmanı, daha uzun tutuşlar, daha fazla tekrar ve dinamik hareketlerle çekirdek gücü oluşturur. Temelin ötesine geçmek için ideal.",
+  "burnt85to100kcal": "Yakılan ~85-100 kkal",
+  "time20to30min": "Süre: 20–30 dk",
+
+  "absAdvancedIntro": "Bu ileri seviye karın antrenmanı, yüksek tekrarlı hareketler, statik tutuşlar ve dinamik geçişlerle derin çekirdek kaslarını hedefler. Tanım, güç ve dayanıklılık oluşturmak için mükemmel.",
+  "burnt130to160kcal": "Yakılan ~130-160 kkal",
+  "time40plusMin": "Süre: 40+ dk",
+
+  "loseWeightBeginnerIntro": "Bu başlangıç yağ yakma antrenmanı, kalp atış hızınızı yükseltmek, metabolizmanızı canlandırmak ve kilo verme yolculuğunuzu başlatmak için tasarlanmıştır. Ekipman gerekmez.",
+  "burnt60kcal": "Yakılan ~60 kkal",
+  "time12to18min": "Süre: 12–18 dk",
+
+  "loseWeightIntermediateIntro": "Bu orta düzey yağ yakma antrenmanı, dayanıklılığınızı zorlamak ve yağ kaybını hızlandırmak için her hareketi yoğunlaştırır. Ekipman gerekmez—sadece kararlılık.",
+  "burnt90to100kcal": "Yakılan ~90-100 kkal",
+  "time25to30min": "Süre: 25–30 dk",
+
+  "loseWeightAdvancedIntro": "Bu ileri seviye yağ yakma antrenmanı, dayanıklılığınızı, gücünüzü ve koordinasyonunuzu zorlamak için oluşturulmuştur. Yüksek tekrar, patlayıcı hareketler ve ciddi terleme bekliyorsunuz.",
+  "burnt140to160kcal": "Yakılan ~140-160 kkal",
+
+  "reduceStressIntro": "Bu Stresi Azalt antrenmanında Yoga yapacak, Sabah Yürüyüşüne çıkacak ve temiz bir Diyet uygulayacaksınız. Yoga zihinizi ve bedeninizi sakinleştirir, yürüyüş ruh halinizi tazeler ve yükseltir, dengeli bir diyet ise sizi hafif, sağlıklı ve stressiz tutar.",
+  "burnt70kcal": "Yakılan ~70 kkal",
+
+  "morningWarmupIntro": "Bu Sabah Isınması; kan dolaşımını artırmak, sertliği gidermek ve güne enerji kazandırmak için yürüyüş, jumping jack, şınav ve omuz germelerini içerir.",
+  "burnt60to80kcal": "Yakılan ~60–80 kkal",
+  "time10to15minWarmup": "Süre: 10–15 dk",
+
+  "achievementsTitle": "Başarılar",
+  "unlocked": "Kilitsiz",
+  "locked": "Kilitli",
+  "unlockedBadge": "Açıldı: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "Seviye {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "Toplanan Kupalar",
+  "noTrophiesYet": "Henüz kupa toplanmadı. Bir gün 10.000 adım yürüyerek bir tane kazanın!",
+
+  "appGuide": "Uygulama Kılavuzu",
+  "dailyWeeklyTracking": "🏃 Günlük ve Haftalık Takip",
+  "dailyWeeklyTrackingDesc": "İlk ana ekranda, günlük adım sayınızı canlı olarak üstte göreceksiniz. Altında, haftanın her günü için ilerlemenizi gösteren haftalık bir çubuk grafik yer alır.",
+  "monthlyReportAchievements": "📊 Aylık Rapor ve Başarılar",
+  "monthlyReportDesc": "İkinci ekran, adımlarınızın tam aylık dökümünü sunar. Her günün kaydını görüntüleyebilir ve toplam mesafe, kalori ve sürenizi görebilirsiniz. Başarılar da burada rozetleri açmaya doğru ilerlemeyle birlikte gösterilir.",
+  "healthFitness": "💪 Sağlık ve Fitness",
+  "healthFitnessDesc": "Üçüncü ekranda günlük adım hedefinizi belirleyebilir ve BMI'nızı takip edebilirsiniz. Ayrıca şunlar gibi fitness rutinleri bulacaksınız:\n• Karın antrenmanları\n• Kilo verme egzersizleri\n• Stres azaltma\n• Sabah ısınmaları\n\nHer bölüm tahmini süre ve yakılan kalorileri içerir.",
+  "settingsProfile": "⚙️ Ayarlar ve Profil",
+  "settingsProfileDesc": "Dördüncü ekran boy ve cinsiyet gibi kişisel bilgilerinizi içerir. Açık ve koyu temalar arasında geçiş yapabilir ve gerekirse adım verilerinizi sıfırlayabilirsiniz.",
+  "tips": "🎯 İpuçları",
+  "tipsDesc": "• Rozetlere açıklamalarını görmek için dokunun.\n• Başarıların kilidini açtığınızda konfeti ilerlemenizi kutlar.\n• Tutarlı ve motive kalmak için sağlık ekranını her gün kullanın.",
+  "gotIt": "Anladım!",
+
+  "privacyPolicyTitle": "Gizlilik Politikası",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited gizliliğinizi korumaya kararlıdır. Uygulamamız Pedometer – Walk & Track, kişisel verilerinizi tehlikeye atmadan günlük aktivitenizi izlemenize yardımcı olmak için tasarlanmıştır. Herhangi bir kullanıcı bilgisi toplamıyor, saklamıyor veya iletmiyoruz—kesinlikle.",
+  "privacyPolicyPara2": "Adınıza, e-postanıza, konumunuza, kişilerinize veya diğer kişisel tanımlayıcılara erişim talep etmiyoruz. Tüm adım takibi ve ilerleme verileri cihazınızda yerel olarak işlenir ve asla ayrılmaz. Bulut senkronizasyonu, analitik veya üçüncü taraf takibi yoktur.",
+  "privacyPolicyPara3": "Uygulama, fiziksel aktivite sensörlerine erişim ve bildirim gönderme izni isteyebilir. Bunlar yalnızca adımlarınızı saymak ve motivasyonel mesajlar göndermek için kullanılır. Hiçbir veri harici olarak paylaşılmaz ve cihazınızın ötesinde hiçbir bilgi saklanmaz.",
+  "privacyPolicyPara4": "Kullanıcı verisi toplayan üçüncü taraf hizmetleri, SDK'ları veya API'leri kullanmıyoruz. Pedometer – Walk & Track ile deneyiminiz tamamen özel ve bağımsızdır.",
+  "privacyPolicyPara5": "Uygulamamız tüm yaş grupları için uygundur ve çocuklardan bilerek herhangi bir veri toplamaz. Herhangi bir bilgi toplamadığımız için kötüye kullanım veya yetkisiz erişim riski yoktur.",
+  "privacyPolicyPara6": "Uygulamada çalışmasını veya cihazınızla etkileşimini etkileyen değişiklikler yaparsak, bu değişiklikleri yansıtmak için bu Gizlilik Politikasını da güncelleyeceğiz. Her adımda sizi bilgili ve korumalı tutmaya kararlıyız.",
+  "privacyPolicyContact": "Herhangi bir soru veya destek için bize şu adresten ulaşabilirsiniz:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "Bu uygulama adımlarımı sayıyor mu?",
+  "faq1Answer": "Evet, Pedometer Walk & Track gün boyunca adımlarınızı doğru bir şekilde sayar. Aktivitenizin tam bir görünümünü sunmak için mesafe, yakılan kalori ve aktif süreyi de takip eder.",
+  "faq2Question": "Uygulamada kilo verme egzersizleri var mı?",
+  "faq2Answer": "Evet, uygulama basit kilo verme ve fitness egzersizleri içerir. Bunları Sağlık ekranının altında, günlük antrenman rutininizi desteklemek üzere tasarlanmış şekilde bulabilirsiniz.",
+  "faq3Question": "Uygulama adımlarımın aylık kayıtlarını tutuyor mu?",
+  "faq3Answer": "Evet, uygulama günlük, haftalık ve aylık adım kayıtlarınızı saklar. Bu, ilerlemenizi zaman içinde gözden geçirmenize ve fitness hedeflerinize ulaşmak için motive kalmanıza olanak tanır.",
+  "faq4Question": "Kişisel verilerimi saklıyor musunuz?",
+  "faq4Answer": "Hayır, kişisel verilerinizi sunucularda saklamıyoruz. Tüm adım sayılarınız, kayıtlarınız ve aktivite ayrıntılarınız yalnızca cihazınızda güvenli bir şekilde kaydedilir. Bu, gizliliğinizi ve bilgileriniz üzerinde tam kontrolü sağlar.",
+  "faq5Question": "Uygulama verilerimi kimseyle paylaşacak mı?",
+  "faq5Answer": "Hayır, verileriniz hiçbir zaman kimseyle paylaşılmaz. Pedometer Walk & Track kişisel verilerinizi toplamadığından paylaşılacak bir şey yoktur. Uygulamayı tam güven ve huzurla kullanabilirsiniz.",
+
+  "dailyRecords": "Günlük Kayıtlar",
+  "steps": "Adımlar",
+  "miles": "Mil",
+  "monthlyCalendar": "Aylık Takvim"
+}

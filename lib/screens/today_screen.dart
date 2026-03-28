@@ -1,6 +1,7 @@
 import 'package:confetti/confetti.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:step_counter/utils/ad_helper.dart';
 
@@ -20,6 +21,7 @@ class TodayPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
@@ -66,7 +68,7 @@ class TodayPage extends StatelessWidget {
                               ),
                               SizedBox(height: screenHeight * 0.01),
                               Text(
-                                "Today's Total Steps",
+                                l10n.todaysTotalSteps,
                                 style: theme.textTheme.bodyMedium
                                     ?.copyWith(fontSize: screenWidth * 0.04),
                               ),
@@ -116,14 +118,14 @@ class TodayPage extends StatelessWidget {
                         _buildMiniStat(
                           'assets/icons/distance.png',
                           controller.distance.value.toStringAsFixed(2),
-                          "Mile",
+                          l10n.mile,
                           theme,
                           screenWidth,
                         ),
                         _buildMiniStat(
                           'assets/icons/kcal.png',
                           controller.calories.value.toStringAsFixed(1),
-                          "Kcal",
+                          l10n.kcal,
                           theme,
                           screenWidth,
                         ),
@@ -131,7 +133,7 @@ class TodayPage extends StatelessWidget {
                           'assets/icons/time.png',
                           _formatDuration(
                               controller.durationMinutes.value),
-                          "Time",
+                          l10n.time,
                           theme,
                           screenWidth,
                         ),
@@ -166,7 +168,7 @@ class TodayPage extends StatelessWidget {
                               MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Goal: $goal steps",
+                                  l10n.goalSteps(goal),
                                   style: theme.textTheme.titleMedium?.copyWith(
                                       fontSize: screenWidth * 0.045),
                                 ),
@@ -182,7 +184,7 @@ class TodayPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "$remaining steps left",
+                                  l10n.stepsLeft(remaining),
                                   style: theme.textTheme.bodyMedium?.copyWith(
                                       fontSize: screenWidth * 0.04),
                                 ),
@@ -218,7 +220,7 @@ class TodayPage extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "Days Streak",
+                                  l10n.daysStreak,
                                   style: theme.textTheme.titleMedium
                                       ?.copyWith(
                                     fontSize: screenWidth * 0.025,

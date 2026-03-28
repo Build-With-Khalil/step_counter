@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import '../widgets/abs_icon_widget.dart';
 import '../widgets/abs_moves_model.dart';
 import '../utils/ad_helper.dart';
@@ -16,6 +17,7 @@ class ReduceStress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
@@ -39,7 +41,7 @@ class ReduceStress extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Introduction',
+                      l10n.introduction,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -48,8 +50,7 @@ class ReduceStress extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     Text(
-"In this Reduce Stress workout, you will practice Yoga, go for a Morning Walk, and follow a clean Diet. Yoga helps calm your mind and body, walking refreshes and boosts mood, and a balanced diet keeps you light, healthy, and stress-free.",
-
+                      l10n.reduceStressIntro,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         fontSize: 14,
                         color: isDark ? Colors.white70 : Colors.black87,
@@ -62,16 +63,16 @@ class ReduceStress extends StatelessWidget {
 
                         Column(
                           children: [
-                            Text('Kcal', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
+                            Text(l10n.kcal, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
                             const SizedBox(height: 4),
-                            Text('Burnt ~70 kcal', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
+                            Text(l10n.burnt70kcal, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
                           ],
                         ),
                         Column(
                           children: [
-                            Text('Duration', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
+                            Text(l10n.duration, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 13, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black)),
                             const SizedBox(height: 4),
-                            Text('Time: 20–30 min', style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
+                            Text(l10n.time20to30min, style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12, color: isDark ? Colors.white70 : Colors.black87)),
                           ],
                         ),
                       ],

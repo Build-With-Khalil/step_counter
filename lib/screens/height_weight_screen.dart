@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,6 +12,7 @@ class HeightWeightScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final String? selectedGender = Get.arguments as String?;
     final controller = Get.put(HeightWeightController());
     controller.initialize(selectedGender);
@@ -33,7 +35,7 @@ class HeightWeightScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(w * 0.04),
                         child: Text(
-                          "Select Height (cm)",
+                          l10n.selectHeightCm,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: w * 0.04,
@@ -71,7 +73,7 @@ class HeightWeightScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.all(w * 0.04),
                         child: Text(
-                          "Select Weight (kg)",
+                          l10n.selectWeightKg,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: w * 0.04,
@@ -115,10 +117,10 @@ class HeightWeightScreen extends StatelessWidget {
                       ),
                       children: [
                         TextSpan(
-                          text: "More\n",
+                          text: "${l10n.moreAboutYouPrefix}\n",
                           style: TextStyle(color: theme.primaryColor),
                         ),
-                        const TextSpan(text: "About You"),
+                        TextSpan(text: l10n.moreAboutYouSuffix),
                       ],
                     ),
                   ),
@@ -144,7 +146,7 @@ class HeightWeightScreen extends StatelessWidget {
                         SizedBox(width: w * 0.02),
                         Expanded(
                           child: Text(
-                            "To ensure accuracy, please input your correct height and weight. We never share this data.",
+                            l10n.heightWeightHint,
                             style: TextStyle(
                               fontSize: w * 0.035,
                               color: theme.brightness == Brightness.dark
@@ -163,7 +165,7 @@ class HeightWeightScreen extends StatelessWidget {
                 // ── Height picker ──
                 Center(
                   child: Text(
-                    "Height",
+                    l10n.height,
                     style: TextStyle(
                       fontSize: w * 0.04,
                       color: theme.textTheme.bodyMedium?.color,
@@ -200,7 +202,7 @@ class HeightWeightScreen extends StatelessWidget {
                 // ── Weight picker ──
                 Center(
                   child: Text(
-                    "Weight",
+                    l10n.weight,
                     style: TextStyle(
                       fontSize: w * 0.04,
                       color: theme.textTheme.bodyMedium?.color,
@@ -256,7 +258,7 @@ class HeightWeightScreen extends StatelessWidget {
                         await prefs.setBool('isFirstLaunch', false);
                       }),
                       child: Text(
-                        "START",
+                        l10n.start,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: w * 0.045,

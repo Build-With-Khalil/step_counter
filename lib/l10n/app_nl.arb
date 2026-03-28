@@ -1,0 +1,222 @@
+{
+  "@@locale": "nl",
+
+  "appTagline": "UW\nGEZONDHEIDS-\nPARTNER",
+  "appSubtitle": "Eenvoudig, ontspannend, gezond",
+
+  "onboardingPage1Title": "Elke Stap Telt",
+  "onboardingPage1Subtitle": "Volg uw dagelijkse beweging in realtime.",
+  "onboardingPage2Title": "Visualiseer Voortgang",
+  "onboardingPage2Subtitle": "Zie uw consistentie in één oogopslag.",
+  "onboardingPage3Title": "Uw Fitness Hub",
+  "onboardingPage3Subtitle": "Alles wat u nodig heeft om fit te blijven.",
+  "onboardingPage4Title": "Stel Uw Doel In",
+  "onboardingPage4Subtitle": "Pas uw dagelijks doel aan.",
+  "getStarted": "Aan de slag",
+  "nextStep": "Volgende Stap",
+  "startJourney": "Reis Starten  →",
+  "skip": "Overslaan",
+  "october": "Oktober",
+  "daysActive": "22 Actieve Dagen",
+  "stepsToday": "STAPPEN VANDAAG",
+  "stepsDaily": "DAGELIJKSE STAPPEN",
+  "workouts": "Trainingen",
+  "heartRate": "Hartslag",
+  "metrics": "Statistieken",
+  "reports": "Rapporten",
+
+  "permissionsRequired": "Toestemmingen Vereist",
+  "permissionsDialogContent": "Om uw stappen bij te houden en motiverende meldingen te sturen, sta Activiteits- en Meldingstoestemmingen toe.",
+  "notNow": "Nu Niet",
+  "allow": "Toestaan",
+  "permissionsNotGranted": "Toestemmingen niet verleend. Sommige functies werken mogelijk niet.",
+  "permissions": "Toestemmingen",
+
+  "setDailyStepGoal": "Dagelijks Stappendoel Instellen",
+  "failedToLoadData": "Gegevens laden mislukt",
+  "retry": "Opnieuw proberen",
+  "achievementProgress": "Voortgang Prestaties",
+  "bmiNotSet": "BMI: Niet ingesteld",
+  "setHeightWeight": "Stel lengte en gewicht in bij profiel",
+  "dailyReminder": "Dagelijkse Herinnering",
+  "dailyReminderSubtitle": "Ontvang elke ochtend om 9 uur een motiverend citaat",
+  "resetTodaysSteps": "Stappen van Vandaag Resetten",
+  "resetAllData": "Alle Gegevens Resetten",
+  "fitnessSection": "Fitnesssectie",
+  "absTitle": "Buikspieren",
+  "absSubtitle": "Slechts Vier Oefeningen voor de Buik",
+  "loseWeight": "Afvallen",
+  "loseWeightSubtitle": "Verbrand vet effectiever",
+  "reduceStress": "Stress Verminderen",
+  "reduceStressSubtitle": "Heldere geest, ontspannen en mediteren",
+  "morningWarmup": "Ochtendopwarming",
+  "morningWarmupSubtitle": "Frisse lucht en Vitamine D opdoen",
+
+  "todaysTotalSteps": "Totale Stappen van Vandaag",
+  "mile": "Mijl",
+  "kcal": "Kcal",
+  "time": "Tijd",
+  "daysStreak": "Dagen Achter Elkaar",
+  "goalSteps": "Doel: {goal} stappen",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "Nog {remaining} stappen",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "Prestaties",
+  "thisMonth": "Deze Maand",
+  "totalSteps": "Totale Stappen",
+  "monthlyProgress": "Maandelijkse Voortgang",
+
+  "editProfile": "Profiel Bewerken",
+  "theme": "Thema",
+  "appLinkCopied": "App-link gekopieerd naar klembord",
+  "instruction": "Instructie",
+  "instructionSubtitle": "Handleiding voor het gebruik van de app",
+  "shareApp": "App Delen",
+  "shareAppSubtitle": "Deel Onze App met Vrienden",
+  "faqs": "Veelgestelde Vragen",
+  "faqsSubtitle": "Veelgestelde Vragen",
+  "privacyPolicy": "Privacybeleid",
+  "privacyPolicySubtitle": "Privacybeleid van de App",
+  "nameLabel": "Naam",
+  "ageLabel": "Leeftijd",
+  "cancel": "Annuleren",
+  "save": "Opslaan",
+  "profileUpdated": "Profiel Bijgewerkt",
+  "profileSavedMessage": "Uw profiel is succesvol opgeslagen.",
+  "invalidInput": "Ongeldige Invoer",
+  "invalidInputMessage": "Voer een geldige naam en leeftijd in.",
+  "loading": "Laden...",
+  "notSet": "Niet ingesteld",
+  "ageDisplay": "Leeftijd: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "Uw Geslacht",
+  "genderHint": "We hebben het nodig om uw staplengte en calorieverbranding te meten.",
+  "male": "Man",
+  "female": "Vrouw",
+  "next": "VOLGENDE",
+  "selectPrefix": "Selecteer",
+
+  "moreAboutYouPrefix": "Meer",
+  "moreAboutYouSuffix": "Over U",
+  "heightWeightHint": "Voor nauwkeurigheid voert u uw juiste lengte en gewicht in. We delen deze gegevens nooit.",
+  "height": "Lengte",
+  "weight": "Gewicht",
+  "selectHeightCm": "Selecteer Lengte (cm)",
+  "selectWeightKg": "Selecteer Gewicht (kg)",
+  "start": "STARTEN",
+
+  "absWorkouts": "Buikspiertrainingen",
+  "beginner": "Beginner",
+  "intermediate": "Gemiddeld",
+  "advanced": "Gevorderd",
+  "advance": "Vorderen",
+  "duration15mins": "15 min",
+  "duration30mins": "30 min",
+  "duration40plusMins": "40+ min",
+
+  "introduction": "Introductie",
+  "level": "Niveau",
+  "duration": "Duur",
+
+  "absBeginnerIntro": "Deze beginnerstraining voor de buikspieren is ontworpen om uw kern te activeren, de stabiliteit te verbeteren en een fundamentele kracht op te bouwen. Perfect om uw fitnessreis te beginnen.",
+  "burnt45kcal": "Verbrand ~45 kcal",
+  "time10to15min": "Tijd: 10–15 min",
+
+  "absIntermediateIntro": "Deze gemiddelde buikspiertraining bouwt kernkracht op met langere houdingen, meer herhalingen en dynamische bewegingen. Ideaal om voorbij de basis te komen.",
+  "burnt85to100kcal": "Verbrand ~85-100 kcal",
+  "time20to30min": "Tijd: 20–30 min",
+
+  "absAdvancedIntro": "Deze gevorderde buikspiertraining richt zich op diepe kernspieren met hoge herhalende bewegingen, statische houdingen en dynamische transities. Perfect voor het opbouwen van definitie, kracht en uithoudingsvermogen.",
+  "burnt130to160kcal": "Verbrand ~130-160 kcal",
+  "time40plusMin": "Tijd: 40+ min",
+
+  "loseWeightBeginnerIntro": "Deze beginners vetverbranding training is ontworpen om uw hartslag te verhogen, het metabolisme te stimuleren en uw gewichtsverlies reis te beginnen. Geen uitrusting nodig.",
+  "burnt60kcal": "Verbrand ~60 kcal",
+  "time12to18min": "Tijd: 12–18 min",
+
+  "loseWeightIntermediateIntro": "Deze gemiddelde vetverbranding training intensiveert elke beweging om uw uithoudingsvermogen te testen en vetverlies te versnellen. Geen uitrusting nodig—alleen toewijding.",
+  "burnt90to100kcal": "Verbrand ~90-100 kcal",
+  "time25to30min": "Tijd: 25–30 min",
+
+  "loseWeightAdvancedIntro": "Deze gevorderde vetverbranding training is gebouwd om uw uithoudingsvermogen, kracht en coördinatie te testen. Verwacht hoge herhalingen, explosieve bewegingen en serieus zweten.",
+  "burnt140to160kcal": "Verbrand ~140-160 kcal",
+
+  "reduceStressIntro": "In deze Stress Verminderen training oefent u Yoga, gaat u 's ochtends wandelen en volgt u een gezond dieet. Yoga kalmeert uw geest en lichaam, wandelen verfrist en verbetert de stemming, en een uitgebalanceerd dieet houdt u licht, gezond en stressvrij.",
+  "burnt70kcal": "Verbrand ~70 kcal",
+
+  "morningWarmupIntro": "Deze ochtendopwarming omvat wandelen, jumping jacks, push-ups en schouderstretches om de bloedsomloop te verbeteren, stijfheid los te maken en u voor de dag te energiseren.",
+  "burnt60to80kcal": "Verbrand ~60–80 kcal",
+  "time10to15minWarmup": "Tijd: 10–15 min",
+
+  "achievementsTitle": "Prestaties",
+  "unlocked": "Ontgrendeld",
+  "locked": "Vergrendeld",
+  "unlockedBadge": "Ontgrendeld: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "Niveau {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "Verzamelde Trofeeën",
+  "noTrophiesYet": "Nog geen trofeeën verzameld. Loop 10.000 stappen op een dag om er één te verdienen!",
+
+  "appGuide": "App Handleiding",
+  "dailyWeeklyTracking": "🏃 Dagelijkse en Wekelijkse Tracking",
+  "dailyWeeklyTrackingDesc": "Op het eerste hoofdscherm ziet u bovenaan uw dagelijkse stappentelling live. Daaronder toont een wekelijks staafdiagram uw voortgang voor elke dag van de week.",
+  "monthlyReportAchievements": "📊 Maandrapport en Prestaties",
+  "monthlyReportDesc": "Het tweede scherm geeft u een volledige maandelijkse uitsplitsing van uw stappen. U kunt het record van elke dag bekijken en uw totale afstand, calorieën en duur zien. Prestaties worden hier ook weergegeven, met voortgang naar het ontgrendelen van badges.",
+  "healthFitness": "💪 Gezondheid en Fitness",
+  "healthFitnessDesc": "Op het derde scherm kunt u uw dagelijkse stappendoel instellen en uw BMI bijhouden. U vindt ook fitnessroutines zoals:\n• Buikspiertrainingen\n• Gewichtsverliesoefeningen\n• Stressvermindering\n• Ochtendopwarmingen\n\nElk gedeelte bevat geschatte duur en verbrande calorieën.",
+  "settingsProfile": "⚙️ Instellingen en Profiel",
+  "settingsProfileDesc": "Het vierde scherm bevat uw persoonlijke informatie zoals lengte en geslacht. U kunt wisselen tussen lichte en donkere thema's en uw stappengegevens indien nodig resetten.",
+  "tips": "🎯 Tips",
+  "tipsDesc": "• Tik op badges om hun beschrijvingen te zien.\n• Confetti viert uw voortgang wanneer u prestaties ontgrendelt.\n• Gebruik het gezondheidsscherm dagelijks om consistent en gemotiveerd te blijven.",
+  "gotIt": "Begrepen!",
+
+  "privacyPolicyTitle": "Privacybeleid",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited is toegewijd aan het beschermen van uw privacy. Onze app, Pedometer – Walk & Track, is ontworpen om u te helpen uw dagelijkse activiteit te monitoren zonder uw persoonlijke gegevens in gevaar te brengen. We verzamelen, slaan of verzenden geen gebruikersinformatie—nooit.",
+  "privacyPolicyPara2": "We vragen geen toegang tot uw naam, e-mail, locatie, contacten of andere persoonlijke identificatoren. Alle stappentracking en voortgangsgegevens worden lokaal op uw apparaat verwerkt en verlaten het nooit. Er is geen cloudsynchronisatie, geen analyses en geen tracking door derden.",
+  "privacyPolicyPara3": "De app kan toestemming vragen om toegang te krijgen tot sensoren voor fysieke activiteit en meldingen te sturen. Deze worden uitsluitend gebruikt om uw stappen te tellen en motiverende berichten te bezorgen. Er worden geen gegevens extern gedeeld en er wordt geen informatie opgeslagen buiten uw apparaat.",
+  "privacyPolicyPara4": "We gebruiken geen diensten van derden, SDK's of API's die gebruikersgegevens verzamelen. Uw ervaring met Pedometer – Walk & Track is volledig privé en zelfvoorzienend.",
+  "privacyPolicyPara5": "Onze app is geschikt voor alle leeftijdsgroepen en verzamelt bewust geen gegevens van kinderen. Omdat we geen informatie verzamelen, is er geen risico op misbruik of ongeautoriseerde toegang.",
+  "privacyPolicyPara6": "Als we wijzigingen aanbrengen in de app die invloed hebben op de werking of interactie met uw apparaat, zullen we ook dit Privacybeleid bijwerken. We zijn toegewijd om u bij elke stap geïnformeerd en beschermd te houden.",
+  "privacyPolicyContact": "Voor vragen of ondersteuning kunt u contact met ons opnemen via:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "Telt deze app mijn stappen?",
+  "faq1Answer": "Ja, Pedometer Walk & Track telt uw stappen nauwkeurig gedurende de dag. Het houdt ook afstand, verbrande calorieën en actieve tijd bij om u een volledig overzicht van uw activiteit te geven.",
+  "faq2Question": "Heeft de app gewichtsverliesoefeningen?",
+  "faq2Answer": "Ja, de app bevat eenvoudige gewichtsverlies- en fitnessoefeningen. U kunt ze onderaan het Gezondheidsscherm vinden, ontworpen om uw dagelijkse trainingsroutine te ondersteunen.",
+  "faq3Question": "Bewaart de app maandelijkse records van mijn stappen?",
+  "faq3Answer": "Ja, de app slaat uw dagelijkse, wekelijkse en maandelijkse stappenrecords op. Hierdoor kunt u uw voortgang in de loop van de tijd bekijken en gemotiveerd blijven om uw fitnessdoelen te bereiken.",
+  "faq4Question": "Slaat u mijn persoonlijke gegevens op?",
+  "faq4Answer": "Nee, we slaan geen van uw persoonlijke gegevens op servers op. Al uw stappentelling, records en activiteitsdetails worden veilig alleen op uw apparaat opgeslagen. Dit garandeert uw privacy en volledige controle over uw informatie.",
+  "faq5Question": "Deelt de app mijn gegevens met iemand?",
+  "faq5Answer": "Nee, uw gegevens worden nooit gedeeld met iemand. Omdat Pedometer Walk & Track uw persoonlijke gegevens niet verzamelt, is er niets te delen. U kunt de app met volledig vertrouwen en gemoedsrust gebruiken.",
+
+  "dailyRecords": "Dagelijkse Records",
+  "steps": "Stappen",
+  "miles": "Mijlen",
+  "monthlyCalendar": "Maandkalender"
+}

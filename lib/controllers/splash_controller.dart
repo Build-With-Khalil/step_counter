@@ -1,12 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../controllers/onboarding_controller.dart';
 import '../screens/homepage.dart';
+import '../screens/language_selection_screen.dart';
 import '../screens/onboarding_screen.dart';
-import '../utils/ad_helper.dart';
-import '../widgets/ads_manager.dart';
 
 class SplashController extends GetxController with GetTickerProviderStateMixin {
   late AnimationController animationController;
@@ -20,12 +18,6 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
       Get.put(OnboardingController());
     }
 
-    // ── PRELOAD NATIVE ADS ─────────────────────────────────────────────
-    if (!kIsWeb) {
-      // Preload multiple sizes
-      AdsManager.instance.preloadNativeAd(AdHelper.nativeAdUnitId);
-    }
-
     animationController = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 5),
@@ -33,8 +25,12 @@ class SplashController extends GetxController with GetTickerProviderStateMixin {
 
     Future.delayed(const Duration(seconds: 5), () async {
       final prefs = await SharedPreferences.getInstance();
+      final hasSelectedLanguage = prefs.containsKey('selectedLocale');
       final isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
-      if (isFirstLaunch) {
+
+      if (!hasSelectedLanguage) {
+        Get.off(() => const LanguageSelectionScreen());
+      } else if (isFirstLaunch) {
         Get.off(() => const OnBoardingScreen());
       } else {
         Get.off(() => const HomePage());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import '../controllers/daily_steps_show_controller.dart';
 import '../utils/ad_helper.dart';
@@ -20,12 +21,13 @@ class DailyStepShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: const Text('Daily Records'),
+        title: Text(l10n.dailyRecords),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -61,7 +63,7 @@ class DailyStepShow extends StatelessWidget {
                           Text("${controller.steps.value}",
                               style: const TextStyle(fontSize: 40)),
                           const SizedBox(width: 10),
-                          const Text('Steps'),
+                          Text(l10n.steps),
                         ],
                       ),
                       const SizedBox(height: 12),
@@ -69,11 +71,11 @@ class DailyStepShow extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                              "${controller.distance.value.toStringAsFixed(2)} \nMiles"),
+                              "${controller.distance.value.toStringAsFixed(2)} \n${l10n.miles}"),
                           Text(
-                              "${controller.calories.value.toStringAsFixed(1)} \nKcal"),
+                              "${controller.calories.value.toStringAsFixed(1)} \n${l10n.kcal}"),
                           Text(
-                              "${controller.durationMinutes.value ~/ 60}h ${controller.durationMinutes.value % 60}m \nTime"),
+                              "${controller.durationMinutes.value ~/ 60}h ${controller.durationMinutes.value % 60}m \n${l10n.time}"),
                         ],
                       ),
                     ],
@@ -86,9 +88,9 @@ class DailyStepShow extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Text(
-                    "Monthly Calendar",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  Text(
+                    l10n.monthlyCalendar,
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Image.asset('assets/icons/calendar.png', width: 30),
                 ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:step_counter/screens/privacy_policy.dart';
@@ -16,24 +17,25 @@ import 'instruction_screen.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  Future<String> _loadPersonalInfo() async {
+  Future<String> _loadPersonalInfo(AppLocalizations l10n) async {
     try {
-      final gender = await StorageService.getGender() ?? 'Not set';
+      final gender = await StorageService.getGender() ?? l10n.notSet;
       final height = await StorageService.getHeight();
       final weight = await StorageService.getWeight();
 
-      final heightStr = height != null ? "${height.toStringAsFixed(1)} cm" : "Not set";
-      final weightStr = weight != null ? "${weight.toStringAsFixed(1)} kg" : "Not set";
+      final heightStr = height != null ? "${height.toStringAsFixed(1)} cm" : l10n.notSet;
+      final weightStr = weight != null ? "${weight.toStringAsFixed(1)} kg" : l10n.notSet;
 
       return "$gender • $heightStr • $weightStr";
     } catch (e) {
-      return "Loading...";
+      return l10n.loading;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final isDark = theme.brightness == Brightness.dark;
     final themeController = Get.find<ThemeController>();
     final profileController = Get.find<ProfileController>();
@@ -74,16 +76,16 @@ class ProfilePage extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          'Age: ${profileController.age.value}',
+                          l10n.ageDisplay(profileController.age.value),
                           style: theme.textTheme.bodyMedium?.copyWith(
                             fontFamily: 'Nata',
                           ),
                         ),
                         const SizedBox(height: 10),
                         FutureBuilder<String>(
-                          future: _loadPersonalInfo(),
+                          future: _loadPersonalInfo(l10n),
                           builder: (context, snapshot) {
-                            final subtitle = snapshot.data ?? 'Loading...';
+                            final subtitle = snapshot.data ?? l10n.loading;
                             return Text(
                               subtitle,
                               style: theme.textTheme.bodyMedium?.copyWith(
@@ -102,7 +104,7 @@ class ProfilePage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
-                          child: const Text('Edit Profile'),
+                          child: Text(l10n.editProfile),
                         ),
                       ],
                     );
@@ -117,7 +119,7 @@ class ProfilePage extends StatelessWidget {
                     children: [
                       Obx(() => ListTile(
                         leading: Image.asset('assets/icons/light.png', width: 30),
-                        title: const Text('Theme'),
+                        title: Text(l10n.theme),
                         trailing: IconButton(
                           icon: Icon(
                             themeController.isDarkMode.value ? Icons.light_mode : Icons.dark_mode,
@@ -129,29 +131,29 @@ class ProfilePage extends StatelessWidget {
                       const Divider(),
                       SettingsTile(
                         imagePath: 'assets/icons/guidance.png',
-                        title: 'Instruction',
-                        subtitle: 'Guidance for using app',
+                        title: l10n.instruction,
+                        subtitle: l10n.instructionSubtitle,
                         onTap: () => Get.to(() => InstructionScreen()),
                       ),
                       const Divider(),
                       SettingsTile(
                         imagePath: 'assets/icons/share.png',
-                        title: 'Share App',
-                        subtitle: 'Share Our App With Friends',
-                        onTap: () => _shareApp(context),
+                        title: l10n.shareApp,
+                        subtitle: l10n.shareAppSubtitle,
+                        onTap: () => _shareApp(context, l10n),
                       ),
                       const Divider(),
                       SettingsTile(
                         imagePath: 'assets/icons/faq.png',
-                        title: 'FAQs',
-                        subtitle: 'Frequently Asked Questions',
+                        title: l10n.faqs,
+                        subtitle: l10n.faqsSubtitle,
                         onTap: () { AdManager.onNavigationAction(); Get.to(() => FaqsScreen()); },
                       ),
                       const Divider(),
                       SettingsTile(
                         imagePath: 'assets/icons/privacy_policy.png',
-                        title: 'Privacy Policy',
-                        subtitle: "App's Privacy Policy",
+                        title: l10n.privacyPolicy,
+                        subtitle: l10n.privacyPolicySubtitle,
                         onTap: () { AdManager.onNavigationAction(); Get.to(() => PrivacyScreen()); },
                       ),
                     ],
@@ -182,7 +184,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Future<void> _shareApp(BuildContext context) async {
+  Future<void> _shareApp(BuildContext context, AppLocalizations l10n) async {
     const message = '''
 Check out Pedometer – Walk & Track by NSB Solutions Pvt Ltd! 🚶‍♂️✨
 
@@ -199,7 +201,7 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
       await Clipboard.setData(const ClipboardData(text: message));
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('App link copied to clipboard')),
+          SnackBar(content: Text(l10n.appLinkCopied)),
         );
       }
     }
@@ -212,6 +214,7 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
 
   Future<void> _showEditProfileDialog(BuildContext context, ProfileController controller) async {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final nameController = TextEditingController(text: controller.name.value);
     final ageController = TextEditingController(text: controller.age.value.toString());
 
@@ -223,7 +226,7 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
             return AlertDialog(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               backgroundColor: theme.brightness == Brightness.dark ? Colors.grey[900] : Colors.white,
-              title: const Text('Edit Profile'),
+              title: Text(l10n.editProfile),
               content: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -231,7 +234,7 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
                     TextField(
                       controller: nameController,
                       decoration: InputDecoration(
-                        labelText: 'Name',
+                        labelText: l10n.nameLabel,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -241,7 +244,7 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
                     TextField(
                       controller: ageController,
                       decoration: InputDecoration(
-                        labelText: 'Age',
+                        labelText: l10n.ageLabel,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -254,7 +257,7 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
               actions: [
                 TextButton(
                   onPressed: () => Navigator.of(dialogContext).pop(),
-                  child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
+                  child: Text(l10n.cancel, style: const TextStyle(color: Colors.grey)),
                 ),
                 ElevatedButton(
                   onPressed: () async {
@@ -266,8 +269,8 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
                         Navigator.of(dialogContext).pop();
                       }
                       Get.snackbar(
-                        'Profile Updated',
-                        'Your profile has been saved successfully.',
+                        l10n.profileUpdated,
+                        l10n.profileSavedMessage,
                         snackPosition: SnackPosition.BOTTOM,
                         backgroundColor: Colors.green.shade400,
                         colorText: Colors.white,
@@ -278,8 +281,8 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
                       );
                     } else {
                       Get.snackbar(
-                        'Invalid Input',
-                        'Please enter a valid name and age.',
+                        l10n.invalidInput,
+                        l10n.invalidInputMessage,
                         snackPosition: SnackPosition.BOTTOM,
                         backgroundColor: Colors.red.shade400,
                         colorText: Colors.white,
@@ -289,7 +292,7 @@ https://play.google.com/store/apps/details?id=com.nsb.pedometer
                       );
                     }
                   },
-                  child: const Text('Save'),
+                  child: Text(l10n.save),
                 ),
               ],
             );
