@@ -1,0 +1,222 @@
+{
+  "@@locale": "sw",
+
+  "appTagline": "MSHIRIKA\nWAKO WA\nAFYA",
+  "appSubtitle": "Rahisi, kupumzika, afya njema",
+
+  "onboardingPage1Title": "Kila Hatua Inahesabu",
+  "onboardingPage1Subtitle": "Fuatilia mwendo wako wa kila siku kwa wakati halisi.",
+  "onboardingPage2Title": "Ona Maendeleo",
+  "onboardingPage2Subtitle": "Angalia uthabiti wako kwa haraka.",
+  "onboardingPage3Title": "Kituo Chako cha Mazoezi",
+  "onboardingPage3Subtitle": "Kila kitu unachohitaji kubaki na afya nzuri.",
+  "onboardingPage4Title": "Weka Lengo Lako",
+  "onboardingPage4Subtitle": "Badilisha lengo lako la kila siku.",
+  "getStarted": "Anza",
+  "nextStep": "Hatua Inayofuata",
+  "startJourney": "Anza Safari  →",
+  "skip": "Ruka",
+  "october": "Oktoba",
+  "daysActive": "Siku 22 za Kufanya Kazi",
+  "stepsToday": "HATUA ZA LEO",
+  "stepsDaily": "HATUA ZA KILA SIKU",
+  "workouts": "Mazoezi",
+  "heartRate": "Mapigo ya Moyo",
+  "metrics": "Vipimo",
+  "reports": "Ripoti",
+
+  "permissionsRequired": "Ruhusa Zinahitajika",
+  "permissionsDialogContent": "Ili kufuatilia hatua zako na kutuma arifa za motisha, tafadhali ruhusu ruhusa za Shughuli na Arifa.",
+  "notNow": "Si Sasa",
+  "allow": "Ruhusu",
+  "permissionsNotGranted": "Ruhusa hazijapokelewa. Baadhi ya vipengele vinaweza visifanye kazi.",
+  "permissions": "Ruhusa",
+
+  "setDailyStepGoal": "Weka Lengo la Hatua za Kila Siku",
+  "failedToLoadData": "Imeshindwa kupakia data",
+  "retry": "Jaribu Tena",
+  "achievementProgress": "Maendeleo ya Mafanikio",
+  "bmiNotSet": "BMI: Haijawekwa",
+  "setHeightWeight": "Weka urefu na uzito katika profili",
+  "dailyReminder": "Ukumbusho wa Kila Siku",
+  "dailyReminderSubtitle": "Pokea nukuu ya motisha kila asubuhi saa 9",
+  "resetTodaysSteps": "Weka Upya Hatua za Leo",
+  "resetAllData": "Weka Upya Data Yote",
+  "fitnessSection": "Sehemu ya Mazoezi",
+  "absTitle": "Mazoezi ya Tumbo",
+  "absSubtitle": "Harakati Nne tu kwa Tumbo",
+  "loseWeight": "Punguza Uzito",
+  "loseWeightSubtitle": "Choma mafuta kwa ufanisi zaidi",
+  "reduceStress": "Punguza Msongo",
+  "reduceStressSubtitle": "Akili safi, pumzika na kutafakari",
+  "morningWarmup": "Joto la Asubuhi",
+  "morningWarmupSubtitle": "Pata hewa safi na Vitamini D",
+
+  "todaysTotalSteps": "Jumla ya Hatua za Leo",
+  "mile": "Maili",
+  "kcal": "Kcal",
+  "time": "Wakati",
+  "daysStreak": "Siku Mfululizo",
+  "goalSteps": "Lengo: hatua {goal}",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "Hatua {remaining} zimebaki",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "Mafanikio",
+  "thisMonth": "Mwezi Huu",
+  "totalSteps": "Jumla ya Hatua",
+  "monthlyProgress": "Maendeleo ya Mwezi",
+
+  "editProfile": "Hariri Profili",
+  "theme": "Mandhari",
+  "appLinkCopied": "Kiungo cha programu kimenakilishwa kwenye ubao wa kunakili",
+  "instruction": "Maelekezo",
+  "instructionSubtitle": "Mwongozo wa kutumia programu",
+  "shareApp": "Shiriki Programu",
+  "shareAppSubtitle": "Shiriki Programu Yetu na Marafiki",
+  "faqs": "Maswali ya Mara kwa Mara",
+  "faqsSubtitle": "Maswali Yanayoulizwa Mara kwa Mara",
+  "privacyPolicy": "Sera ya Faragha",
+  "privacyPolicySubtitle": "Sera ya Faragha ya Programu",
+  "nameLabel": "Jina",
+  "ageLabel": "Umri",
+  "cancel": "Ghairi",
+  "save": "Hifadhi",
+  "profileUpdated": "Profili Imesasishwa",
+  "profileSavedMessage": "Profili yako imehifadhiwa kwa mafanikio.",
+  "invalidInput": "Ingizo Batili",
+  "invalidInputMessage": "Tafadhali ingiza jina na umri sahihi.",
+  "loading": "Inapakia...",
+  "notSet": "Haijawekwa",
+  "ageDisplay": "Umri: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "Jinsia Yako",
+  "genderHint": "Tunahitaji ili kupima urefu wa hatua yako na uchomaji wa kalori.",
+  "male": "Mwanaume",
+  "female": "Mwanamke",
+  "next": "INAYOFUATA",
+  "selectPrefix": "Chagua",
+
+  "moreAboutYouPrefix": "Zaidi",
+  "moreAboutYouSuffix": "Kukuhusu",
+  "heightWeightHint": "Kuhakikisha usahihi, tafadhali ingiza urefu na uzito wako sahihi. Hatushiriki data hii kamwe.",
+  "height": "Urefu",
+  "weight": "Uzito",
+  "selectHeightCm": "Chagua Urefu (cm)",
+  "selectWeightKg": "Chagua Uzito (kg)",
+  "start": "ANZA",
+
+  "absWorkouts": "Mazoezi ya Tumbo",
+  "beginner": "Mwanzo",
+  "intermediate": "Kati",
+  "advanced": "Juu",
+  "advance": "Endelea",
+  "duration15mins": "dakika 15",
+  "duration30mins": "dakika 30",
+  "duration40plusMins": "dakika 40+",
+
+  "introduction": "Utangulizi",
+  "level": "Kiwango",
+  "duration": "Muda",
+
+  "absBeginnerIntro": "Mazoezi haya ya tumbo kwa waanziaji yameundwa kuamsha misuli yako ya msingi, kuboresha uthabiti, na kujenga nguvu ya msingi. Kamili kwa kuanza safari yako ya mazoezi.",
+  "burnt45kcal": "Imechomwa ~kalori 45",
+  "time10to15min": "Muda: dakika 10–15",
+
+  "absIntermediateIntro": "Mazoezi haya ya tumbo ya kati hujenga nguvu ya msingi kwa kushikilia kwa muda mrefu, marudio zaidi, na harakati za nguvu. Bora kwa kupita zaidi ya misingi.",
+  "burnt85to100kcal": "Imechomwa ~kalori 85-100",
+  "time20to30min": "Muda: dakika 20–30",
+
+  "absAdvancedIntro": "Mazoezi haya ya tumbo ya juu yanalenga misuli ya msingi ya ndani kwa harakati za marudio mengi, kushikilia tuli, na mabadiliko ya nguvu. Kamili kwa kujenga ufafanuzi, nguvu, na uvumilivu.",
+  "burnt130to160kcal": "Imechomwa ~kalori 130-160",
+  "time40plusMin": "Muda: dakika 40+",
+
+  "loseWeightBeginnerIntro": "Mazoezi haya ya kuchoma mafuta kwa waanziaji yameundwa kuinua kiwango cha moyo, kuharakisha kimetaboliki, na kuanza safari yako ya kupunguza uzito. Hakuna vifaa vinavyohitajika.",
+  "burnt60kcal": "Imechomwa ~kalori 60",
+  "time12to18min": "Muda: dakika 12–18",
+
+  "loseWeightIntermediateIntro": "Mazoezi haya ya kuchoma mafuta ya kati huyaongeza kila harakati ili kupinga uvumilivu wako na kuharakisha upotezaji wa mafuta. Hakuna vifaa vinavyohitajika—ni kujitolea tu.",
+  "burnt90to100kcal": "Imechomwa ~kalori 90-100",
+  "time25to30min": "Muda: dakika 25–30",
+
+  "loseWeightAdvancedIntro": "Mazoezi haya ya kuchoma mafuta ya juu yameundwa kupinga uvumilivu, nguvu, na uratibu wako. Tarajia marudio mengi, harakati za mlipuko, na jasho kubwa.",
+  "burnt140to160kcal": "Imechomwa ~kalori 140-160",
+
+  "reduceStressIntro": "Katika mazoezi haya ya Kupunguza Msongo, utafanya Yoga, kwenda kutembea asubuhi, na kufuata lishe safi. Yoga husaidia kutuliza akili na mwili, kutembea huburudisha na kuboresha hisia, na lishe bora hukufanya uwe mwepesi, na afya njema, na bila msongo.",
+  "burnt70kcal": "Imechomwa ~kalori 70",
+
+  "morningWarmupIntro": "Joto hili la Asubuhi lina kutembea, kuruka, misukosuko, na kunyoosha mabega ili kuboresha mzunguko wa damu, kuondoa ugumu, na kukupa nguvu kwa siku.",
+  "burnt60to80kcal": "Imechomwa ~kalori 60–80",
+  "time10to15minWarmup": "Muda: dakika 10–15",
+
+  "achievementsTitle": "Mafanikio",
+  "unlocked": "Imefunguliwa",
+  "locked": "Imefungwa",
+  "unlockedBadge": "Imefunguliwa: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "Kiwango {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "Tuzo Zilizokusanywa",
+  "noTrophiesYet": "Hakuna tuzo zilizokusanywa bado. Tembea hatua 10,000 kwa siku moja kupata moja!",
+
+  "appGuide": "Mwongozo wa Programu",
+  "dailyWeeklyTracking": "🏃 Ufuatiliaji wa Kila Siku na Wiki",
+  "dailyWeeklyTrackingDesc": "Kwenye skrini ya kwanza kuu, utaona idadi yako ya hatua ya kila siku moja kwa moja juu. Chini yake, chati ya bar ya wiki huonyesha maendeleo yako kwa kila siku ya wiki.",
+  "monthlyReportAchievements": "📊 Ripoti ya Mwezi na Mafanikio",
+  "monthlyReportDesc": "Skrini ya pili inakupa muhtasari kamili wa hatua zako za mwezi. Unaweza kuangalia rekodi ya kila siku na kuona jumla ya umbali, kalori, na muda. Mafanikio pia yanaonyeshwa hapa, na maendeleo ya kufungua beji.",
+  "healthFitness": "💪 Afya na Mazoezi",
+  "healthFitnessDesc": "Kwenye skrini ya tatu, unaweza kuweka lengo la hatua za kila siku na kufuatilia BMI yako. Pia utapata programu za mazoezi kama:\n• Mazoezi ya tumbo\n• Mazoezi ya kupunguza uzito\n• Kupunguza msongo\n• Joto la asubuhi\n\nKila sehemu ina muda wa makadirio na kalori zilizochomwa.",
+  "settingsProfile": "⚙️ Mipangilio na Profili",
+  "settingsProfileDesc": "Skrini ya nne ina maelezo yako ya kibinafsi kama urefu na jinsia. Unaweza kubadilisha kati ya mandhari nyepesi na nyeusi, na kuweka upya data yako ya hatua ikiwa inahitajika.",
+  "tips": "🎯 Vidokezo",
+  "tipsDesc": "• Gonga beji kuona maelezo yao.\n• Confetti husherehekea maendeleo yako unapofungua mafanikio.\n• Tumia skrini ya afya kila siku ili kubaki thabiti na motishwa.",
+  "gotIt": "Nimeelewa!",
+
+  "privacyPolicyTitle": "Sera ya Faragha",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited imejitolea kulinda faragha yako. Programu yetu, Pedometer – Walk & Track, imeundwa kukusaidia kufuatilia shughuli zako za kila siku bila kuathiri data yako ya kibinafsi. Hatukusanyi, kuhifadhi, au kusambaza taarifa yoyote ya mtumiaji—kamwe.",
+  "privacyPolicyPara2": "Hatuombi wala kufikia jina lako, barua pepe, mahali ulipo, anwani, au vitambulisho vingine vya kibinafsi. Data yote ya ufuatiliaji wa hatua na maendeleo inashughulikiwa ndani ya kifaa chako na haiacha kamwe. Hakuna usawazishaji wa wingu, takwimu, au ufuatiliaji wa wahusika wa tatu.",
+  "privacyPolicyPara3": "Programu inaweza kuomba ruhusa ya kufikia vihisi vya shughuli za kimwili na kutuma arifa. Hivi vinatumika tu kuhesabu hatua zako na kutoa ujumbe wa motisha. Hakuna data inayoshirikiwa nje, na hakuna taarifa inayohifadhiwa zaidi ya kifaa chako.",
+  "privacyPolicyPara4": "Hatutumii huduma za wahusika wa tatu, SDK, au API zinazokusanya data ya watumiaji. Uzoefu wako na Pedometer – Walk & Track ni wa faragha kabisa na unaojitegemea.",
+  "privacyPolicyPara5": "Programu yetu inafaa kwa vikundi vyote vya umri na haikusanyi kwa makusudi data yoyote kutoka kwa watoto. Kwa kuwa hatukusanyi taarifa yoyote, hakuna hatari ya matumizi mabaya au ufikiaji usioidhinishwa.",
+  "privacyPolicyPara6": "Ikiwa tutafanya mabadiliko kwenye programu yanayoathiri jinsi inavyofanya kazi au kuingiliana na kifaa chako, pia tutasasisha Sera hii ya Faragha. Tumejitolea kukujulisha na kukulinda kila hatua.",
+  "privacyPolicyContact": "Kwa maswali yoyote au usaidizi, unaweza kuwasiliana nasi kwa:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "Je, programu hii inahesabu hatua zangu?",
+  "faq1Answer": "Ndiyo, Pedometer Walk & Track inahesabu hatua zako kwa usahihi siku nzima. Pia inafuatilia umbali, kalori zilizochomwa, na muda wa kufanya kazi kukupa mwonekano kamili wa shughuli zako.",
+  "faq2Question": "Je, programu ina mazoezi ya kupunguza uzito?",
+  "faq2Answer": "Ndiyo, programu ina mazoezi rahisi ya kupunguza uzito na mazoezi ya mwili. Unaweza kuyapata chini ya skrini ya Afya, yaliyoundwa kusaidia utaratibu wako wa mazoezi wa kila siku.",
+  "faq3Question": "Je, programu inashikilia rekodi za kila mwezi za hatua zangu?",
+  "faq3Answer": "Ndiyo, programu inahifadhi rekodi zako za hatua za kila siku, kila wiki, na kila mwezi. Hii inakuruhusu kupitia maendeleo yako kwa wakati na kubaki motishwa kufikia malengo yako ya mazoezi.",
+  "faq4Question": "Je, mnahifadhi data yangu ya kibinafsi?",
+  "faq4Answer": "Hapana, hatuhifadhi data yoyote ya kibinafsi kwenye seva. Idadi yako yote ya hatua, rekodi, na maelezo ya shughuli yanahifadhiwa kwa usalama kwenye kifaa chako tu. Hii inahakikisha faragha yako na udhibiti kamili wa taarifa zako.",
+  "faq5Question": "Je, programu itashiriki data yangu na mtu yeyote?",
+  "faq5Answer": "Hapana, data yako haishirikishwi na mtu yeyote. Kwa kuwa Pedometer Walk & Track haikusanyi data yako ya kibinafsi, hakuna cha kushiriki. Unaweza kutumia programu kwa ujasiri kamili na amani ya akili.",
+
+  "dailyRecords": "Rekodi za Kila Siku",
+  "steps": "Hatua",
+  "miles": "Maili",
+  "monthlyCalendar": "Kalenda ya Mwezi"
+}

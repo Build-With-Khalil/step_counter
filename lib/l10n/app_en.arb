@@ -1,0 +1,222 @@
+{
+  "@@locale": "en",
+
+  "appTagline": "YOUR\nHEALTH\nPARTNER",
+  "appSubtitle": "Simple, relaxing, healthy",
+
+  "onboardingPage1Title": "Every Step Counts",
+  "onboardingPage1Subtitle": "Track your daily movement in real time.",
+  "onboardingPage2Title": "Visualize Progress",
+  "onboardingPage2Subtitle": "See your consistency at a glance.",
+  "onboardingPage3Title": "Your Fitness Hub",
+  "onboardingPage3Subtitle": "Everything you need to stay fit.",
+  "onboardingPage4Title": "Set Your Goal",
+  "onboardingPage4Subtitle": "Customize your daily target.",
+  "getStarted": "Get Started",
+  "nextStep": "Next Step",
+  "startJourney": "Start Journey  →",
+  "skip": "Skip",
+  "october": "October",
+  "daysActive": "22 Days Active",
+  "stepsToday": "STEPS TODAY",
+  "stepsDaily": "STEPS DAILY",
+  "workouts": "Workouts",
+  "heartRate": "Heart Rate",
+  "metrics": "Metrics",
+  "reports": "Reports",
+
+  "permissionsRequired": "Permissions Required",
+  "permissionsDialogContent": "To track your steps and send motivational notifications, please allow Activity and Notification permissions.",
+  "notNow": "Not Now",
+  "allow": "Allow",
+  "permissionsNotGranted": "Permissions not granted. Some features may not work.",
+  "permissions": "Permissions",
+
+  "setDailyStepGoal": "Set Daily Step Goal",
+  "failedToLoadData": "Failed to load data",
+  "retry": "Retry",
+  "achievementProgress": "Achievement Progress",
+  "bmiNotSet": "BMI: Not Set",
+  "setHeightWeight": "Set height & weight in profile",
+  "dailyReminder": "Daily Reminder",
+  "dailyReminderSubtitle": "Receive a motivational quote every morning at 9 AM",
+  "resetTodaysSteps": "Reset Today's Steps",
+  "resetAllData": "Reset All Data",
+  "fitnessSection": "Fitness Section",
+  "absTitle": "Abs",
+  "absSubtitle": "Only Four Moves for Abs",
+  "loseWeight": "Lose Weight",
+  "loseWeightSubtitle": "Burn fat more effectively",
+  "reduceStress": "Reduce Stress",
+  "reduceStressSubtitle": "Clear mind, relax and meditate",
+  "morningWarmup": "Morning Warmup",
+  "morningWarmupSubtitle": "Get some Fresh air Vitamin D",
+
+  "todaysTotalSteps": "Today's Total Steps",
+  "mile": "Mile",
+  "kcal": "Kcal",
+  "time": "Time",
+  "daysStreak": "Days Streak",
+  "goalSteps": "Goal: {goal} steps",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "{remaining} steps left",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "Achievements",
+  "thisMonth": "This Month",
+  "totalSteps": "Total Steps",
+  "monthlyProgress": "Monthly Progress",
+
+  "editProfile": "Edit Profile",
+  "theme": "Theme",
+  "appLinkCopied": "App link copied to clipboard",
+  "instruction": "Instruction",
+  "instructionSubtitle": "Guidance for using app",
+  "shareApp": "Share App",
+  "shareAppSubtitle": "Share Our App With Friends",
+  "faqs": "FAQs",
+  "faqsSubtitle": "Frequently Asked Questions",
+  "privacyPolicy": "Privacy Policy",
+  "privacyPolicySubtitle": "App's Privacy Policy",
+  "nameLabel": "Name",
+  "ageLabel": "Age",
+  "cancel": "Cancel",
+  "save": "Save",
+  "profileUpdated": "Profile Updated",
+  "profileSavedMessage": "Your profile has been saved successfully.",
+  "invalidInput": "Invalid Input",
+  "invalidInputMessage": "Please enter a valid name and age.",
+  "loading": "Loading...",
+  "notSet": "Not set",
+  "ageDisplay": "Age: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "Your Gender",
+  "genderHint": "We need it to measure your stride length and calorie burn.",
+  "male": "Male",
+  "female": "Female",
+  "next": "NEXT",
+  "selectPrefix": "Select",
+
+  "moreAboutYouPrefix": "More",
+  "moreAboutYouSuffix": "About You",
+  "heightWeightHint": "To ensure accuracy, please input your correct height and weight. We never share this data.",
+  "height": "Height",
+  "weight": "Weight",
+  "selectHeightCm": "Select Height (cm)",
+  "selectWeightKg": "Select Weight (kg)",
+  "start": "START",
+
+  "absWorkouts": "Abs Workouts",
+  "beginner": "Beginner",
+  "intermediate": "Intermediate",
+  "advanced": "Advanced",
+  "advance": "Advance",
+  "duration15mins": "15 mins",
+  "duration30mins": "30 mins",
+  "duration40plusMins": "40+ mins",
+
+  "introduction": "Introduction",
+  "level": "Level",
+  "duration": "Duration",
+
+  "absBeginnerIntro": "This beginner abs workout is designed to activate your core, improve stability, and build foundational strength. Perfect for kickstarting your fitness journey.",
+  "burnt45kcal": "Burnt ~45 kcal",
+  "time10to15min": "Time: 10–15 min",
+
+  "absIntermediateIntro": "This intermediate abs workout builds core strength with longer holds, higher reps, and dynamic moves. Ideal for progressing beyond the basics.",
+  "burnt85to100kcal": "Burnt ~85-100 kcal",
+  "time20to30min": "Time: 20–30 min",
+
+  "absAdvancedIntro": "This advanced abs workout targets deep core muscles with high-rep moves, static holds, and dynamic transitions. Perfect for building definition, strength, and endurance.",
+  "burnt130to160kcal": "Burnt ~130-160 kcal",
+  "time40plusMin": "Time: 40+ min",
+
+  "loseWeightBeginnerIntro": "This beginner fat-burning workout is designed to elevate your heart rate, boost metabolism, and kickstart your weight loss journey. No equipment needed.",
+  "burnt60kcal": "Burnt ~60 kcal",
+  "time12to18min": "Time: 12–18 min",
+
+  "loseWeightIntermediateIntro": "This intermediate fat-burning workout intensifies each move to challenge your stamina and accelerate fat loss. No equipment needed—just commitment.",
+  "burnt90to100kcal": "Burnt ~90-100 kcal",
+  "time25to30min": "Time: 25–30 min",
+
+  "loseWeightAdvancedIntro": "This advanced fat-burning workout is built to challenge your endurance, strength, and coordination. Expect high reps, explosive movement, and serious sweat.",
+  "burnt140to160kcal": "Burnt ~140-160 kcal",
+
+  "reduceStressIntro": "In this Reduce Stress workout, you will practice Yoga, go for a Morning Walk, and follow a clean Diet. Yoga helps calm your mind and body, walking refreshes and boosts mood, and a balanced diet keeps you light, healthy, and stress-free.",
+  "burnt70kcal": "Burnt ~70 kcal",
+
+  "morningWarmupIntro": "This Morning Warm-up has walking, jumping jacks, push-ups, and shoulder stretches to boost circulation, loosen stiffness, and energize you for the day.",
+  "burnt60to80kcal": "Burnt ~60–80 kcal",
+  "time10to15minWarmup": "Time: 10–15 min",
+
+  "achievementsTitle": "Achievements",
+  "unlocked": "Unlocked",
+  "locked": "Locked",
+  "unlockedBadge": "Unlocked: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "Level {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "Trophies Collected",
+  "noTrophiesYet": "No trophies collected yet. Walk 10K steps in a day to earn one!",
+
+  "appGuide": "App Guide",
+  "dailyWeeklyTracking": "🏃 Daily & Weekly Tracking",
+  "dailyWeeklyTrackingDesc": "On the first main screen, you'll see your daily step count live at the top. Below that, a weekly bar chart shows your progress for each day of the week.",
+  "monthlyReportAchievements": "📊 Monthly Report & Achievements",
+  "monthlyReportDesc": "The second screen gives you a full monthly breakdown of your steps. You can view each day's record and see your total distance, calories, and duration. Achievements are also shown here, with progress toward unlocking badges.",
+  "healthFitness": "💪 Health & Fitness",
+  "healthFitnessDesc": "On the third screen, you can set your daily step goal and track your BMI. You'll also find fitness routines like:\n• Abs workouts\n• Weight loss exercises\n• Stress reduction\n• Morning warmups\n\nEach section includes estimated duration and calories burned.",
+  "settingsProfile": "⚙️ Settings & Profile",
+  "settingsProfileDesc": "The fourth screen includes your personal info like height and gender. You can toggle between light and dark themes, and reset your step data if needed.",
+  "tips": "🎯 Tips",
+  "tipsDesc": "• Tap badges to view their descriptions.\n• Confetti celebrates your progress when you unlock achievements.\n• Use the health screen daily to stay consistent and motivated.",
+  "gotIt": "Got it!",
+
+  "privacyPolicyTitle": "Privacy Policy",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited is committed to protecting your privacy. Our app, Pedometer – Walk & Track, is designed to help you monitor your daily activity without compromising your personal data. We do not collect, store, or transmit any user information—period.",
+  "privacyPolicyPara2": "We do not request or access your name, email, location, contacts, or any other personal identifiers. All step tracking and progress data is processed locally on your device and never leaves it. There is no cloud sync, no analytics, and no third-party tracking.",
+  "privacyPolicyPara3": "The app may request permission to access physical activity sensors and send notifications. These are used solely to count your steps and deliver motivational messages. No data is shared externally, and no information is stored beyond your device.",
+  "privacyPolicyPara4": "We do not use third-party services, SDKs, or APIs that collect user data. Your experience with Pedometer – Walk & Track is entirely private and self-contained.",
+  "privacyPolicyPara5": "Our app is suitable for all age groups and does not knowingly collect any data from children. Since we do not collect any information, there is no risk of misuse or unauthorized access.",
+  "privacyPolicyPara6": "If we make changes to the app that affect how it works or interacts with your device, we will also update this Privacy Policy to reflect those changes. We're committed to keeping you informed and protected every step of the way.",
+  "privacyPolicyContact": "For any questions or support, you can reach us at:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "Does this app count my steps?",
+  "faq1Answer": "Yes, Pedometer Walk & Track accurately counts your steps throughout the day. It also tracks distance, calories burned, and active time to give you a complete view of your activity.",
+  "faq2Question": "Does the app have weight loss exercises?",
+  "faq2Answer": "Yes, the app includes simple weight-loss and fitness exercises. You can find them at the bottom of the Health screen, designed to support your daily workout routine.",
+  "faq3Question": "Does the app keep monthly records of my steps?",
+  "faq3Answer": "Yes, the app stores your daily, weekly, and monthly step records. This allows you to review your progress over time and stay motivated to achieve your fitness goals.",
+  "faq4Question": "Do you store my personal data?",
+  "faq4Answer": "No, we do not store any of your personal data on servers. All of your step counts, records, and activity details are securely saved only on your device. This ensures your privacy and full control over your information.",
+  "faq5Question": "Will the app share my data with anyone?",
+  "faq5Answer": "No, your data is never shared with anyone. Since Pedometer Walk & Track does not collect your personal data, there is nothing to share. You can use the app with complete confidence and peace of mind.",
+
+  "dailyRecords": "Daily Records",
+  "steps": "Steps",
+  "miles": "Miles",
+  "monthlyCalendar": "Monthly Calendar"
+}

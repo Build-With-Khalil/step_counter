@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:step_counter/services/notification_services.dart';
 import 'package:step_counter/services/reminder_services.dart';
 import 'controllers/achievements_controller.dart';
 import 'controllers/goal_controller.dart';
+import 'controllers/locale_controller.dart';
 import 'controllers/profile_controller.dart';
 import 'controllers/report_controller.dart';
 import 'controllers/theme_controller.dart';
@@ -34,6 +37,11 @@ debugPrint('Main: MobileAds initialized');
   FirebaseAnalytics.instance.logAppOpen();
   await NotificationService.init();
   await ReminderService.init();
+
+  // Load persisted locale before the app starts (avoids locale flash)
+  final savedLocale = await LocaleController.getSavedLocale();
+  Get.put(LocaleController(
+      initialLocale: savedLocale ?? const Locale('en')));
 
   // Register all controllers once here
   Get.put(ThemeController());
@@ -98,8 +106,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeController = Get.find<ThemeController>();
+    final localeController = Get.find<LocaleController>();
     return Obx(() => GetMaterialApp(
           debugShowCheckedModeBanner: false,
+          locale: localeController.currentLocale.value,
+          localeResolutionCallback: (locale, supportedLocales) {
+            for (final supported in supportedLocales) {
+              if (locale?.languageCode == supported.languageCode) {
+                return supported;
+              }
+            }
+            return const Locale('en');
+          },
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
           theme: ThemeData(
             brightness: Brightness.light,
             scaffoldBackgroundColor: Colors.white,
@@ -129,6 +154,7 @@ class _PermissionDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     return AlertDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -139,17 +165,17 @@ class _PermissionDialog extends StatelessWidget {
         children: [
           const Icon(Icons.notifications_active, color: Colors.blue),
           const SizedBox(width: 8),
-          Text("Permissions Required", style: theme.textTheme.titleMedium),
+          Text(l10n.permissionsRequired, style: theme.textTheme.titleMedium),
         ],
       ),
       content: Text(
-        "To track your steps and send motivational notifications, please allow Activity and Notification permissions.",
+        l10n.permissionsDialogContent,
         style: theme.textTheme.bodyMedium,
       ),
       actions: [
         TextButton(
           onPressed: () => Get.back(),
-          child: const Text("Not Now", style: TextStyle(color: Colors.grey)),
+          child: Text(l10n.notNow, style: const TextStyle(color: Colors.grey)),
         ),
         ElevatedButton(
           onPressed: () async {
@@ -158,8 +184,8 @@ class _PermissionDialog extends StatelessWidget {
             final notify = await Permission.notification.request();
             if (!activity.isGranted || !notify.isGranted) {
               Get.snackbar(
-                'Permissions',
-                'Permissions not granted. Some features may not work.',
+                l10n.permissions,
+                l10n.permissionsNotGranted,
                 snackPosition: SnackPosition.BOTTOM,
               );
             } else {
@@ -167,7 +193,7 @@ class _PermissionDialog extends StatelessWidget {
               await NotificationService.showWelcomeNotification(quote);
             }
           },
-          child: const Text("Allow"),
+          child: Text(l10n.allow),
         ),
       ],
     );

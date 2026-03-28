@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import '../controllers/splash_controller.dart';
 
@@ -9,6 +10,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SplashController controller = Get.put(SplashController());
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -38,9 +40,9 @@ class SplashScreen extends StatelessWidget {
                 children: [
                   const Spacer(flex: 3),
 
-                  const Text(
-                    "YOUR\nHEALTH\nPARTNER",
-                    style: TextStyle(
+                  Text(
+                    l10n.appTagline,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 32,
@@ -49,9 +51,9 @@ class SplashScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
 
-                  const Text(
-                    "Simple, relaxing, healthy",
-                    style: TextStyle(
+                  Text(
+                    l10n.appSubtitle,
+                    style: const TextStyle(
                       color: Colors.white70,
                       fontSize: 16,
                     ),

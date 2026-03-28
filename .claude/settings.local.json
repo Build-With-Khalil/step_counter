@@ -9,7 +9,19 @@
       "Bash(C:/src/flutter/bin/flutter --version 2>&1 | head -5)",
       "Bash(cd \"C:\\\\Users\\\\user\\\\StudioProjects\\\\step_counter\" && flutter clean 2>&1)",
       "Read(//mnt/c/Users/user/StudioProjects/**)",
-      "Bash(dart analyze:*)"
+      "Bash(dart analyze:*)",
+      "Bash(find /c/Users/user/StudioProjects/step_counter -name *.arb -o -name l10n.yaml -o -name *localization* -o -name *i18n*)",
+      "Bash(grep -r \"intl\\\\|localization\\\\|generateLocalizations\\\\|AppLocalizations\" /c/Users/user/StudioProjects/step_counter/lib --include=*.dart)",
+      "Bash(mkdir -p \"C:/Users/user/StudioProjects/step_counter/lib/translations\")",
+      "Bash(mkdir -p \"C:/Users/user/StudioProjects/step_counter/lib/controllers\")",
+      "Bash(find . -type f -name l10n.yaml -o -name *.arb)",
+      "Bash(grep -r \"AppLocalizations\\\\|app_localizations\\\\|l10n\" . --include=*.dart)",
+      "Bash(grep -r \"Text\\\\|''''.*''''\\\\|.*\" ./lib/screens/ --include=*.dart)",
+      "Bash(grep -oE \"\\(Text|child|label\\).*[''''\"\"]\\([^''''\"\"]{5,}\\)[''''\"\"]\")",
+      "Bash(grep -r \"const Text\\\\|child: Text\" ./lib --include=*.dart)",
+      "Bash(find . -name .flutter* -o -name l10n.yaml -o -name *.arb)",
+      "Bash(flutter gen-l10n:*)",
+      "Bash(grep -h \"^class AppLocalizations\" C:/Users/user/StudioProjects/step_counter/lib/l10n/app_localizations_*.dart)"
     ]
   }
 }

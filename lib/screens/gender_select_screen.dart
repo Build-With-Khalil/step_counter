@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import '../controllers/gender_select_controller.dart';
 import '../controllers/theme_controller.dart';
@@ -12,6 +13,7 @@ class GenderSelectScreen extends StatelessWidget {
     final ctrl = Get.put(GenderSelectController());
     final themeCtrl = Get.find<ThemeController>();
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
@@ -51,10 +53,10 @@ class GenderSelectScreen extends StatelessWidget {
                   ),
                   children: [
                     TextSpan(
-                      text: "Select\n",
+                      text: "${l10n.selectPrefix}\n",
                       style: TextStyle(color: theme.primaryColor),
                     ),
-                    const TextSpan(text: "Your Gender"),
+                    TextSpan(text: l10n.selectYourGender),
                   ],
                 ),
               ),
@@ -73,7 +75,7 @@ class GenderSelectScreen extends StatelessWidget {
                     SizedBox(width: screenWidth * 0.02),
                     Expanded(
                       child: Text(
-                        "We need it to measure your stride length and calorie burn.",
+                        l10n.genderHint,
                         style: theme.textTheme.bodyMedium?.copyWith(
                           color: theme.brightness == Brightness.dark
                               ? Colors.white70
@@ -90,18 +92,20 @@ class GenderSelectScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: _GenderCard(
-                          label: "Male",
+                          label: l10n.male,
                           iconPath: 'assets/icons/male.png',
                           isSelected: ctrl.selectedGender.value == "male",
+                          isMale: true,
                           onTap: () => ctrl.selectGender("male"),
                         ),
                       ),
                       SizedBox(width: screenWidth * 0.03),
                       Expanded(
                         child: _GenderCard(
-                          label: "Female",
+                          label: l10n.female,
                           iconPath: 'assets/icons/female.png',
                           isSelected: ctrl.selectedGender.value == "female",
+                          isMale: false,
                           onTap: () => ctrl.selectGender("female"),
                         ),
                       ),
@@ -125,7 +129,7 @@ class GenderSelectScreen extends StatelessWidget {
                                 arguments: ctrl.selectedGender.value,
                               ),
                       child: Text(
-                        "NEXT",
+                        l10n.next,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: screenWidth * 0.04,
@@ -147,12 +151,14 @@ class _GenderCard extends StatelessWidget {
   final String label;
   final String iconPath;
   final bool isSelected;
+  final bool isMale;
   final VoidCallback onTap;
 
   const _GenderCard({
     required this.label,
     required this.iconPath,
     required this.isSelected,
+    required this.isMale,
     required this.onTap,
   });
 
@@ -183,7 +189,7 @@ class _GenderCard extends StatelessWidget {
               width: screenWidth * 0.1,
               color: isSelected
                   ? theme.primaryColor
-                  : (label == "Male" ? Colors.blue : Colors.pink),
+                  : (isMale ? Colors.blue : Colors.pink),
             ),
             SizedBox(height: screenHeight * 0.015),
             Text(

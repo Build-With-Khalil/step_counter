@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:step_counter/screens/reduce_stress.dart';
 import 'package:step_counter/utils/ad_helper.dart';
@@ -19,6 +20,7 @@ class HealthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final controller = Get.find<GoalController>();
     final reminderController = Get.find<ReminderController>();
     final todayController = Get.find<TodayScreenController>();
@@ -39,11 +41,11 @@ class HealthScreen extends StatelessWidget {
                 children: [
                   Icon(Icons.error_outline, size: 64, color: Colors.red),
                   SizedBox(height: 16),
-                  Text('Failed to load data'),
+                  Text(l10n.failedToLoadData),
                   SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () => controller.refreshData(),
-                    child: Text('Retry'),
+                    child: Text(l10n.retry),
                   ),
                 ],
               ),
@@ -74,7 +76,7 @@ class HealthScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Set Daily Step Goal',
+                            l10n.setDailyStepGoal,
                             style: theme.textTheme.titleMedium,
                           ),
                           SizedBox(height: screenHeight * 0.015),
@@ -183,7 +185,7 @@ class HealthScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Achievement Progress',
+                                    l10n.achievementProgress,
                                     style: theme.textTheme.titleMedium,
                                   ),
                                   SizedBox(height: screenHeight * 0.015),
@@ -243,7 +245,7 @@ class HealthScreen extends StatelessWidget {
                             return Text(
                               bmi > 0
                                   ? 'BMI: ${bmi.toStringAsFixed(1)} ($category)'
-                                  : 'BMI: Not Set',
+                                  : l10n.bmiNotSet,
                               style: theme.textTheme.titleMedium?.copyWith(
                                 fontSize: screenWidth * 0.045,
                               ),
@@ -259,7 +261,7 @@ class HealthScreen extends StatelessWidget {
                             if (bmi == 0.0) {
                               return Center(
                                 child: Text(
-                                  'Set height & weight in profile',
+                                  l10n.setHeightWeight,
                                   style: TextStyle(
                                     fontSize: screenWidth * 0.035,
                                   ),
@@ -358,12 +360,12 @@ class HealthScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Daily Reminder',
+                                  l10n.dailyReminder,
                                   style: theme.textTheme.titleMedium,
                                 ),
                                 SizedBox(height: screenHeight * 0.005),
                                 Text(
-                                  'Receive a motivational quote every morning at 9 AM',
+                                  l10n.dailyReminderSubtitle,
                                   style: TextStyle(
                                     fontSize: screenWidth * 0.035,
                                   ),
@@ -381,7 +383,7 @@ class HealthScreen extends StatelessWidget {
                               onChanged: (value) {
                                 reminderController.toggleDailyReminder(value);
                               },
-                              activeColor: Colors.blue,
+                              activeThumbColor: Colors.blue,
                             );
                           }),
                         ],
@@ -422,7 +424,7 @@ class HealthScreen extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                'Reset Today\'s Steps',
+                                l10n.resetTodaysSteps,
                                 style: TextStyle(fontSize: screenWidth * 0.035),
                               ),
                             ),
@@ -441,7 +443,7 @@ class HealthScreen extends StatelessWidget {
                                 ),
                               ),
                               child: Text(
-                                'Reset All Data',
+                                l10n.resetAllData,
                                 style: TextStyle(fontSize: screenWidth * 0.035),
                               ),
                             ),
@@ -459,7 +461,7 @@ class HealthScreen extends StatelessWidget {
                     vertical: screenHeight * 0.015,
                   ),
                   child: Text(
-                    'Fitness Section',
+                    l10n.fitnessSection,
                     style: TextStyle(
                       fontSize: screenWidth * 0.045,
                       fontWeight: FontWeight.bold,
@@ -475,8 +477,8 @@ class HealthScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         FitnessContainer(
-                          title: 'Abs',
-                          subtitle: 'Only Four Moves for Abs',
+                          title: l10n.absTitle,
+                          subtitle: l10n.absSubtitle,
                           imagePath: 'assets/images/abss.png',
                           gradientColors: [
                             Color(0xFF60A5FA),
@@ -487,8 +489,8 @@ class HealthScreen extends StatelessWidget {
                           onTap: () { AdManager.onNavigationAction(); Get.to(() => AbsSelectScreen()); },
                         ),
                         FitnessContainer(
-                          title: 'Lose Weight',
-                          subtitle: 'Burn fat more effectively',
+                          title: l10n.loseWeight,
+                          subtitle: l10n.loseWeightSubtitle,
                           imagePath: 'assets/images/loss.png',
                           gradientColors: [
                             Color(0xFF60A5FA),
@@ -511,8 +513,8 @@ class HealthScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         FitnessContainer(
-                          title: 'Reduce Stress',
-                          subtitle: 'Clear mind, relax and meditate',
+                          title: l10n.reduceStress,
+                          subtitle: l10n.reduceStressSubtitle,
                           imagePath: 'assets/images/smile.png',
                           gradientColors: [
                             Color(0xFF60A5FA),
@@ -523,8 +525,8 @@ class HealthScreen extends StatelessWidget {
                           onTap: () { AdManager.onNavigationAction(); Get.to(() => ReduceStress()); },
                         ),
                         FitnessContainer(
-                          title: 'Morning Warmup',
-                          subtitle: 'Get some Fresh air Vitamin D',
+                          title: l10n.morningWarmup,
+                          subtitle: l10n.morningWarmupSubtitle,
                           imagePath: 'assets/images/morning.png',
                           gradientColors: [
                             Color(0xFF60A5FA),

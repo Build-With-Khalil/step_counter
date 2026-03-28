@@ -17,7 +17,7 @@ class AppOpenAdWidget {
 
     final completer = Completer<void>();
 
-    void _showAd(AppOpenAd ad) {
+    void showAd(AppOpenAd ad) {
       _isShowingAd = true;
       ad.fullScreenContentCallback = FullScreenContentCallback(
         onAdShowedFullScreenContent: (ad) {
@@ -45,7 +45,7 @@ class AppOpenAdWidget {
     final preloaded = AdManager.claimAppOpenAd();
     if (preloaded != null) {
       debugPrint('🔵 AppOpenAdWidget: ✅ Using preloaded App Open Ad');
-      _showAd(preloaded);
+      showAd(preloaded);
       await completer.future;
       debugPrint('🔵 AppOpenAdWidget: Process completed');
       return;
@@ -59,7 +59,7 @@ class AppOpenAdWidget {
       adLoadCallback: AppOpenAdLoadCallback(
         onAdLoaded: (ad) {
           debugPrint('🔵 AppOpenAdWidget: ✅ Ad LOADED successfully!');
-          _showAd(ad);
+          showAd(ad);
         },
         onAdFailedToLoad: (error) {
           debugPrint('🔵 AppOpenAdWidget: ❌ Failed to LOAD: $error');

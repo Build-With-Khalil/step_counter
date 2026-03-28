@@ -1,0 +1,222 @@
+{
+  "@@locale": "de",
+
+  "appTagline": "IHR\nGESUNDHEITS-\nPARTNER",
+  "appSubtitle": "Einfach, entspannend, gesund",
+
+  "onboardingPage1Title": "Jeder Schritt Zählt",
+  "onboardingPage1Subtitle": "Verfolgen Sie Ihre tägliche Bewegung in Echtzeit.",
+  "onboardingPage2Title": "Fortschritt Visualisieren",
+  "onboardingPage2Subtitle": "Sehen Sie Ihre Beständigkeit auf einen Blick.",
+  "onboardingPage3Title": "Ihr Fitness-Hub",
+  "onboardingPage3Subtitle": "Alles, was Sie brauchen, um fit zu bleiben.",
+  "onboardingPage4Title": "Ziel Festlegen",
+  "onboardingPage4Subtitle": "Passen Sie Ihr tägliches Ziel an.",
+  "getStarted": "Loslegen",
+  "nextStep": "Nächster Schritt",
+  "startJourney": "Reise Starten  →",
+  "skip": "Überspringen",
+  "october": "Oktober",
+  "daysActive": "22 Aktive Tage",
+  "stepsToday": "SCHRITTE HEUTE",
+  "stepsDaily": "TÄGLICHE SCHRITTE",
+  "workouts": "Workouts",
+  "heartRate": "Herzfrequenz",
+  "metrics": "Metriken",
+  "reports": "Berichte",
+
+  "permissionsRequired": "Berechtigungen Erforderlich",
+  "permissionsDialogContent": "Um Ihre Schritte zu verfolgen und motivierende Benachrichtigungen zu senden, erlauben Sie bitte Aktivitäts- und Benachrichtigungsberechtigungen.",
+  "notNow": "Nicht Jetzt",
+  "allow": "Erlauben",
+  "permissionsNotGranted": "Berechtigungen nicht erteilt. Einige Funktionen funktionieren möglicherweise nicht.",
+  "permissions": "Berechtigungen",
+
+  "setDailyStepGoal": "Tägliches Schritteziel Festlegen",
+  "failedToLoadData": "Daten konnten nicht geladen werden",
+  "retry": "Erneut Versuchen",
+  "achievementProgress": "Erfolgsfortschritt",
+  "bmiNotSet": "BMI: Nicht festgelegt",
+  "setHeightWeight": "Größe und Gewicht im Profil festlegen",
+  "dailyReminder": "Tägliche Erinnerung",
+  "dailyReminderSubtitle": "Erhalten Sie jeden Morgen um 9 Uhr ein motivierendes Zitat",
+  "resetTodaysSteps": "Heutige Schritte Zurücksetzen",
+  "resetAllData": "Alle Daten Zurücksetzen",
+  "fitnessSection": "Fitnessbereich",
+  "absTitle": "Bauchmuskeltraining",
+  "absSubtitle": "Nur Vier Übungen für den Bauch",
+  "loseWeight": "Abnehmen",
+  "loseWeightSubtitle": "Fett effektiver verbrennen",
+  "reduceStress": "Stress Reduzieren",
+  "reduceStressSubtitle": "Klarer Kopf, entspannen und meditieren",
+  "morningWarmup": "Morgenaufwärmung",
+  "morningWarmupSubtitle": "Frische Luft und Vitamin D tanken",
+
+  "todaysTotalSteps": "Heutige Gesamtschritte",
+  "mile": "Meile",
+  "kcal": "Kcal",
+  "time": "Zeit",
+  "daysStreak": "Tage in Folge",
+  "goalSteps": "Ziel: {goal} Schritte",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "Noch {remaining} Schritte",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "Erfolge",
+  "thisMonth": "Diesen Monat",
+  "totalSteps": "Gesamtschritte",
+  "monthlyProgress": "Monatlicher Fortschritt",
+
+  "editProfile": "Profil Bearbeiten",
+  "theme": "Design",
+  "appLinkCopied": "App-Link in die Zwischenablage kopiert",
+  "instruction": "Anleitung",
+  "instructionSubtitle": "Leitfaden zur App-Nutzung",
+  "shareApp": "App Teilen",
+  "shareAppSubtitle": "Teilen Sie unsere App mit Freunden",
+  "faqs": "FAQ",
+  "faqsSubtitle": "Häufig Gestellte Fragen",
+  "privacyPolicy": "Datenschutzrichtlinie",
+  "privacyPolicySubtitle": "Datenschutzrichtlinie der App",
+  "nameLabel": "Name",
+  "ageLabel": "Alter",
+  "cancel": "Abbrechen",
+  "save": "Speichern",
+  "profileUpdated": "Profil Aktualisiert",
+  "profileSavedMessage": "Ihr Profil wurde erfolgreich gespeichert.",
+  "invalidInput": "Ungültige Eingabe",
+  "invalidInputMessage": "Bitte geben Sie einen gültigen Namen und ein Alter ein.",
+  "loading": "Wird geladen...",
+  "notSet": "Nicht festgelegt",
+  "ageDisplay": "Alter: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "Ihr Geschlecht",
+  "genderHint": "Wir brauchen es, um Ihre Schrittlänge und den Kalorienverbrauch zu messen.",
+  "male": "Männlich",
+  "female": "Weiblich",
+  "next": "WEITER",
+  "selectPrefix": "Auswählen",
+
+  "moreAboutYouPrefix": "Mehr",
+  "moreAboutYouSuffix": "Über Sie",
+  "heightWeightHint": "Für genaue Messungen geben Sie bitte Ihre korrekte Größe und Ihr Gewicht ein. Wir teilen diese Daten niemals.",
+  "height": "Größe",
+  "weight": "Gewicht",
+  "selectHeightCm": "Größe auswählen (cm)",
+  "selectWeightKg": "Gewicht auswählen (kg)",
+  "start": "STARTEN",
+
+  "absWorkouts": "Bauchmuskel-Workouts",
+  "beginner": "Anfänger",
+  "intermediate": "Mittel",
+  "advanced": "Fortgeschritten",
+  "advance": "Fortschreiten",
+  "duration15mins": "15 Min.",
+  "duration30mins": "30 Min.",
+  "duration40plusMins": "40+ Min.",
+
+  "introduction": "Einführung",
+  "level": "Stufe",
+  "duration": "Dauer",
+
+  "absBeginnerIntro": "Dieses Bauchmuskel-Anfänger-Workout ist darauf ausgelegt, Ihre Körpermitte zu aktivieren, die Stabilität zu verbessern und eine grundlegende Kraft aufzubauen. Perfekt zum Starten Ihrer Fitnessreise.",
+  "burnt45kcal": "Verbrannt ~45 kcal",
+  "time10to15min": "Zeit: 10–15 Min.",
+
+  "absIntermediateIntro": "Dieses Bauchmuskel-Mittel-Workout baut Kernkraft mit längeren Haltepositionen, mehr Wiederholungen und dynamischen Bewegungen auf. Ideal, um über die Grundlagen hinaus zu kommen.",
+  "burnt85to100kcal": "Verbrannt ~85-100 kcal",
+  "time20to30min": "Zeit: 20–30 Min.",
+
+  "absAdvancedIntro": "Dieses fortgeschrittene Bauchmuskel-Workout zielt auf tiefe Kernmuskeln mit Hochwiederholungs-Bewegungen, statischen Haltepositionen und dynamischen Übergängen. Perfekt für Definition, Kraft und Ausdauer.",
+  "burnt130to160kcal": "Verbrannt ~130-160 kcal",
+  "time40plusMin": "Zeit: 40+ Min.",
+
+  "loseWeightBeginnerIntro": "Dieses Fettverbrenner-Anfänger-Workout ist darauf ausgelegt, Ihre Herzfrequenz zu erhöhen, den Stoffwechsel anzukurbeln und Ihre Gewichtsverlust-Reise zu starten. Keine Ausrüstung erforderlich.",
+  "burnt60kcal": "Verbrannt ~60 kcal",
+  "time12to18min": "Zeit: 12–18 Min.",
+
+  "loseWeightIntermediateIntro": "Dieses Fettverbrenner-Mittel-Workout intensiviert jede Bewegung, um Ihre Ausdauer herauszufordern und den Fettverlust zu beschleunigen. Keine Ausrüstung nötig—nur Engagement.",
+  "burnt90to100kcal": "Verbrannt ~90-100 kcal",
+  "time25to30min": "Zeit: 25–30 Min.",
+
+  "loseWeightAdvancedIntro": "Dieses fortgeschrittene Fettverbrenner-Workout ist darauf ausgelegt, Ihre Ausdauer, Kraft und Koordination herauszufordern. Erwarten Sie hohe Wiederholungen, explosive Bewegungen und ernsthaftes Schwitzen.",
+  "burnt140to160kcal": "Verbrannt ~140-160 kcal",
+
+  "reduceStressIntro": "In diesem Stressabbau-Workout werden Sie Yoga praktizieren, einen Morgenspaziergang machen und eine saubere Ernährung befolgen. Yoga beruhigt Ihren Geist und Körper, Gehen erfrischt und hebt die Stimmung, und eine ausgewogene Ernährung hält Sie leicht, gesund und stressfrei.",
+  "burnt70kcal": "Verbrannt ~70 kcal",
+
+  "morningWarmupIntro": "Diese Morgenaufwärmung beinhaltet Gehen, Hampelmann, Liegestütze und Schulterdehnungen zur Verbesserung der Durchblutung, Lockerung von Steifheit und Energetisierung für den Tag.",
+  "burnt60to80kcal": "Verbrannt ~60–80 kcal",
+  "time10to15minWarmup": "Zeit: 10–15 Min.",
+
+  "achievementsTitle": "Erfolge",
+  "unlocked": "Entsperrt",
+  "locked": "Gesperrt",
+  "unlockedBadge": "Entsperrt: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "Stufe {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "Gesammelte Trophäen",
+  "noTrophiesYet": "Noch keine Trophäen gesammelt. Gehen Sie 10.000 Schritte an einem Tag, um eine zu verdienen!",
+
+  "appGuide": "App-Leitfaden",
+  "dailyWeeklyTracking": "🏃 Tägliches & Wöchentliches Tracking",
+  "dailyWeeklyTrackingDesc": "Auf dem ersten Hauptbildschirm sehen Sie Ihre tägliche Schrittanzahl live oben. Darunter zeigt ein wöchentliches Balkendiagramm Ihren Fortschritt für jeden Tag der Woche.",
+  "monthlyReportAchievements": "📊 Monatsbericht & Erfolge",
+  "monthlyReportDesc": "Der zweite Bildschirm gibt Ihnen eine vollständige monatliche Aufschlüsselung Ihrer Schritte. Sie können den Rekord jedes Tages einsehen und Ihre Gesamtdistanz, Kalorien und Dauer sehen. Erfolge werden hier auch angezeigt, mit Fortschritt zum Entsperren von Abzeichen.",
+  "healthFitness": "💪 Gesundheit & Fitness",
+  "healthFitnessDesc": "Auf dem dritten Bildschirm können Sie Ihr tägliches Schritteziel festlegen und Ihren BMI verfolgen. Sie finden auch Fitnessroutinen wie:\n• Bauchmuskel-Workouts\n• Gewichtsverlust-Übungen\n• Stressreduktion\n• Morgenaufwärmungen\n\nJeder Bereich umfasst geschätzte Dauer und verbrannte Kalorien.",
+  "settingsProfile": "⚙️ Einstellungen & Profil",
+  "settingsProfileDesc": "Der vierte Bildschirm enthält Ihre persönlichen Informationen wie Größe und Geschlecht. Sie können zwischen hellen und dunklen Designs wechseln und Ihre Schrittdaten bei Bedarf zurücksetzen.",
+  "tips": "🎯 Tipps",
+  "tipsDesc": "• Tippen Sie auf Abzeichen, um ihre Beschreibungen zu sehen.\n• Konfetti feiert Ihren Fortschritt, wenn Sie Erfolge entsperren.\n• Nutzen Sie täglich den Gesundheitsbildschirm, um konsistent und motiviert zu bleiben.",
+  "gotIt": "Verstanden!",
+
+  "privacyPolicyTitle": "Datenschutzrichtlinie",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited verpflichtet sich zum Schutz Ihrer Privatsphäre. Unsere App, Pedometer – Walk & Track, ist darauf ausgelegt, Ihnen bei der Überwachung Ihrer täglichen Aktivität zu helfen, ohne Ihre persönlichen Daten zu gefährden. Wir sammeln, speichern oder übertragen keine Benutzerinformationen—niemals.",
+  "privacyPolicyPara2": "Wir fordern keinen Zugang zu Ihrem Namen, E-Mail, Standort, Kontakten oder anderen persönlichen Identifikatoren. Alle Schrittverfolgung und Fortschrittsdaten werden lokal auf Ihrem Gerät verarbeitet und verlassen es nie. Es gibt keine Cloud-Synchronisierung, keine Analysen und kein Tracking durch Dritte.",
+  "privacyPolicyPara3": "Die App kann die Erlaubnis anfordern, auf Bewegungssensoren zuzugreifen und Benachrichtigungen zu senden. Diese werden ausschließlich verwendet, um Ihre Schritte zu zählen und motivierende Nachrichten zu senden. Keine Daten werden extern geteilt und keine Informationen werden über Ihr Gerät hinaus gespeichert.",
+  "privacyPolicyPara4": "Wir verwenden keine Drittanbieter-Services, SDKs oder APIs, die Benutzerdaten sammeln. Ihre Erfahrung mit Pedometer – Walk & Track ist völlig privat und eigenständig.",
+  "privacyPolicyPara5": "Unsere App ist für alle Altersgruppen geeignet und sammelt wissentlich keine Daten von Kindern. Da wir keine Informationen sammeln, besteht kein Risiko von Missbrauch oder unbefugtem Zugang.",
+  "privacyPolicyPara6": "Wenn wir Änderungen an der App vornehmen, die sich auf deren Funktionsweise oder Interaktion mit Ihrem Gerät auswirken, werden wir auch diese Datenschutzrichtlinie aktualisieren, um diese Änderungen widerzuspiegeln. Wir sind verpflichtet, Sie bei jedem Schritt informiert und geschützt zu halten.",
+  "privacyPolicyContact": "Für Fragen oder Support erreichen Sie uns unter:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "Zählt diese App meine Schritte?",
+  "faq1Answer": "Ja, Pedometer Walk & Track zählt Ihre Schritte den ganzen Tag genau. Es verfolgt auch Entfernung, verbrannte Kalorien und aktive Zeit, um Ihnen einen vollständigen Überblick über Ihre Aktivität zu geben.",
+  "faq2Question": "Hat die App Gewichtsverlust-Übungen?",
+  "faq2Answer": "Ja, die App enthält einfache Gewichtsverlust- und Fitnessübungen. Sie finden sie am unteren Ende des Gesundheitsbildschirms, die dazu bestimmt sind, Ihre tägliche Workout-Routine zu unterstützen.",
+  "faq3Question": "Hält die App monatliche Aufzeichnungen meiner Schritte?",
+  "faq3Answer": "Ja, die App speichert Ihre täglichen, wöchentlichen und monatlichen Schrittaufzeichnungen. Dadurch können Sie Ihren Fortschritt im Laufe der Zeit überprüfen und motiviert bleiben, Ihre Fitnessziele zu erreichen.",
+  "faq4Question": "Speichern Sie meine persönlichen Daten?",
+  "faq4Answer": "Nein, wir speichern keine Ihrer persönlichen Daten auf Servern. Alle Ihre Schrittanzahlen, Aufzeichnungen und Aktivitätsdetails werden ausschließlich auf Ihrem Gerät sicher gespeichert. Dies gewährleistet Ihre Privatsphäre und vollständige Kontrolle über Ihre Informationen.",
+  "faq5Question": "Wird die App meine Daten mit jemandem teilen?",
+  "faq5Answer": "Nein, Ihre Daten werden niemals mit jemandem geteilt. Da Pedometer Walk & Track Ihre persönlichen Daten nicht sammelt, gibt es nichts zu teilen. Sie können die App mit völligem Vertrauen und Seelenfrieden nutzen.",
+
+  "dailyRecords": "Tägliche Aufzeichnungen",
+  "steps": "Schritte",
+  "miles": "Meilen",
+  "monthlyCalendar": "Monatskalender"
+}

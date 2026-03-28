@@ -1,0 +1,222 @@
+{
+  "@@locale": "id",
+
+  "appTagline": "MITRA\nKESEHATAN\nANDA",
+  "appSubtitle": "Sederhana, menenangkan, sehat",
+
+  "onboardingPage1Title": "Setiap Langkah Berarti",
+  "onboardingPage1Subtitle": "Lacak gerakan harian Anda secara real time.",
+  "onboardingPage2Title": "Visualisasikan Kemajuan",
+  "onboardingPage2Subtitle": "Lihat konsistensi Anda sekilas.",
+  "onboardingPage3Title": "Pusat Kebugaran Anda",
+  "onboardingPage3Subtitle": "Semua yang Anda butuhkan untuk tetap bugar.",
+  "onboardingPage4Title": "Tetapkan Tujuan Anda",
+  "onboardingPage4Subtitle": "Sesuaikan target harian Anda.",
+  "getStarted": "Mulai",
+  "nextStep": "Langkah Berikutnya",
+  "startJourney": "Mulai Perjalanan  →",
+  "skip": "Lewati",
+  "october": "Oktober",
+  "daysActive": "22 Hari Aktif",
+  "stepsToday": "LANGKAH HARI INI",
+  "stepsDaily": "LANGKAH HARIAN",
+  "workouts": "Olahraga",
+  "heartRate": "Detak Jantung",
+  "metrics": "Metrik",
+  "reports": "Laporan",
+
+  "permissionsRequired": "Izin Diperlukan",
+  "permissionsDialogContent": "Untuk melacak langkah Anda dan mengirim notifikasi motivasi, izinkan izin Aktivitas dan Notifikasi.",
+  "notNow": "Nanti",
+  "allow": "Izinkan",
+  "permissionsNotGranted": "Izin tidak diberikan. Beberapa fitur mungkin tidak berfungsi.",
+  "permissions": "Izin",
+
+  "setDailyStepGoal": "Tetapkan Target Langkah Harian",
+  "failedToLoadData": "Gagal memuat data",
+  "retry": "Coba Lagi",
+  "achievementProgress": "Kemajuan Pencapaian",
+  "bmiNotSet": "BMI: Belum diatur",
+  "setHeightWeight": "Atur tinggi dan berat badan di profil",
+  "dailyReminder": "Pengingat Harian",
+  "dailyReminderSubtitle": "Dapatkan kutipan motivasi setiap pagi pukul 9",
+  "resetTodaysSteps": "Reset Langkah Hari Ini",
+  "resetAllData": "Reset Semua Data",
+  "fitnessSection": "Bagian Kebugaran",
+  "absTitle": "Latihan Perut",
+  "absSubtitle": "Hanya Empat Gerakan untuk Perut",
+  "loseWeight": "Turunkan Berat Badan",
+  "loseWeightSubtitle": "Bakar lemak lebih efektif",
+  "reduceStress": "Kurangi Stres",
+  "reduceStressSubtitle": "Pikiran jernih, rileks dan meditasi",
+  "morningWarmup": "Pemanasan Pagi",
+  "morningWarmupSubtitle": "Dapatkan udara segar dan Vitamin D",
+
+  "todaysTotalSteps": "Total Langkah Hari Ini",
+  "mile": "Mil",
+  "kcal": "Kkal",
+  "time": "Waktu",
+  "daysStreak": "Hari Berturut-turut",
+  "goalSteps": "Target: {goal} langkah",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "{remaining} langkah lagi",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "Pencapaian",
+  "thisMonth": "Bulan Ini",
+  "totalSteps": "Total Langkah",
+  "monthlyProgress": "Kemajuan Bulanan",
+
+  "editProfile": "Edit Profil",
+  "theme": "Tema",
+  "appLinkCopied": "Tautan aplikasi disalin ke clipboard",
+  "instruction": "Instruksi",
+  "instructionSubtitle": "Panduan menggunakan aplikasi",
+  "shareApp": "Bagikan Aplikasi",
+  "shareAppSubtitle": "Bagikan Aplikasi Kami dengan Teman",
+  "faqs": "FAQ",
+  "faqsSubtitle": "Pertanyaan yang Sering Diajukan",
+  "privacyPolicy": "Kebijakan Privasi",
+  "privacyPolicySubtitle": "Kebijakan Privasi Aplikasi",
+  "nameLabel": "Nama",
+  "ageLabel": "Usia",
+  "cancel": "Batal",
+  "save": "Simpan",
+  "profileUpdated": "Profil Diperbarui",
+  "profileSavedMessage": "Profil Anda telah berhasil disimpan.",
+  "invalidInput": "Input Tidak Valid",
+  "invalidInputMessage": "Masukkan nama dan usia yang valid.",
+  "loading": "Memuat...",
+  "notSet": "Belum diatur",
+  "ageDisplay": "Usia: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "Jenis Kelamin Anda",
+  "genderHint": "Kami membutuhkannya untuk mengukur panjang langkah dan pembakaran kalori Anda.",
+  "male": "Laki-laki",
+  "female": "Perempuan",
+  "next": "SELANJUTNYA",
+  "selectPrefix": "Pilih",
+
+  "moreAboutYouPrefix": "Lebih",
+  "moreAboutYouSuffix": "Tentang Anda",
+  "heightWeightHint": "Untuk memastikan akurasi, masukkan tinggi dan berat badan Anda yang benar. Kami tidak pernah berbagi data ini.",
+  "height": "Tinggi Badan",
+  "weight": "Berat Badan",
+  "selectHeightCm": "Pilih Tinggi Badan (cm)",
+  "selectWeightKg": "Pilih Berat Badan (kg)",
+  "start": "MULAI",
+
+  "absWorkouts": "Latihan Perut",
+  "beginner": "Pemula",
+  "intermediate": "Menengah",
+  "advanced": "Lanjutan",
+  "advance": "Lanjutkan",
+  "duration15mins": "15 menit",
+  "duration30mins": "30 menit",
+  "duration40plusMins": "40+ menit",
+
+  "introduction": "Pengantar",
+  "level": "Level",
+  "duration": "Durasi",
+
+  "absBeginnerIntro": "Latihan perut pemula ini dirancang untuk mengaktifkan otot inti Anda, meningkatkan stabilitas, dan membangun kekuatan dasar. Sempurna untuk memulai perjalanan kebugaran Anda.",
+  "burnt45kcal": "Terbakar ~45 kkal",
+  "time10to15min": "Waktu: 10–15 menit",
+
+  "absIntermediateIntro": "Latihan perut menengah ini membangun kekuatan inti dengan tahan lebih lama, repetisi lebih banyak, dan gerakan dinamis. Ideal untuk berkembang melampaui dasar.",
+  "burnt85to100kcal": "Terbakar ~85-100 kkal",
+  "time20to30min": "Waktu: 20–30 menit",
+
+  "absAdvancedIntro": "Latihan perut lanjutan ini menargetkan otot inti dalam dengan gerakan repetisi tinggi, tahan statis, dan transisi dinamis. Sempurna untuk membangun definisi, kekuatan, dan daya tahan.",
+  "burnt130to160kcal": "Terbakar ~130-160 kkal",
+  "time40plusMin": "Waktu: 40+ menit",
+
+  "loseWeightBeginnerIntro": "Latihan pembakaran lemak pemula ini dirancang untuk meningkatkan detak jantung, mendorong metabolisme, dan memulai perjalanan penurunan berat badan Anda. Tidak perlu peralatan.",
+  "burnt60kcal": "Terbakar ~60 kkal",
+  "time12to18min": "Waktu: 12–18 menit",
+
+  "loseWeightIntermediateIntro": "Latihan pembakaran lemak menengah ini memperketat setiap gerakan untuk menantang stamina dan mempercepat kehilangan lemak. Tidak perlu peralatan—cukup komitmen.",
+  "burnt90to100kcal": "Terbakar ~90-100 kkal",
+  "time25to30min": "Waktu: 25–30 menit",
+
+  "loseWeightAdvancedIntro": "Latihan pembakaran lemak lanjutan ini dirancang untuk menantang daya tahan, kekuatan, dan koordinasi Anda. Harapkan repetisi tinggi, gerakan eksplosif, dan keringat yang banyak.",
+  "burnt140to160kcal": "Terbakar ~140-160 kkal",
+
+  "reduceStressIntro": "Dalam latihan Kurangi Stres ini, Anda akan berlatih Yoga, berjalan pagi, dan mengikuti pola makan bersih. Yoga membantu menenangkan pikiran dan tubuh, berjalan menyegarkan dan meningkatkan suasana hati, dan diet seimbang membuat Anda ringan, sehat, dan bebas stres.",
+  "burnt70kcal": "Terbakar ~70 kkal",
+
+  "morningWarmupIntro": "Pemanasan Pagi ini mencakup jalan kaki, jumping jack, push-up, dan peregangan bahu untuk meningkatkan sirkulasi, melenturkan kekakuan, dan memberi energi untuk hari ini.",
+  "burnt60to80kcal": "Terbakar ~60–80 kkal",
+  "time10to15minWarmup": "Waktu: 10–15 menit",
+
+  "achievementsTitle": "Pencapaian",
+  "unlocked": "Terbuka",
+  "locked": "Terkunci",
+  "unlockedBadge": "Terbuka: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "Level {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "Trofi Terkumpul",
+  "noTrophiesYet": "Belum ada trofi yang terkumpul. Jalan 10.000 langkah dalam sehari untuk mendapatkan satu!",
+
+  "appGuide": "Panduan Aplikasi",
+  "dailyWeeklyTracking": "🏃 Pelacakan Harian & Mingguan",
+  "dailyWeeklyTrackingDesc": "Pada layar utama pertama, Anda akan melihat jumlah langkah harian secara live di bagian atas. Di bawahnya, grafik batang mingguan menunjukkan kemajuan Anda untuk setiap hari dalam seminggu.",
+  "monthlyReportAchievements": "📊 Laporan Bulanan & Pencapaian",
+  "monthlyReportDesc": "Layar kedua memberikan rincian bulanan lengkap langkah Anda. Anda dapat melihat catatan setiap hari dan melihat total jarak, kalori, dan durasi. Pencapaian juga ditampilkan di sini, dengan kemajuan menuju membuka lencana.",
+  "healthFitness": "💪 Kesehatan & Kebugaran",
+  "healthFitnessDesc": "Di layar ketiga, Anda dapat menetapkan target langkah harian dan melacak BMI. Anda juga akan menemukan rutinitas kebugaran seperti:\n• Latihan perut\n• Latihan penurunan berat badan\n• Pengurangan stres\n• Pemanasan pagi\n\nSetiap bagian mencakup perkiraan durasi dan kalori yang terbakar.",
+  "settingsProfile": "⚙️ Pengaturan & Profil",
+  "settingsProfileDesc": "Layar keempat mencakup informasi pribadi Anda seperti tinggi badan dan jenis kelamin. Anda dapat beralih antara tema terang dan gelap, dan mereset data langkah Anda jika diperlukan.",
+  "tips": "🎯 Tips",
+  "tipsDesc": "• Ketuk lencana untuk melihat deskripsinya.\n• Confetti merayakan kemajuan Anda saat Anda membuka pencapaian.\n• Gunakan layar kesehatan setiap hari agar tetap konsisten dan termotivasi.",
+  "gotIt": "Mengerti!",
+
+  "privacyPolicyTitle": "Kebijakan Privasi",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited berkomitmen untuk melindungi privasi Anda. Aplikasi kami, Pedometer – Walk & Track, dirancang untuk membantu Anda memantau aktivitas harian tanpa membahayakan data pribadi Anda. Kami tidak mengumpulkan, menyimpan, atau mengirimkan informasi pengguna—sama sekali.",
+  "privacyPolicyPara2": "Kami tidak meminta atau mengakses nama, email, lokasi, kontak, atau pengenal pribadi lainnya. Semua data pelacakan langkah dan kemajuan diproses secara lokal di perangkat Anda dan tidak pernah meninggalkannya. Tidak ada sinkronisasi cloud, tidak ada analitik, dan tidak ada pelacakan pihak ketiga.",
+  "privacyPolicyPara3": "Aplikasi mungkin meminta izin untuk mengakses sensor aktivitas fisik dan mengirim notifikasi. Ini digunakan semata-mata untuk menghitung langkah Anda dan mengirimkan pesan motivasi. Tidak ada data yang dibagikan secara eksternal, dan tidak ada informasi yang disimpan di luar perangkat Anda.",
+  "privacyPolicyPara4": "Kami tidak menggunakan layanan pihak ketiga, SDK, atau API yang mengumpulkan data pengguna. Pengalaman Anda dengan Pedometer – Walk & Track sepenuhnya pribadi dan mandiri.",
+  "privacyPolicyPara5": "Aplikasi kami cocok untuk semua kelompok umur dan tidak secara sengaja mengumpulkan data dari anak-anak. Karena kami tidak mengumpulkan informasi apapun, tidak ada risiko penyalahgunaan atau akses tidak sah.",
+  "privacyPolicyPara6": "Jika kami membuat perubahan pada aplikasi yang memengaruhi cara kerjanya atau berinteraksi dengan perangkat Anda, kami juga akan memperbarui Kebijakan Privasi ini untuk mencerminkan perubahan tersebut. Kami berkomitmen untuk selalu memberi informasi dan perlindungan kepada Anda di setiap langkah.",
+  "privacyPolicyContact": "Untuk pertanyaan atau dukungan, Anda dapat menghubungi kami di:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "Apakah aplikasi ini menghitung langkah saya?",
+  "faq1Answer": "Ya, Pedometer Walk & Track menghitung langkah Anda secara akurat sepanjang hari. Ini juga melacak jarak, kalori yang terbakar, dan waktu aktif untuk memberi Anda gambaran lengkap aktivitas Anda.",
+  "faq2Question": "Apakah aplikasi memiliki latihan penurunan berat badan?",
+  "faq2Answer": "Ya, aplikasi mencakup latihan penurunan berat badan dan kebugaran yang sederhana. Anda dapat menemukannya di bagian bawah layar Kesehatan, dirancang untuk mendukung rutinitas olahraga harian Anda.",
+  "faq3Question": "Apakah aplikasi menyimpan catatan bulanan langkah saya?",
+  "faq3Answer": "Ya, aplikasi menyimpan catatan langkah harian, mingguan, dan bulanan Anda. Ini memungkinkan Anda meninjau kemajuan dari waktu ke waktu dan tetap termotivasi untuk mencapai tujuan kebugaran Anda.",
+  "faq4Question": "Apakah Anda menyimpan data pribadi saya?",
+  "faq4Answer": "Tidak, kami tidak menyimpan data pribadi Anda di server. Semua jumlah langkah, catatan, dan detail aktivitas Anda disimpan dengan aman hanya di perangkat Anda. Ini memastikan privasi dan kendali penuh atas informasi Anda.",
+  "faq5Question": "Apakah aplikasi akan berbagi data saya dengan siapapun?",
+  "faq5Answer": "Tidak, data Anda tidak pernah dibagikan kepada siapapun. Karena Pedometer Walk & Track tidak mengumpulkan data pribadi Anda, tidak ada yang perlu dibagikan. Anda dapat menggunakan aplikasi dengan keyakinan penuh dan ketenangan pikiran.",
+
+  "dailyRecords": "Catatan Harian",
+  "steps": "Langkah",
+  "miles": "Mil",
+  "monthlyCalendar": "Kalender Bulanan"
+}

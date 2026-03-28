@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import '../widgets/abs_icon_widget.dart';
 import '../widgets/abs_moves_model.dart';
-import '../utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
 
 class AbsBeginnerScreen extends StatelessWidget {
   final List<AbsMoveModel> moves = [
@@ -17,6 +16,7 @@ class AbsBeginnerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
@@ -44,7 +44,7 @@ class AbsBeginnerScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Introduction',
+                      l10n.introduction,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class AbsBeginnerScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'This beginner abs workout is designed to activate your core, improve stability, and build foundational strength. Perfect for kickstarting your fitness journey.',
+                      l10n.absBeginnerIntro,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         fontSize: 14,
                         color: isDark ? Colors.white70 : Colors.black87,
@@ -66,7 +66,7 @@ class AbsBeginnerScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              'Level',
+                              l10n.level,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class AbsBeginnerScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Beginner',
+                              l10n.beginner,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontSize: 12,
                                 color: isDark ? Colors.white70 : Colors.black87,
@@ -86,7 +86,7 @@ class AbsBeginnerScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              'Kcal',
+                              l10n.kcal,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
@@ -95,7 +95,7 @@ class AbsBeginnerScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Burnt ~45 kcal',
+                              l10n.burnt45kcal,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontSize: 12,
                                 color: isDark ? Colors.white70 : Colors.black87,
@@ -106,7 +106,7 @@ class AbsBeginnerScreen extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              'Duration',
+                              l10n.duration,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontSize: 13,
                                 fontWeight: FontWeight.bold,
@@ -115,7 +115,7 @@ class AbsBeginnerScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              'Time: 10–15 min',
+                              l10n.time10to15min,
                               style: theme.textTheme.bodyMedium?.copyWith(
                                 fontSize: 12,
                                 color: isDark ? Colors.white70 : Colors.black87,

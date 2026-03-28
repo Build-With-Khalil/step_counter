@@ -1,0 +1,222 @@
+{
+  "@@locale": "vi",
+
+  "appTagline": "ĐỐI TÁC\nSỨC KHỎE\nCỦA BẠN",
+  "appSubtitle": "Đơn giản, thư giãn, lành mạnh",
+
+  "onboardingPage1Title": "Mỗi Bước Đều Quan Trọng",
+  "onboardingPage1Subtitle": "Theo dõi chuyển động hàng ngày của bạn theo thời gian thực.",
+  "onboardingPage2Title": "Trực Quan Hóa Tiến Độ",
+  "onboardingPage2Subtitle": "Xem sự nhất quán của bạn trong nháy mắt.",
+  "onboardingPage3Title": "Trung Tâm Thể Dục của Bạn",
+  "onboardingPage3Subtitle": "Mọi thứ bạn cần để giữ dáng.",
+  "onboardingPage4Title": "Đặt Mục Tiêu Của Bạn",
+  "onboardingPage4Subtitle": "Tùy chỉnh mục tiêu hàng ngày của bạn.",
+  "getStarted": "Bắt Đầu",
+  "nextStep": "Bước Tiếp Theo",
+  "startJourney": "Bắt Đầu Hành Trình  →",
+  "skip": "Bỏ qua",
+  "october": "Tháng Mười",
+  "daysActive": "22 Ngày Hoạt Động",
+  "stepsToday": "BƯỚC HÔM NAY",
+  "stepsDaily": "BƯỚC HÀNG NGÀY",
+  "workouts": "Bài Tập",
+  "heartRate": "Nhịp Tim",
+  "metrics": "Số Liệu",
+  "reports": "Báo Cáo",
+
+  "permissionsRequired": "Cần Quyền Truy Cập",
+  "permissionsDialogContent": "Để theo dõi bước chân và gửi thông báo động lực, vui lòng cho phép quyền Hoạt Động và Thông Báo.",
+  "notNow": "Không Phải Bây Giờ",
+  "allow": "Cho Phép",
+  "permissionsNotGranted": "Quyền chưa được cấp. Một số tính năng có thể không hoạt động.",
+  "permissions": "Quyền",
+
+  "setDailyStepGoal": "Đặt Mục Tiêu Bước Hàng Ngày",
+  "failedToLoadData": "Không thể tải dữ liệu",
+  "retry": "Thử Lại",
+  "achievementProgress": "Tiến Độ Thành Tích",
+  "bmiNotSet": "BMI: Chưa đặt",
+  "setHeightWeight": "Đặt chiều cao và cân nặng trong hồ sơ",
+  "dailyReminder": "Nhắc Nhở Hàng Ngày",
+  "dailyReminderSubtitle": "Nhận một câu trích dẫn động lực mỗi buổi sáng lúc 9 giờ",
+  "resetTodaysSteps": "Đặt Lại Bước Hôm Nay",
+  "resetAllData": "Đặt Lại Tất Cả Dữ Liệu",
+  "fitnessSection": "Phần Thể Dục",
+  "absTitle": "Cơ Bụng",
+  "absSubtitle": "Chỉ Bốn Động Tác Cho Cơ Bụng",
+  "loseWeight": "Giảm Cân",
+  "loseWeightSubtitle": "Đốt cháy mỡ hiệu quả hơn",
+  "reduceStress": "Giảm Căng Thẳng",
+  "reduceStressSubtitle": "Tâm trí sảng khoái, thư giãn và thiền",
+  "morningWarmup": "Khởi Động Buổi Sáng",
+  "morningWarmupSubtitle": "Hít thở không khí trong lành và Vitamin D",
+
+  "todaysTotalSteps": "Tổng Số Bước Hôm Nay",
+  "mile": "Dặm",
+  "kcal": "Kcal",
+  "time": "Thời Gian",
+  "daysStreak": "Chuỗi Ngày",
+  "goalSteps": "Mục tiêu: {goal} bước",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "Còn {remaining} bước",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "Thành Tích",
+  "thisMonth": "Tháng Này",
+  "totalSteps": "Tổng Số Bước",
+  "monthlyProgress": "Tiến Độ Hàng Tháng",
+
+  "editProfile": "Chỉnh Sửa Hồ Sơ",
+  "theme": "Giao Diện",
+  "appLinkCopied": "Liên kết ứng dụng đã được sao chép vào clipboard",
+  "instruction": "Hướng Dẫn",
+  "instructionSubtitle": "Hướng dẫn sử dụng ứng dụng",
+  "shareApp": "Chia Sẻ Ứng Dụng",
+  "shareAppSubtitle": "Chia Sẻ Ứng Dụng với Bạn Bè",
+  "faqs": "Câu Hỏi Thường Gặp",
+  "faqsSubtitle": "Câu Hỏi Thường Gặp",
+  "privacyPolicy": "Chính Sách Bảo Mật",
+  "privacyPolicySubtitle": "Chính Sách Bảo Mật của Ứng Dụng",
+  "nameLabel": "Tên",
+  "ageLabel": "Tuổi",
+  "cancel": "Hủy",
+  "save": "Lưu",
+  "profileUpdated": "Hồ Sơ Đã Được Cập Nhật",
+  "profileSavedMessage": "Hồ sơ của bạn đã được lưu thành công.",
+  "invalidInput": "Đầu Vào Không Hợp Lệ",
+  "invalidInputMessage": "Vui lòng nhập tên và tuổi hợp lệ.",
+  "loading": "Đang tải...",
+  "notSet": "Chưa đặt",
+  "ageDisplay": "Tuổi: {age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "Giới Tính Của Bạn",
+  "genderHint": "Chúng tôi cần để đo chiều dài bước đi và lượng calo tiêu thụ.",
+  "male": "Nam",
+  "female": "Nữ",
+  "next": "TIẾP THEO",
+  "selectPrefix": "Chọn",
+
+  "moreAboutYouPrefix": "Thêm",
+  "moreAboutYouSuffix": "Về Bạn",
+  "heightWeightHint": "Để đảm bảo độ chính xác, vui lòng nhập chiều cao và cân nặng chính xác của bạn. Chúng tôi không bao giờ chia sẻ dữ liệu này.",
+  "height": "Chiều Cao",
+  "weight": "Cân Nặng",
+  "selectHeightCm": "Chọn Chiều Cao (cm)",
+  "selectWeightKg": "Chọn Cân Nặng (kg)",
+  "start": "BẮT ĐẦU",
+
+  "absWorkouts": "Bài Tập Cơ Bụng",
+  "beginner": "Người Mới",
+  "intermediate": "Trung Cấp",
+  "advanced": "Nâng Cao",
+  "advance": "Tiến Lên",
+  "duration15mins": "15 phút",
+  "duration30mins": "30 phút",
+  "duration40plusMins": "40+ phút",
+
+  "introduction": "Giới Thiệu",
+  "level": "Cấp Độ",
+  "duration": "Thời Lượng",
+
+  "absBeginnerIntro": "Bài tập cơ bụng dành cho người mới này được thiết kế để kích hoạt cơ core, cải thiện sự ổn định và xây dựng sức mạnh nền tảng. Hoàn hảo để bắt đầu hành trình thể dục của bạn.",
+  "burnt45kcal": "Đốt cháy ~45 kcal",
+  "time10to15min": "Thời gian: 10–15 phút",
+
+  "absIntermediateIntro": "Bài tập cơ bụng trung cấp này xây dựng sức mạnh core với thời gian giữ lâu hơn, nhiều lần lặp hơn và các động tác linh hoạt. Lý tưởng để tiến xa hơn những điều cơ bản.",
+  "burnt85to100kcal": "Đốt cháy ~85-100 kcal",
+  "time20to30min": "Thời gian: 20–30 phút",
+
+  "absAdvancedIntro": "Bài tập cơ bụng nâng cao này nhắm vào các cơ core sâu với các động tác lặp nhiều lần, giữ tĩnh và chuyển tiếp linh hoạt. Hoàn hảo để xây dựng sự rõ nét, sức mạnh và sức bền.",
+  "burnt130to160kcal": "Đốt cháy ~130-160 kcal",
+  "time40plusMin": "Thời gian: 40+ phút",
+
+  "loseWeightBeginnerIntro": "Bài tập đốt mỡ cho người mới này được thiết kế để tăng nhịp tim, thúc đẩy trao đổi chất và khởi đầu hành trình giảm cân. Không cần thiết bị.",
+  "burnt60kcal": "Đốt cháy ~60 kcal",
+  "time12to18min": "Thời gian: 12–18 phút",
+
+  "loseWeightIntermediateIntro": "Bài tập đốt mỡ trung cấp này tăng cường mỗi động tác để thách thức sức bền và đẩy nhanh quá trình đốt mỡ. Không cần thiết bị—chỉ cần sự cam kết.",
+  "burnt90to100kcal": "Đốt cháy ~90-100 kcal",
+  "time25to30min": "Thời gian: 25–30 phút",
+
+  "loseWeightAdvancedIntro": "Bài tập đốt mỡ nâng cao này được xây dựng để thách thức sức bền, sức mạnh và sự phối hợp. Mong đợi nhiều lần lặp, các động tác bùng nổ và mồ hôi thật sự.",
+  "burnt140to160kcal": "Đốt cháy ~140-160 kcal",
+
+  "reduceStressIntro": "Trong bài tập Giảm Căng Thẳng này, bạn sẽ thực hành Yoga, đi bộ buổi sáng và tuân theo chế độ ăn uống lành mạnh. Yoga giúp làm dịu tâm trí và cơ thể, đi bộ giúp tươi mới và cải thiện tâm trạng, và chế độ ăn cân bằng giúp bạn nhẹ nhàng, khỏe mạnh và không có căng thẳng.",
+  "burnt70kcal": "Đốt cháy ~70 kcal",
+
+  "morningWarmupIntro": "Bài khởi động buổi sáng này bao gồm đi bộ, nhảy chân sải, hít đất và duỗi vai để tăng cường tuần hoàn, giảm cứng cơ và tiếp thêm năng lượng cho ngày mới.",
+  "burnt60to80kcal": "Đốt cháy ~60–80 kcal",
+  "time10to15minWarmup": "Thời gian: 10–15 phút",
+
+  "achievementsTitle": "Thành Tích",
+  "unlocked": "Đã mở khóa",
+  "locked": "Đã khóa",
+  "unlockedBadge": "Đã mở khóa: {title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "Cấp độ {level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "Cúp Đã Thu Thập",
+  "noTrophiesYet": "Chưa thu thập được cúp nào. Đi bộ 10.000 bước trong một ngày để kiếm được một cái!",
+
+  "appGuide": "Hướng Dẫn Ứng Dụng",
+  "dailyWeeklyTracking": "🏃 Theo Dõi Hàng Ngày và Hàng Tuần",
+  "dailyWeeklyTrackingDesc": "Trên màn hình chính đầu tiên, bạn sẽ thấy số bước hàng ngày trực tiếp ở trên cùng. Bên dưới, biểu đồ thanh hàng tuần hiển thị tiến độ của bạn cho mỗi ngày trong tuần.",
+  "monthlyReportAchievements": "📊 Báo Cáo Tháng và Thành Tích",
+  "monthlyReportDesc": "Màn hình thứ hai cung cấp cho bạn bản phân tích hàng tháng đầy đủ về các bước của bạn. Bạn có thể xem hồ sơ của từng ngày và xem tổng khoảng cách, calo và thời lượng. Thành tích cũng được hiển thị ở đây, với tiến độ để mở khóa huy hiệu.",
+  "healthFitness": "💪 Sức Khỏe và Thể Dục",
+  "healthFitnessDesc": "Trên màn hình thứ ba, bạn có thể đặt mục tiêu bước hàng ngày và theo dõi BMI. Bạn cũng sẽ tìm thấy các chương trình tập luyện như:\n• Bài tập cơ bụng\n• Bài tập giảm cân\n• Giảm căng thẳng\n• Khởi động buổi sáng\n\nMỗi phần bao gồm thời lượng ước tính và calo đốt cháy.",
+  "settingsProfile": "⚙️ Cài Đặt và Hồ Sơ",
+  "settingsProfileDesc": "Màn hình thứ tư bao gồm thông tin cá nhân của bạn như chiều cao và giới tính. Bạn có thể chuyển đổi giữa giao diện sáng và tối, và đặt lại dữ liệu bước nếu cần.",
+  "tips": "🎯 Mẹo",
+  "tipsDesc": "• Nhấn vào huy hiệu để xem mô tả của chúng.\n• Pháo hoa chúc mừng tiến độ của bạn khi bạn mở khóa thành tích.\n• Sử dụng màn hình sức khỏe hàng ngày để duy trì sự nhất quán và được thúc đẩy.",
+  "gotIt": "Hiểu rồi!",
+
+  "privacyPolicyTitle": "Chính Sách Bảo Mật",
+  "privacyPolicyPara1": "NSB Solutions (Private) Limited cam kết bảo vệ quyền riêng tư của bạn. Ứng dụng của chúng tôi, Pedometer – Walk & Track, được thiết kế để giúp bạn theo dõi hoạt động hàng ngày mà không ảnh hưởng đến dữ liệu cá nhân của bạn. Chúng tôi không thu thập, lưu trữ hay truyền bất kỳ thông tin người dùng nào—tuyệt đối không.",
+  "privacyPolicyPara2": "Chúng tôi không yêu cầu hoặc truy cập tên, email, vị trí, danh bạ hoặc bất kỳ mã nhận dạng cá nhân nào khác của bạn. Tất cả dữ liệu theo dõi bước và tiến độ được xử lý cục bộ trên thiết bị của bạn và không bao giờ rời khỏi đó. Không có đồng bộ hóa đám mây, không có phân tích và không có theo dõi bên thứ ba.",
+  "privacyPolicyPara3": "Ứng dụng có thể yêu cầu quyền truy cập các cảm biến hoạt động thể chất và gửi thông báo. Chúng chỉ được sử dụng để đếm bước và gửi các tin nhắn động lực. Không có dữ liệu nào được chia sẻ bên ngoài và không có thông tin nào được lưu trữ ngoài thiết bị của bạn.",
+  "privacyPolicyPara4": "Chúng tôi không sử dụng các dịch vụ bên thứ ba, SDK hoặc API thu thập dữ liệu người dùng. Trải nghiệm của bạn với Pedometer – Walk & Track hoàn toàn riêng tư và tự chứa.",
+  "privacyPolicyPara5": "Ứng dụng của chúng tôi phù hợp cho tất cả các nhóm tuổi và không cố tình thu thập bất kỳ dữ liệu nào từ trẻ em. Vì chúng tôi không thu thập thông tin nào, không có rủi ro lạm dụng hoặc truy cập trái phép.",
+  "privacyPolicyPara6": "Nếu chúng tôi thực hiện các thay đổi đối với ứng dụng ảnh hưởng đến cách hoạt động hoặc tương tác với thiết bị của bạn, chúng tôi cũng sẽ cập nhật Chính Sách Bảo Mật này để phản ánh những thay đổi đó. Chúng tôi cam kết giữ cho bạn được thông báo và bảo vệ mọi bước trên đường.",
+  "privacyPolicyContact": "Đối với bất kỳ câu hỏi hoặc hỗ trợ nào, bạn có thể liên hệ với chúng tôi tại:",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "Ứng dụng này có đếm bước của tôi không?",
+  "faq1Answer": "Có, Pedometer Walk & Track đếm chính xác các bước của bạn trong suốt ngày. Nó cũng theo dõi khoảng cách, calo đốt cháy và thời gian hoạt động để cung cấp cho bạn cái nhìn đầy đủ về hoạt động của mình.",
+  "faq2Question": "Ứng dụng có bài tập giảm cân không?",
+  "faq2Answer": "Có, ứng dụng bao gồm các bài tập giảm cân và thể dục đơn giản. Bạn có thể tìm thấy chúng ở cuối màn hình Sức Khỏe, được thiết kế để hỗ trợ chương trình tập luyện hàng ngày của bạn.",
+  "faq3Question": "Ứng dụng có lưu hồ sơ hàng tháng về bước của tôi không?",
+  "faq3Answer": "Có, ứng dụng lưu trữ hồ sơ bước hàng ngày, hàng tuần và hàng tháng của bạn. Điều này cho phép bạn xem lại tiến độ theo thời gian và duy trì động lực để đạt được mục tiêu thể dục.",
+  "faq4Question": "Bạn có lưu trữ dữ liệu cá nhân của tôi không?",
+  "faq4Answer": "Không, chúng tôi không lưu trữ bất kỳ dữ liệu cá nhân nào của bạn trên máy chủ. Tất cả số bước, hồ sơ và chi tiết hoạt động của bạn chỉ được lưu trữ an toàn trên thiết bị của bạn. Điều này đảm bảo quyền riêng tư và toàn quyền kiểm soát thông tin của bạn.",
+  "faq5Question": "Ứng dụng có chia sẻ dữ liệu của tôi với ai không?",
+  "faq5Answer": "Không, dữ liệu của bạn không bao giờ được chia sẻ với bất kỳ ai. Vì Pedometer Walk & Track không thu thập dữ liệu cá nhân của bạn, không có gì để chia sẻ. Bạn có thể sử dụng ứng dụng với hoàn toàn tự tin và yên tâm.",
+
+  "dailyRecords": "Hồ Sơ Hàng Ngày",
+  "steps": "Bước",
+  "miles": "Dặm",
+  "monthlyCalendar": "Lịch Hàng Tháng"
+}

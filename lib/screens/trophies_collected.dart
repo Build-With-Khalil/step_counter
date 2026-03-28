@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import '../controllers/achievements_controller.dart';
 import '../utils/ad_helper.dart';
@@ -19,7 +20,7 @@ class TrophiesPage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: Text('Trophies Collected', style: TextStyle(fontSize: screenWidth * 0.05)),
+        title: Text(AppLocalizations.of(context)!.trophiesCollected, style: TextStyle(fontSize: screenWidth * 0.05)),
       ),
       body: Column(
         children: [
@@ -27,7 +28,7 @@ class TrophiesPage extends StatelessWidget {
         if (controller.trophyDates.isEmpty) {
           return Center(
             child: Text(
-              'No trophies collected yet. Walk 10K steps in a day to earn one!',
+              AppLocalizations.of(context)!.noTrophiesYet,
               style: TextStyle(fontSize: screenWidth * 0.04),
               textAlign: TextAlign.center,
             ),

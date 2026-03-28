@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:confetti/confetti.dart';
 import 'package:step_counter/screens/trophies_collected.dart';
 import '../controllers/achievements_controller.dart';
 import '../utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
 import '../widgets/achievment_badge.dart';
 
 class AchievementsPage extends StatefulWidget {
@@ -60,7 +60,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Unlocked: ${badge.title}',
+                  AppLocalizations.of(context)!.unlockedBadge(badge.title),
                   style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.045, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
@@ -86,6 +86,8 @@ class _AchievementsPageState extends State<AchievementsPage> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -99,7 +101,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
         ],
         centerTitle: true,
         backgroundColor: Colors.transparent,
-        title: Text('Achievements', style: TextStyle(fontSize: screenWidth * 0.05)),
+        title: Text(l10n.achievementsTitle, style: TextStyle(fontSize: screenWidth * 0.05)),
       ),
       body: Stack(
         children: [
@@ -118,6 +120,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                     badges: controller.badges.where((b) => b.level == 1).toList(),
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
+                    l10n: l10n,
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   _buildLevelRow(
@@ -126,6 +129,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                     badges: controller.badges.where((b) => b.level == 2).toList(),
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
+                    l10n: l10n,
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   _buildLevelRow(
@@ -134,6 +138,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
                     badges: controller.badges.where((b) => b.level == 3).toList(),
                     screenWidth: screenWidth,
                     screenHeight: screenHeight,
+                    l10n: l10n,
                   ),
                   SizedBox(height: screenHeight * 0.03),
                   // NativeAdWidget(adUnitId: AdHelper.native2AdUnitId),
@@ -165,6 +170,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
     required List<AchievementBadge> badges,
     required double screenWidth,
     required double screenHeight,
+    required AppLocalizations l10n,
   }) {
     final unlockedCount = badges.where((b) => b.unlocked.value).length;
     final totalCount = badges.length;
@@ -178,7 +184,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
             Image.asset(iconPath, width: screenWidth * 0.08, height: screenWidth * 0.08),
             SizedBox(width: screenWidth * 0.02),
             Text(
-              'Level $level',
+              l10n.levelLabel(level),
               style: TextStyle(fontSize: screenWidth * 0.05, fontWeight: FontWeight.bold),
             ),
             const Spacer(),
@@ -277,7 +283,7 @@ class _AchievementsPageState extends State<AchievementsPage> {
         ),
         SizedBox(height: screenWidth * 0.01),
         Text(
-          unlocked ? 'Unlocked' : 'Locked',
+          unlocked ? AppLocalizations.of(context)!.unlocked : AppLocalizations.of(context)!.locked,
           style: TextStyle(
             fontSize: screenWidth * 0.03,
             color: unlocked ? Colors.green : Colors.grey,

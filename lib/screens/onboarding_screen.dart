@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import '../controllers/onboarding_controller.dart';
-import '../utils/ad_helper.dart';
 import '../widgets/NativeAdWidgetForMedium.dart';
 
 // ─── Colors ──────────────────────────────────────────────────────────────────
@@ -20,6 +20,7 @@ class OnBoardingScreen extends StatelessWidget {
     final ctrl = Get.isRegistered<OnboardingController>()
         ? Get.find<OnboardingController>()
         : Get.put(OnboardingController());
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: _bg,
@@ -36,24 +37,24 @@ class OnBoardingScreen extends StatelessWidget {
                     onPageChanged: ctrl.onPageChanged,
                     children: [
                       _PageShell(
-                        title: 'Every Step Counts',
-                        subtitle: 'Track your daily movement in real time.',
+                        title: l10n.onboardingPage1Title,
+                        subtitle: l10n.onboardingPage1Subtitle,
                         content: const _StepCircleWidget(),
                       ),
 
                       _PageShell(
-                        title: 'Visualize Progress',
-                        subtitle: 'See your consistency at a glance.',
+                        title: l10n.onboardingPage2Title,
+                        subtitle: l10n.onboardingPage2Subtitle,
                         content: const _CalendarWidget(),
                       ),
                       _PageShell(
-                        title: 'Your Fitness Hub',
-                        subtitle: 'Everything you need to stay fit.',
+                        title: l10n.onboardingPage3Title,
+                        subtitle: l10n.onboardingPage3Subtitle,
                         content: const _FitnessHubWidget(),
                       ),
                       _PageShell(
-                        title: 'Set Your Goal',
-                        subtitle: 'Customize your daily target.',
+                        title: l10n.onboardingPage4Title,
+                        subtitle: l10n.onboardingPage4Subtitle,
                         content: _GoalSliderWidget(ctrl: ctrl),
                       ),
                     ],
@@ -93,10 +94,10 @@ class OnBoardingScreen extends StatelessWidget {
                       final page = ctrl.currentPage.value;
                       final isGreen = page == 0 || page == 3;
                       final label = page == 0
-                          ? 'Get Started'
+                          ? l10n.getStarted
                           : page == 3
-                          ? 'Start Journey  →'
-                          : 'Next Step';
+                          ? l10n.startJourney
+                          : l10n.nextStep;
                       final onTap =
                       page == 3 ? ctrl.finishOnboarding : ctrl.nextPage;
                       return isGreen
@@ -117,9 +118,9 @@ class OnBoardingScreen extends StatelessWidget {
               right: 16,
               child: TextButton(
                 onPressed: ctrl.onSkipPressed,
-                child: const Text(
-                  'Skip',
-                  style: TextStyle(color: Colors.white60, fontSize: 15),
+                child: Text(
+                  l10n.skip,
+                  style: const TextStyle(color: Colors.white60, fontSize: 15),
                 ),
               ),
             )
@@ -266,10 +267,10 @@ class _StepCircleWidget extends StatelessWidget {
             size: const Size(250, 250),
             painter: _ArcPainter(),
           ),
-          const Column(
+          Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 '7,842',
                 style: TextStyle(
                   color: Colors.white,
@@ -279,8 +280,8 @@ class _StepCircleWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                'STEPS TODAY',
-                style: TextStyle(
+                AppLocalizations.of(context)!.stepsToday,
+                style: const TextStyle(
                   color: Colors.white38,
                   fontSize: 12,
                   letterSpacing: 2,
@@ -364,20 +365,20 @@ class _CalendarWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'October',
-                style: TextStyle(
+                AppLocalizations.of(context)!.october,
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),
               ),
               Text(
-                '22 Days Active',
-                style: TextStyle(color: _teal, fontSize: 13),
+                AppLocalizations.of(context)!.daysActive,
+                style: const TextStyle(color: _teal, fontSize: 13),
               ),
             ],
           ),
@@ -414,22 +415,23 @@ class _CalendarWidget extends StatelessWidget {
 class _FitnessHubWidget extends StatelessWidget {
   const _FitnessHubWidget();
 
-  static const _items = [
-    {'icon': Icons.flash_on_rounded, 'label': 'Workouts'},
-    {'icon': Icons.favorite_rounded, 'label': 'Heart Rate'},
-    {'icon': Icons.track_changes_rounded, 'label': 'Metrics'},
-    {'icon': Icons.calendar_today_rounded, 'label': 'Reports'},
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final items = [
+      {'icon': Icons.flash_on_rounded, 'label': l10n.workouts},
+      {'icon': Icons.favorite_rounded, 'label': l10n.heartRate},
+      {'icon': Icons.track_changes_rounded, 'label': l10n.metrics},
+      {'icon': Icons.calendar_today_rounded, 'label': l10n.reports},
+    ];
+
     return GridView.count(
       crossAxisCount: 2,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       mainAxisSpacing: 16,
       crossAxisSpacing: 16,
-      children: _items
+      children: items
           .map(
             (item) => Container(
           decoration: BoxDecoration(
@@ -495,9 +497,9 @@ class _GoalSliderWidget extends StatelessWidget {
               letterSpacing: -1,
             ),
           )),
-          const Text(
-            'STEPS DAILY',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context)!.stepsDaily,
+            style: const TextStyle(
               color: Colors.white38,
               fontSize: 13,
               letterSpacing: 2,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:step_counter/screens/abs_intermediate_screen.dart';
 import '../utils/ad_helper.dart';
-import '../widgets/NativeAdWidget.dart';
 import '../widgets/select_container.dart';
 import 'abs_advance_screen.dart';
 import 'abs_beginner_screen.dart';
@@ -12,10 +12,11 @@ class AbsSelectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text("Abs Workouts"),
+        title: Text(l10n.absWorkouts),
         centerTitle: true,
       ),
       body: Column(
@@ -25,8 +26,8 @@ class AbsSelectScreen extends StatelessWidget {
 
           SelectContainer(
             model: SelectContainerModel(
-              title: "Beginner",
-              duration: "15 mins",
+              title: l10n.beginner,
+              duration: l10n.duration15mins,
               onTap: () {
                 AdManager.onNavigationAction();
                 Get.to(AbsBeginnerScreen());
@@ -35,8 +36,8 @@ class AbsSelectScreen extends StatelessWidget {
           ),
           SelectContainer(
             model: SelectContainerModel(
-              title: "Intermediate",
-              duration: "30 mins",
+              title: l10n.intermediate,
+              duration: l10n.duration30mins,
               onTap: () {
                 AdManager.onNavigationAction();
                 Get.to(AbsIntermediateScreen());
@@ -45,8 +46,8 @@ class AbsSelectScreen extends StatelessWidget {
           ),
           SelectContainer(
             model: SelectContainerModel(
-              title: "Advanced",
-              duration: "40+ mins",
+              title: l10n.advanced,
+              duration: l10n.duration40plusMins,
               onTap: () {
                 AdManager.onNavigationAction();
                 Get.to(AbsAdvanceScreen());

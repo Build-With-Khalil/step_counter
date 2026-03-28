@@ -1,0 +1,222 @@
+{
+  "@@locale": "ja",
+
+  "appTagline": "あなたの\n健康\nパートナー",
+  "appSubtitle": "シンプル、リラックス、健康的",
+
+  "onboardingPage1Title": "すべての歩みが大切",
+  "onboardingPage1Subtitle": "毎日の動きをリアルタイムで追跡。",
+  "onboardingPage2Title": "進歩を見える化",
+  "onboardingPage2Subtitle": "一目で継続性を確認。",
+  "onboardingPage3Title": "あなたのフィットネスハブ",
+  "onboardingPage3Subtitle": "健康を維持するために必要なすべて。",
+  "onboardingPage4Title": "目標を設定しよう",
+  "onboardingPage4Subtitle": "毎日のターゲットをカスタマイズ。",
+  "getStarted": "始める",
+  "nextStep": "次のステップ",
+  "startJourney": "旅を始める  →",
+  "skip": "スキップ",
+  "october": "10月",
+  "daysActive": "22日間アクティブ",
+  "stepsToday": "今日の歩数",
+  "stepsDaily": "毎日の歩数",
+  "workouts": "ワークアウト",
+  "heartRate": "心拍数",
+  "metrics": "指標",
+  "reports": "レポート",
+
+  "permissionsRequired": "権限が必要です",
+  "permissionsDialogContent": "歩数を追跡してモチベーション通知を送信するには、アクティビティと通知の権限を許可してください。",
+  "notNow": "後で",
+  "allow": "許可する",
+  "permissionsNotGranted": "権限が付与されていません。一部の機能が動作しない場合があります。",
+  "permissions": "権限",
+
+  "setDailyStepGoal": "1日の歩数目標を設定",
+  "failedToLoadData": "データの読み込みに失敗しました",
+  "retry": "再試行",
+  "achievementProgress": "達成進捗",
+  "bmiNotSet": "BMI：未設定",
+  "setHeightWeight": "プロフィールで身長と体重を設定",
+  "dailyReminder": "毎日のリマインダー",
+  "dailyReminderSubtitle": "毎朝9時にモチベーションの言葉を受け取る",
+  "resetTodaysSteps": "今日の歩数をリセット",
+  "resetAllData": "すべてのデータをリセット",
+  "fitnessSection": "フィットネスセクション",
+  "absTitle": "腹筋トレーニング",
+  "absSubtitle": "腹筋のための4つの動き",
+  "loseWeight": "体重を減らす",
+  "loseWeightSubtitle": "より効果的に脂肪を燃焼",
+  "reduceStress": "ストレス解消",
+  "reduceStressSubtitle": "心を澄ませ、リラックスと瞑想",
+  "morningWarmup": "朝のウォームアップ",
+  "morningWarmupSubtitle": "新鮮な空気とビタミンDを摂取",
+
+  "todaysTotalSteps": "今日の総歩数",
+  "mile": "マイル",
+  "kcal": "kcal",
+  "time": "時間",
+  "daysStreak": "連続日数",
+  "goalSteps": "目標：{goal}歩",
+  "@goalSteps": {
+    "placeholders": {
+      "goal": {"type": "int"}
+    }
+  },
+  "stepsLeft": "残り{remaining}歩",
+  "@stepsLeft": {
+    "placeholders": {
+      "remaining": {"type": "int"}
+    }
+  },
+
+  "achievements": "達成",
+  "thisMonth": "今月",
+  "totalSteps": "総歩数",
+  "monthlyProgress": "月間進捗",
+
+  "editProfile": "プロフィールを編集",
+  "theme": "テーマ",
+  "appLinkCopied": "アプリのリンクをクリップボードにコピーしました",
+  "instruction": "使い方",
+  "instructionSubtitle": "アプリの使用ガイド",
+  "shareApp": "アプリをシェア",
+  "shareAppSubtitle": "友達にアプリをシェアしよう",
+  "faqs": "よくある質問",
+  "faqsSubtitle": "よくある質問と回答",
+  "privacyPolicy": "プライバシーポリシー",
+  "privacyPolicySubtitle": "アプリのプライバシーポリシー",
+  "nameLabel": "名前",
+  "ageLabel": "年齢",
+  "cancel": "キャンセル",
+  "save": "保存",
+  "profileUpdated": "プロフィールが更新されました",
+  "profileSavedMessage": "プロフィールが正常に保存されました。",
+  "invalidInput": "無効な入力",
+  "invalidInputMessage": "有効な名前と年齢を入力してください。",
+  "loading": "読み込み中...",
+  "notSet": "未設定",
+  "ageDisplay": "年齢：{age}",
+  "@ageDisplay": {
+    "placeholders": {
+      "age": {"type": "int"}
+    }
+  },
+
+  "selectYourGender": "あなたの性別",
+  "genderHint": "歩幅とカロリー消費量を計算するために必要です。",
+  "male": "男性",
+  "female": "女性",
+  "next": "次へ",
+  "selectPrefix": "選択",
+
+  "moreAboutYouPrefix": "あなたの",
+  "moreAboutYouSuffix": "詳細情報",
+  "heightWeightHint": "正確さを確保するため、正しい身長と体重を入力してください。このデータは決して共有しません。",
+  "height": "身長",
+  "weight": "体重",
+  "selectHeightCm": "身長を選択（cm）",
+  "selectWeightKg": "体重を選択（kg）",
+  "start": "スタート",
+
+  "absWorkouts": "腹筋ワークアウト",
+  "beginner": "初心者",
+  "intermediate": "中級者",
+  "advanced": "上級者",
+  "advance": "進む",
+  "duration15mins": "15分",
+  "duration30mins": "30分",
+  "duration40plusMins": "40分以上",
+
+  "introduction": "はじめに",
+  "level": "レベル",
+  "duration": "時間",
+
+  "absBeginnerIntro": "この初心者向け腹筋ワークアウトは、体幹を活性化し、安定性を高め、基礎的な筋力を構築するよう設計されています。フィットネスの旅を始めるのに最適です。",
+  "burnt45kcal": "消費カロリー約45kcal",
+  "time10to15min": "時間：10〜15分",
+
+  "absIntermediateIntro": "この中級腹筋ワークアウトは、より長いホールド、高い反復回数、ダイナミックな動きで体幹の強さを高めます。基礎を超えて進歩するのに理想的。",
+  "burnt85to100kcal": "消費カロリー約85〜100kcal",
+  "time20to30min": "時間：20〜30分",
+
+  "absAdvancedIntro": "この上級腹筋ワークアウトは、高反復の動き、スタティックホールド、ダイナミックなトランジションで深部の体幹筋を鍛えます。定義、強さ、持久力の構築に最適です。",
+  "burnt130to160kcal": "消費カロリー約130〜160kcal",
+  "time40plusMin": "時間：40分以上",
+
+  "loseWeightBeginnerIntro": "この初心者向け脂肪燃焼ワークアウトは、心拍数を上げ、代謝を促進し、体重減少の旅をスタートさせるよう設計されています。器具不要。",
+  "burnt60kcal": "消費カロリー約60kcal",
+  "time12to18min": "時間：12〜18分",
+
+  "loseWeightIntermediateIntro": "この中級脂肪燃焼ワークアウトは、スタミナに挑戦し脂肪燃焼を加速させるため、各動きを強化します。器具不要—必要なのはコミットメントのみ。",
+  "burnt90to100kcal": "消費カロリー約90〜100kcal",
+  "time25to30min": "時間：25〜30分",
+
+  "loseWeightAdvancedIntro": "この上級脂肪燃焼ワークアウトは、持久力、強さ、協調性に挑戦するために作られています。高反復、爆発的な動き、本格的な汗が期待できます。",
+  "burnt140to160kcal": "消費カロリー約140〜160kcal",
+
+  "reduceStressIntro": "このストレス解消ワークアウトでは、ヨガを練習し、朝の散歩をし、クリーンな食事を実践します。ヨガは心と体を落ち着かせ、歩くことで気分が爽快になり、バランスの取れた食事で軽く、健康的で、ストレスフリーな状態を保ちます。",
+  "burnt70kcal": "消費カロリー約70kcal",
+
+  "morningWarmupIntro": "この朝のウォームアップには、血行促進、こわばりの解消、一日のエネルギー補給のためのウォーキング、ジャンピングジャック、腕立て伏せ、肩のストレッチが含まれます。",
+  "burnt60to80kcal": "消費カロリー約60〜80kcal",
+  "time10to15minWarmup": "時間：10〜15分",
+
+  "achievementsTitle": "達成",
+  "unlocked": "解除済み",
+  "locked": "ロック中",
+  "unlockedBadge": "解除：{title}",
+  "@unlockedBadge": {
+    "placeholders": {
+      "title": {"type": "String"}
+    }
+  },
+  "levelLabel": "レベル{level}",
+  "@levelLabel": {
+    "placeholders": {
+      "level": {"type": "int"}
+    }
+  },
+
+  "trophiesCollected": "獲得したトロフィー",
+  "noTrophiesYet": "まだトロフィーはありません。1日1万歩歩いて獲得しよう！",
+
+  "appGuide": "アプリガイド",
+  "dailyWeeklyTracking": "🏃 毎日・毎週の追跡",
+  "dailyWeeklyTrackingDesc": "最初のメイン画面では、上部にリアルタイムで毎日の歩数が表示されます。その下に、週間棒グラフで週の各日の進捗が確認できます。",
+  "monthlyReportAchievements": "📊 月次レポートと達成",
+  "monthlyReportDesc": "2番目の画面では、歩数の完全な月次内訳が確認できます。各日の記録を表示し、総距離、カロリー、時間を確認できます。バッジのロック解除に向けた進捗とともに、達成もここに表示されます。",
+  "healthFitness": "💪 健康とフィットネス",
+  "healthFitnessDesc": "3番目の画面では、毎日の歩数目標を設定し、BMIを追跡できます。以下のようなフィットネスルーティンも見つかります：\n• 腹筋ワークアウト\n• 体重減少エクササイズ\n• ストレス解消\n• 朝のウォームアップ\n\n各セクションには推定時間と消費カロリーが含まれています。",
+  "settingsProfile": "⚙️ 設定とプロフィール",
+  "settingsProfileDesc": "4番目の画面には、身長や性別などの個人情報が含まれています。ライトとダークテーマを切り替えたり、必要に応じて歩数データをリセットできます。",
+  "tips": "🎯 ヒント",
+  "tipsDesc": "• バッジをタップして説明を確認。\n• 達成をアンロックするとコンフェッティが進捗を祝います。\n• 毎日健康画面を使って、一貫性を保ち、モチベーションを維持しましょう。",
+  "gotIt": "わかった！",
+
+  "privacyPolicyTitle": "プライバシーポリシー",
+  "privacyPolicyPara1": "NSB Solutions（Private）Limitedはお客様のプライバシー保護に取り組んでいます。当社のアプリPedometer – Walk & Trackは、個人データを損なうことなく日常の活動を監視するお手伝いをするよう設計されています。ユーザー情報の収集、保存、送信は一切行いません。",
+  "privacyPolicyPara2": "お客様の名前、メール、位置情報、連絡先、その他の個人識別子へのアクセスを要求または取得することはありません。すべての歩数追跡と進捗データはデバイス上でローカルに処理され、決して外部に出ません。クラウド同期、分析、サードパーティの追跡は一切ありません。",
+  "privacyPolicyPara3": "アプリは身体活動センサーへのアクセスと通知送信の許可を求める場合があります。これらは歩数のカウントとモチベーションメッセージの配信のみに使用されます。データが外部で共有されることはなく、デバイスを超えた情報の保存もありません。",
+  "privacyPolicyPara4": "ユーザーデータを収集するサードパーティのサービス、SDK、APIは使用していません。Pedometer – Walk & Trackとのご利用体験は完全にプライベートで自己完結しています。",
+  "privacyPolicyPara5": "当社のアプリはすべての年齢層に適しており、児童からのデータを意図的に収集することはありません。情報を収集しないため、不正使用や不正アクセスのリスクはありません。",
+  "privacyPolicyPara6": "アプリの動作やデバイスとの相互作用に影響する変更を行う場合、これらの変更を反映するためにプライバシーポリシーも更新します。お客様を常に情報提供し、保護することをお約束します。",
+  "privacyPolicyContact": "ご質問やサポートは以下までお問い合わせください：",
+  "privacyPolicyContactDetails": "NSB Solutions (Private) Limited\n📧 nsbsolutions2000@gmail.com\n🌐 https://nsbsolutions.online\n📞 +92 323 3525610",
+
+  "faq1Question": "このアプリは歩数を数えますか？",
+  "faq1Answer": "はい、Pedometer Walk & Trackは一日中正確に歩数を数えます。また、距離、消費カロリー、活動時間も追跡し、活動の完全なビューを提供します。",
+  "faq2Question": "アプリに体重減少エクササイズはありますか？",
+  "faq2Answer": "はい、アプリには簡単な体重減少とフィットネスエクササイズが含まれています。健康画面の下部で見つけることができ、毎日のワークアウトルーティンをサポートするよう設計されています。",
+  "faq3Question": "アプリは歩数の月次記録を保持していますか？",
+  "faq3Answer": "はい、アプリは毎日、毎週、毎月の歩数記録を保存します。これにより、時間をかけて進捗を確認し、フィットネス目標を達成するためにモチベーションを維持できます。",
+  "faq4Question": "個人データを保存していますか？",
+  "faq4Answer": "いいえ、サーバーに個人データを保存することはありません。すべての歩数、記録、活動詳細はデバイス上のみに安全に保存されます。これにより、プライバシーと情報の完全な管理が確保されます。",
+  "faq5Question": "アプリは誰かとデータを共有しますか？",
+  "faq5Answer": "いいえ、データは決して誰とも共有されません。Pedometer Walk & Trackは個人データを収集しないため、共有するものがありません。完全な信頼と安心感でアプリを利用できます。",
+
+  "dailyRecords": "毎日の記録",
+  "steps": "歩数",
+  "miles": "マイル",
+  "monthlyCalendar": "月間カレンダー"
+}

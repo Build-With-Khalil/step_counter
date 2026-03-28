@@ -90,7 +90,6 @@ class AdManager {
     if (kIsWeb) return;
     loadInterstitialAd();
     loadRewardedAd();
-    loadAppOpenAd();
     loadNativeAd();
     loadNative2Ad();
     //_startPeriodicAds();
@@ -178,7 +177,7 @@ class AdManager {
         },
       ),
       nativeTemplateStyle: NativeTemplateStyle(templateType: TemplateType.medium),
-    )..load();
+    ).load();
   }
 
   static void loadNative2Ad() {
@@ -200,7 +199,7 @@ class AdManager {
         },
       ),
       nativeTemplateStyle: NativeTemplateStyle(templateType: TemplateType.medium),
-    )..load();
+    ).load();
   }
 
   static NativeAd? claimNativeAdByUnitId(String adUnitId) {
@@ -231,7 +230,7 @@ class AdManager {
   // --- Interstitial Ad For Click ---
 
   static void loadInterstitialAd() {
-    if (kIsWeb || _isInterstitialLoading) return;
+    if (kIsWeb || _isInterstitialLoading || _interstitialAd != null) return;
     _isInterstitialLoading = true;
 
     InterstitialAd.load(

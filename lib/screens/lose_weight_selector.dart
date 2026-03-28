@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:step_counter/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:step_counter/screens/lose_weight_beginner.dart';
 
@@ -13,11 +14,11 @@ class LoseWeightSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text("Lose Weight"),
+        title: Text(l10n.loseWeight),
         centerTitle: true,
       ),
       body: Column(
@@ -27,8 +28,8 @@ class LoseWeightSelector extends StatelessWidget {
 
           SelectContainer(
             model: SelectContainerModel(
-              title: "Beginner",
-              duration: "15 mins",
+              title: l10n.beginner,
+              duration: l10n.duration15mins,
               onTap: () {
                 AdManager.onNavigationAction();
                 Get.to(LoseWeightBeginnerScreen());
@@ -37,8 +38,8 @@ class LoseWeightSelector extends StatelessWidget {
           ),
           SelectContainer(
             model: SelectContainerModel(
-              title: "Intermediate",
-              duration: "30 mins",
+              title: l10n.intermediate,
+              duration: l10n.duration30mins,
               onTap: () {
                 AdManager.onNavigationAction();
                 Get.to(LoseWeightIntermediateScreen());
@@ -47,8 +48,8 @@ class LoseWeightSelector extends StatelessWidget {
           ),
           SelectContainer(
             model: SelectContainerModel(
-              title: "Advanced",
-              duration: "40+ mins",
+              title: l10n.advanced,
+              duration: l10n.duration40plusMins,
               onTap: () {
                 AdManager.onNavigationAction();
                 Get.to(LoseWeightAdvancedScreen());
